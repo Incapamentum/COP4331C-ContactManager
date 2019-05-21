@@ -1,0 +1,4 @@
+Here is where most of the files will reside.
+	1) The index.htlm which will be the actual front end will be in this folder
+	2) All of the php code files will be here (They will also be stored in the LAMPAPI file for reference, but the code will use the files located here
+	3) The folders for the css, images, and js will be here as well
