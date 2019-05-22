@@ -1,1 +1,0 @@
-The styles.css file be inside this folder
