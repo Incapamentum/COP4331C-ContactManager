@@ -1,4 +1,4 @@
-var urlBase = "";
+var urlBase = 'http://teamsixstar.online/ContactManager/';
 var extension = "php";
 
 var userID = 0;
@@ -28,6 +28,10 @@ function searchContact(){
 
 function deleteContact(){
 
+}
+
+function editContact(){
+	
 }
 
 function hideOrShow( elementId, showState ){
