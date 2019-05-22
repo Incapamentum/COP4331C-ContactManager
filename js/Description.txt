@@ -1,1 +1,0 @@
-The javascript file will reside in here. (code.js) this code will contain all the logic of the webpage
