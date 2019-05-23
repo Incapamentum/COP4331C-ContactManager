@@ -5,36 +5,73 @@ var userID = 0;
 var firstName = "";
 var lastName = "";
 
-function doLogin(){
+function doLogin()
+{
 
 }
 
+function displayRegisterUser()
+{
+	hideOrShow("registerDiv", true);
+}
 
-function doRegister(){
+function doRegisterUser()
+{
 
 }
 
-function doLogout(){
+function hideRegisterUser()
+{
+	hideOrShow("registerDiv", false);
+}
+
+function doLogout()
+{
 
 }
 
-function addContact(){
+function showAddContact()
+{
+	hideOrShow("addContactDiv", true);
+}
+
+function addContact()
+{
 
 }
 
-function searchContact(){
+function cancelAddContact()
+{
 
 }
 
-function deleteContact(){
+function searchContacts()
+{
 
 }
 
-function editContact(){
+function deleteContact()
+{
+	// before deleting, display a popup asking for confirmation
+}
+
+function showEditContact()
+{
+	hideOrShow("editContactDiv", true);
+}
+
+function editContact()
+{
 	
 }
 
-function hideOrShow( elementId, showState ){
+function cancelEditContact()
+{
+
+}
+
+function hideOrShow( elementId, showState )
+{
 	var vis = "visible";
 	var dis = "block";
 	if( !showState )

@@ -1,63 +1,70 @@
-<html>
+<!DOCTYPE HTML>
+<html lang="en">
 <head>
-	<title>Contact Manager</title>
-	<script type="text/javascript" src="js/code.js"></script>
-    <link href="css/styles.css" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css?family=Ubuntu" rel="stylesheet">
+	<meta charset="utf-8">
+	<title>Team Six Star</title>
+	<script type="text/javascript" src="js/script.js"></script>
+	<links href="css/" rel="stylesheet">
 </head>
 <body>
-
-<h1 id="title">The Team Six Star Contact Manager 2019</h1>
-
-<div id="loginDiv">
-	<span id="inner-title">PLEASE LOG IN</span>
-	<input type="text" id="loginName" placeholder="Username" /><br />
-	<input type="password" id="loginPassword" placeholder="Password"/><br />
-	<button type="button" id="loginButton" class="buttons" onclick="doLogin();"> Log In </button>
-	<span id="loginResult"></span>
-</div>
-<div id="loggedInDiv" style="display:none; visibility:hidden;">
-	<span id="userName"></span><br />
-	<button type="button" id="logoutButton" class="buttons" onclick="doLogout();"> Log Out </button>
-</div>
-<div id="accessUIDiv" style="display:none; visibility:hidden;">
-	<br />
-
-	<input type="text" id="searchText" placeholder="Contact To Search For"/>
-	<button type="button" id="searchContactButton" class="buttons" onclick="searchContact();"> Search Contact </button><br />
-	<span id="contactSearchResult"></span>
-	<select id="contactList" style="display:none; visibility:hidden;">
-		<!-- <option value="volvo">Volvo</option> -->
-	</select><br /><br />
-
-	<input type="text" id="fNameText" placeholder="First Name">
-	<input type="text" id="lNameText" placeholder="Last Name">
-	<input type="text" id="phoneText" placeholder="Phone Number">
-	<input type="text" id="addressText" placeholder="Address">
-	<input type="text" id="emailText" placeholder="E-Mail">
-	<input type="text" id="plevelText" placeholder="Power Level">
-	<button type="button" id="addContactButton" class="buttons" onclick="addContact();"> Add Contact </button><br />
-	<span id="contactAddResult"></span>
-</div>
-<div id="registerDiv">
-
-</div>
-
-<div id="contactTableDiv">
-
-</div>
-
-<div id="contactInfoDiv">
-
-</div>
-
-<div id="addContactDiv">
-
-</div>
-
-<div id="editContactDiv">
-
-</div>
-
+	<h1 id="title">Scouter Contacts</h1>
+	<div id="loginDiv">
+		<span id="login-title">LOG IN</span>
+		<input type="text" id="loginUsername" placeholder="Username"><br>
+		<input type="password" id="loginPassword" placeholder="Password"><br>
+		<button type="button" id="loginButton" class="buttons" onclick="doLogin();">Log In</button>
+		<button type="button" id="registerButton" class="buttons" onclick="displayRegisterUser();">Register</button>
+	</div>
+	<div id="registerDiv" style="display:none; visibility:hidden;">
+		<span id="register-title">REGISTER NEW USER</span><br>
+		<input type="text" id="registeredUsername" placeholder="New Username"><br>
+		<input type="password" id="registeredPassword" placeholder="New Password"><br>
+		<input type="password" id="confirmRegisteredPassword" placeholder="Confirm Password"><br>
+		<input type="email" id="registeredEmail" placeholder="Enter your email"><br>
+		<input type="number" id="registeredPhoneNumber" placeholder="Enter your phone number"><br>
+		<button type="button" id="createNewUserButton" class="buttons" onclick="doRegisterUser();">Create Account</button>
+		<button type="button" id="cancelRegisterButton" class="buttons" onclick="hideRegisterUser();">Cancel</button>
+	</div>
+	<div id="contactControlDiv" style="display:none; visibility:hidden;">
+		<input type="text" id="contactSearch" placeholder="Search your contacts">
+		<button type="button" id="contactSearchButton" class="buttons" onclick="searchContacts();">Search</button>
+		<button type="button" id="showAddNewContactButton" class="buttons" onclick="showAddContact();">Add Contact</button>
+		<button type="button" id="logoutButton" class="buttons" onclick="doLogout();">Logout</button><br>
+		<span id="contactSearchResult"></span>
+		<select id="contactList" style="display:none; visibility:hidden;">
+			<!--I don't like how this will look. I was thinking a table of names more than a selection dropdown.-->
+		</select><br>
+	</div>
+	<div id="contactInfoDiv" style="display:none; visibility:hidden;">
+		<!--Work in progress. See list of IDs-->
+		<button type="button" id="deleteContactButton" class="buttons" onclick="deleteContact();">Delete</button>
+		<button type="button" id="editContactButton" class="buttons" onclick="showEditContact();">Edit</button>
+	</div>
+	<div id="addContactDiv" style="display:none; visibility:hidden;">
+		<span id="new-contact-title"> ADD NEW CONTACT</span><br>
+		<label for="newFirstName">First Name </label>
+		<input type="text" id="newFirstName"><br>
+		<label for="newLastName">Last Name </label>
+		<input type="text" id="newLastName"><br>
+		<label for="newEmail">Email </label>
+		<input type="email" id="newEmail"><br>
+		<label for="newPhoneNumber">Phone Number </label>
+		<input type="number" id="newPhoneNumber"><br>
+		<label for="newPowerLevel">Power Level </label>
+		<input type="number" id="newPowerLevel"><br>
+		<button type="button" id="enterNewContactButton" class="buttons" onclick="addContact();">Add</button>
+		<button type="button" id="enterNewContactButton" class="buttons" onclick="cancelAddContact();">Cancel</button>
+	</div>
+	<div id="editContactDiv" style="display:none; visibility:hidden;">
+<span id="new-contact-title"> ADD NEW CONTACT</span><br>
+		<!--Eventually, I want the existing contact to show up and be editable in the input field.-->
+		<input type="text" id="editedFirstName" placeholder="First Name"><br>
+		<input type="text" id="editedLastName" placeholder="Last Name"><br>
+		<input type="email" id="editedEmail" placeholder="Email"><br>
+		<input type="number" id="editedPhoneNumber" placeholder="Phone Number"><br>
+		<input type="number" id="editedPowerLevel" placeholder="Power Level"><br>
+		<button type="button" id="enterEditedContactButton" class="buttons" onclick="editContact();">Confirm</button>
+		<button type="button" id="enterNewContactButton" class="buttons" onclick="cancelEditContact();">Cancel</button>
+	</div>
 </body>
 </html>

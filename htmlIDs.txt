@@ -1,0 +1,7 @@
+IDs of fields (outputs?) to be displayed in contactInfoDiv:
+
+currentFirstName
+currentLastName
+currentEmail
+currentPhoneNumber
+currentPowerLevel
