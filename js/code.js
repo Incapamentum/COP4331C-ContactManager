@@ -72,6 +72,11 @@ function hideOrShow( elementId, showState )
 	document.getElementById( elementId ).style.display = dis;
 }
 
+function doRegister()
+{
+	// TODO
+}
+
 function addContact()
 {
 	var fName = document.getElementById("fNameText").value;
@@ -82,7 +87,7 @@ function addContact()
 	var plevel = document.getElementById("plevelText").value;
 	document.getElementById("ContactAddResult").innerHTML = "";
 
-	var jsonPayload = '{"First Name" : "' + fName + '", "Last Name" : "' + lName + '", "Phone Number" : "' + phoneNum + '", "Address" : "' + address +'", "E-Mail" : "' + email + '", "Power Level" : "' + plevel +  '", "UserId" : ' + userId + '"}';
+	var jsonPayload = '{"firstName" : "' + fName + '", "lastName" : "' + lName + '", "phoneNumber" : "' + phoneNum + '", "address" : "' + address + '", "email" : "' + email + '", "powerLevel" : "' + plevel +  '", "userId" : ' + userId + '}';
 	var url = urlBase + '/AddContact.' + extension;
 
 	var xhr = new XMLHttpRequest();
@@ -109,10 +114,10 @@ function addContact()
 function searchContact()
 {
 	var srch = document.getElementById("searchText").value;
-	document.getElementById("ContactSearchResult").innerHTML = "";
+	document.getElementById("contactSearchResult").innerHTML = "";
 
-	var ContactList = document.getElementById("ContactList");
-	ContactList.innerHTML = "";
+	var contactList = document.getElementById("contactList");
+	contactList.innerHTML = "";
 
 	var jsonPayload = '{"search" : "' + srch + '"}';
 	var url = urlBase + '/SearchContacts.' + extension;
@@ -126,9 +131,9 @@ function searchContact()
 		{
 			if (this.readyState == 4 && this.status == 200)
 			{
-				hideOrShow( "ContactList", true );
+				hideOrShow( "contactList", true );
 
-				document.getElementById("ContactSearchResult").innerHTML = "Contact(s) has been retrieved";
+				document.getElementById("contactSearchResult").innerHTML = "Contact(s) has been retrieved";
 				var jsonObject = JSON.parse( xhr.responseText );
 
 				var i;
@@ -137,7 +142,7 @@ function searchContact()
 					var opt = document.createElement("option");
 					opt.text = jsonObject.results[i];
 					opt.value = "";
-					ContactList.options.add(opt);
+					contactList.options.add(opt);
 				}
 			}
 		};
@@ -145,7 +150,17 @@ function searchContact()
 	}
 	catch(err)
 	{
-		document.getElementById("ContactSearchResult").innerHTML = err.message;
+		document.getElementById("contactSearchResult").innerHTML = err.message;
 	}
 
+}
+
+function deleteContact()
+{
+	// TODO
+}
+
+function editContact()
+{
+	// TODO
 }

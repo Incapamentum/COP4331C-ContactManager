@@ -1,7 +1,12 @@
 <?php
 	$inData = getRequestInfo();
 
-	$contact = $inData["contact"];
+	$fName = $inData["firstName"];
+	$lName = $inData["lastName"];
+	$pNum = $inData["phoneNumber"];
+	$addr = $inData["address"];
+	$email = $inData["email"];
+	$plevel = $inData["powerLevel"];
 	$userId = $inData["userId"];
 
 	$conn = new mysqli("localhost", "raph", "password", "Contact Manager");
@@ -11,7 +16,8 @@
 	}
 	else
 	{
-		$sql = "insert into Contacts (UserId,Name) VALUES (" . $userId . ",'" . $contact . "')";
+		$sql = "INSERT INTO Contacts (ID, firstName, lastName, phoneNumber, address, email, powerLevel, userId) VALUES ('". NULL ."', '". $fName ."', '". $lName ."', '". $pNum ."', '". $addr ."', '". $email ."', '". $plevel ."', '". $userId ."')";
+
 		if( $result = $conn->query($sql) != TRUE )
 		{
 			returnWithError( $conn->error );

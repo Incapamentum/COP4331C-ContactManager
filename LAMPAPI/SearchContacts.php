@@ -1,18 +1,18 @@
 <?php
 
 	$inData = getRequestInfo();
-	
+
 	$searchResults = "";
 	$searchCount = 0;
 
-	$conn = new mysqli("localhost", "leinecke_SaRcc", "Wash9Lives!", "leinecke_COP4331");
-	if ($conn->connect_error) 
+	$conn = new mysqli("localhost", "raph", "password", "Contact Manager");
+	if ($conn->connect_error)
 	{
 		returnWithError( $conn->connect_error );
-	} 
+	}
 	else
 	{
-		$sql = "select Name from Colors where Name like '%" . $inData["search"] . "%'";
+		$sql = "select firstName from Contacts where firstName like '%" . $inData["search"] . "%'";
 		$result = $conn->query($sql);
 		if ($result->num_rows > 0)
 		{
@@ -45,17 +45,17 @@
 		header('Content-type: application/json');
 		echo $obj;
 	}
-	
+
 	function returnWithError( $err )
 	{
 		$retValue = '{"id":0,"firstName":"","lastName":"","error":"' . $err . '"}';
 		sendResultInfoAsJson( $retValue );
 	}
-	
+
 	function returnWithInfo( $searchResults )
 	{
 		$retValue = '{"results":[' . $searchResults . '],"error":""}';
 		sendResultInfoAsJson( $retValue );
 	}
-	
+
 ?>
