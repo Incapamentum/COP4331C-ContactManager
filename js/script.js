@@ -17,12 +17,18 @@ function displayRegisterUser()
 
 function doRegisterUser()
 {
-
+	var newUsername = getElementById("registerUsername").value;
+	var newPassword = getElementById("registerPassword").value;
+	var newPasswordConfirm = getElementById("registerPasswordConfirm").value;
+	var newEmail = getElementById("registerEmail").value;
+	var newPhone = getElementById("registerPhoneNumber").value;
 }
 
 function hideRegisterUser()
 {
 	hideOrShow("registerDiv", false);
+
+
 }
 
 function doLogout()

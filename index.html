@@ -9,19 +9,26 @@
 <body>
 	<h1 id="title">Scouter Contacts</h1>
 	<div id="loginDiv">
-		<span id="login-title">LOG IN</span>
-		<input type="text" id="loginUsername" placeholder="Username"><br>
-		<input type="password" id="loginPassword" placeholder="Password"><br>
+		<span id="login-title">LOG IN</span><br>
+		<label for="loginUsername">Username</label>
+		<input type="text" id="loginUsername"><br>
+		<label for="loginPassword">Password</label>
+		<input type="password" id="loginPassword"><br>
 		<button type="button" id="loginButton" class="buttons" onclick="doLogin();">Log In</button>
 		<button type="button" id="registerButton" class="buttons" onclick="displayRegisterUser();">Register</button>
 	</div>
 	<div id="registerDiv" style="display:none; visibility:hidden;">
 		<span id="register-title">REGISTER NEW USER</span><br>
-		<input type="text" id="registeredUsername" placeholder="New Username"><br>
-		<input type="password" id="registeredPassword" placeholder="New Password"><br>
-		<input type="password" id="confirmRegisteredPassword" placeholder="Confirm Password"><br>
-		<input type="email" id="registeredEmail" placeholder="Enter your email"><br>
-		<input type="number" id="registeredPhoneNumber" placeholder="Enter your phone number"><br>
+		<label for="registerUsername">New Username</label>
+		<input type="text" id="registerUsername"><br>
+		<label for="registerPassword">New Password</label>
+		<input type="password" id="registerPassword"><br>
+		<label for="registerPasswordConfirm">Confirm Password</label>
+		<input type="password" id="registerPasswordConfirm"><br>
+		<label for="registerEmail">Email</label>
+		<input type="email" id="registerEmail"><br>
+		<label for="registerPhoneNumber">Phone Number</label>
+		<input type="tel" id="registerPhoneNumber"><br>
 		<button type="button" id="createNewUserButton" class="buttons" onclick="doRegisterUser();">Create Account</button>
 		<button type="button" id="cancelRegisterButton" class="buttons" onclick="hideRegisterUser();">Cancel</button>
 	</div>
@@ -49,19 +56,19 @@
 		<label for="newEmail">Email </label>
 		<input type="email" id="newEmail"><br>
 		<label for="newPhoneNumber">Phone Number </label>
-		<input type="number" id="newPhoneNumber"><br>
+		<input type="tel" id="newPhoneNumber"><br>
 		<label for="newPowerLevel">Power Level </label>
 		<input type="number" id="newPowerLevel"><br>
 		<button type="button" id="enterNewContactButton" class="buttons" onclick="addContact();">Add</button>
 		<button type="button" id="enterNewContactButton" class="buttons" onclick="cancelAddContact();">Cancel</button>
 	</div>
 	<div id="editContactDiv" style="display:none; visibility:hidden;">
-<span id="new-contact-title"> ADD NEW CONTACT</span><br>
+<span id="new-contact-title">EDIT CONTACT</span><br>
 		<!--Eventually, I want the existing contact to show up and be editable in the input field.-->
 		<input type="text" id="editedFirstName" placeholder="First Name"><br>
 		<input type="text" id="editedLastName" placeholder="Last Name"><br>
 		<input type="email" id="editedEmail" placeholder="Email"><br>
-		<input type="number" id="editedPhoneNumber" placeholder="Phone Number"><br>
+		<input type="tel" id="editedPhoneNumber" placeholder="Phone Number"><br>
 		<input type="number" id="editedPowerLevel" placeholder="Power Level"><br>
 		<button type="button" id="enterEditedContactButton" class="buttons" onclick="editContact();">Confirm</button>
 		<button type="button" id="enterNewContactButton" class="buttons" onclick="cancelEditContact();">Cancel</button>
