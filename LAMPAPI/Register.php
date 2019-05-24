@@ -36,8 +36,4 @@
 		sendResultInfoAsJson( $retValue );
 	}
 
-<<<<<<< HEAD
 ?>
-=======
-?>
->>>>>>> d38d3b4874dbc68432b502ac47deee3371c9b0b4
