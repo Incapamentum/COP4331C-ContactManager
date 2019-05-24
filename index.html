@@ -39,11 +39,20 @@
 		<button type="button" id="logoutButton" class="buttons" onclick="doLogout();">Logout</button><br>
 		<span id="contactSearchResult"></span>
 		<select id="contactList" style="display:none; visibility:hidden;">
-			<!--I don't like how this will look. I was thinking a table of names more than a selection dropdown.-->
+			<!--This is an empty select tag so that it can be dynamically updated via CSS and JSON loads-->
 		</select><br>
 	</div>
 	<div id="contactInfoDiv" style="display:none; visibility:hidden;">
-		<!--Work in progress. See list of IDs-->
+		<label for="selectedFirstName">First Name</label>
+		<span id="selectedFirstName"></span><br>
+		<label for="selectedLastName">Last Name</label>
+		<span id="selectedLastName"></span><br>
+		<label for="selectedEmail">Email</label>
+		<span id="selectedEmail"></span><br>
+		<label for="selectedPhoneNumber">Phone Number</label>
+		<span id="selectedPhoneNumber"></span><br>
+		<label for="selectedPowerLevel">Power Level</label>
+		<span id="selectedPowerLevel"></span><br>
 		<button type="button" id="deleteContactButton" class="buttons" onclick="deleteContact();">Delete</button>
 		<button type="button" id="editContactButton" class="buttons" onclick="showEditContact();">Edit</button>
 	</div>
@@ -65,11 +74,16 @@
 	<div id="editContactDiv" style="display:none; visibility:hidden;">
 <span id="new-contact-title">EDIT CONTACT</span><br>
 		<!--Eventually, I want the existing contact to show up and be editable in the input field.-->
-		<input type="text" id="editedFirstName" placeholder="First Name"><br>
-		<input type="text" id="editedLastName" placeholder="Last Name"><br>
-		<input type="email" id="editedEmail" placeholder="Email"><br>
-		<input type="tel" id="editedPhoneNumber" placeholder="Phone Number"><br>
-		<input type="number" id="editedPowerLevel" placeholder="Power Level"><br>
+		<label for="editedFirstName">First Name</label>
+		<input type="text" id="editedFirstName"><br>
+		<label for="editedLastName">Last Name</label>
+		<input type="text" id="editedLastName"><br>
+		<label for="editedEmail">Email</label>
+		<input type="email" id="editedEmail"><br>
+		<label for="editedPhoneNumber">Phone Number</label>
+		<input type="tel" id="editedPhoneNumber"><br>
+		<label for="editedPowerLevel">Power Level</label>
+		<input type="number" id="editedPowerLevel"><br>
 		<button type="button" id="enterEditedContactButton" class="buttons" onclick="editContact();">Confirm</button>
 		<button type="button" id="enterNewContactButton" class="buttons" onclick="cancelEditContact();">Cancel</button>
 	</div>
