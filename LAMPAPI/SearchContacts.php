@@ -4,6 +4,7 @@
 
 	$searchResults = "";
 	$searchCount = 0;
+	$userId = $inData["userId"];
 
 	$conn = new mysqli("localhost", "raph", "password", "Contact Manager");
 	if ($conn->connect_error)
@@ -12,7 +13,7 @@
 	}
 	else
 	{
-		$sql = "select firstName from Contacts where firstName like '%" . $inData["search"] . "%'";
+		$sql = "SELECT * FROM Contacts WHERE firstName like '%" . $inData["search"] . "%' and userId like '%" . $userId . "%'";
 		$result = $conn->query($sql);
 		if ($result->num_rows > 0)
 		{
@@ -23,7 +24,7 @@
 					$searchResults .= ",";
 				}
 				$searchCount++;
-				$searchResults .= '"' . $row["Name"] . '"';
+				$searchResults .= '"' . $row["firstName"] . '"';
 			}
 		}
 		else
