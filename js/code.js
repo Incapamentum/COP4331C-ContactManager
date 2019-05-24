@@ -72,6 +72,79 @@ function hideOrShow( elementId, showState )
 	document.getElementById( elementId ).style.display = dis;
 }
 
+function openRegister()
+{
+	hideOrShow("registerDiv", true);
+	hideOrShow("loginDiv", false);
+}
+
+function doRegister()
+{
+	userId = 0;
+
+
+	var login = document.getElementById("registerName").value;
+	var password = document.getElementById("registerPassword").value;
+	var verification = document.getElementById("verificationPassword").value;
+
+	document.getElementById("registerResult").innerHTML = "";
+
+	if (password != verification)
+	{
+		document.getElementById("registerResult").innerHTML = "Passwords do not match";
+		return;
+	}
+
+
+	var jsonPayload = '{"login" : "' + login + '", "password" : "' + password + '"}';
+	var url = urlBase + '/Register.' + extension;
+
+	var xhr = new XMLHttpRequest();
+	xhr.open("POST", url, true);
+	xhr.setRequestHeader("Content-type", "application/json; charset=UTF-8");
+	try
+	{
+		xhr.onreadystatechange = function()
+		{
+			if (this.readyState == 4 && this.status == 200)
+			{
+				document.getElementById("registerResult").innerHTML = "User added.";
+			}
+		};
+		xhr.send(jsonPayload);
+	}
+	catch(err)
+	{
+		document.getElementById("registerResult").innerHTML = err.message;
+	}
+
+	var url = urlBase + '/Login.' + extension;
+
+	xhr = new XMLHttpRequest();
+	xhr.open("POST", url, false);
+	xhr.setRequestHeader("Content-type", "application/json; charset=UTF-8");
+	try
+	{
+		xhr.send(jsonPayload);
+
+		var jsonObject = JSON.parse(xhr.responseText);
+
+		userId = jsonObject.id;
+
+		document.getElementById("registerName").value = "";
+		document.getElementById("registerPassword").value = "";
+		document.getElementById("verificationPassword").value = "";
+		hideOrShow( "loggedInDiv", true);
+		hideOrShow( "accessUIDiv", true);
+		hideOrShow( "registerDiv", false);
+	}
+	catch(err)
+	{
+		document.getElementById("registerResult").innerHTML = err.message;
+	}
+
+}
+
 function addContact()
 {
 	var fName = document.getElementById("fNameText").value;
@@ -82,7 +155,7 @@ function addContact()
 	var plevel = document.getElementById("plevelText").value;
 	document.getElementById("ContactAddResult").innerHTML = "";
 
-	var jsonPayload = '{"First Name" : "' + fName + '", "Last Name" : "' + lName + '", "Phone Number" : "' + phoneNum + '", "Address" : "' + address +'", "E-Mail" : "' + email + '", "Power Level" : "' + plevel +  '", "UserId" : ' + userId + '"}';
+	var jsonPayload = '{"firstName" : "' + fName + '", "lastName" : "' + lName + '", "phoneNumber" : "' + phoneNum + '", "address" : "' + address + '", "email" : "' + email + '", "powerLevel" : "' + plevel +  '", "userId" : ' + userId + '}';
 	var url = urlBase + '/AddContact.' + extension;
 
 	var xhr = new XMLHttpRequest();
@@ -109,12 +182,12 @@ function addContact()
 function searchContact()
 {
 	var srch = document.getElementById("searchText").value;
-	document.getElementById("ContactSearchResult").innerHTML = "";
+	document.getElementById("contactSearchResult").innerHTML = "";
 
-	var ContactList = document.getElementById("ContactList");
-	ContactList.innerHTML = "";
+	var contactList = document.getElementById("contactList");
+	contactList.innerHTML = "";
 
-	var jsonPayload = '{"search" : "' + srch + '"}';
+	var jsonPayload = '{"search" : "' + srch + '", "userId" : "' + userId + '"}';
 	var url = urlBase + '/SearchContacts.' + extension;
 
 	var xhr = new XMLHttpRequest();
@@ -126,9 +199,9 @@ function searchContact()
 		{
 			if (this.readyState == 4 && this.status == 200)
 			{
-				hideOrShow( "ContactList", true );
+				hideOrShow( "contactList", true );
 
-				document.getElementById("ContactSearchResult").innerHTML = "Contact(s) has been retrieved";
+				document.getElementById("contactSearchResult").innerHTML = "Contact(s) has been retrieved";
 				var jsonObject = JSON.parse( xhr.responseText );
 
 				var i;
@@ -137,7 +210,7 @@ function searchContact()
 					var opt = document.createElement("option");
 					opt.text = jsonObject.results[i];
 					opt.value = "";
-					ContactList.options.add(opt);
+					contactList.options.add(opt);
 				}
 			}
 		};
@@ -145,7 +218,17 @@ function searchContact()
 	}
 	catch(err)
 	{
-		document.getElementById("ContactSearchResult").innerHTML = err.message;
+		document.getElementById("contactSearchResult").innerHTML = err.message;
 	}
 
+}
+
+function deleteContact()
+{
+	// TODO
+}
+
+function editContact()
+{
+	// TODO
 }
