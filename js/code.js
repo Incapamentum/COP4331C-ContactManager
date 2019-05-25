@@ -1,5 +1,5 @@
 
-var urlBase = 'http://teamsixstar.online/RaphG';
+var urlBase = 'http://teamsixstar.online/ContactManager';
 var extension = "php";
 
 var userId = 0;
