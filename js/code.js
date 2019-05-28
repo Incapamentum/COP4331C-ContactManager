@@ -26,6 +26,7 @@ function doLogin()
 	try
 	{
 		xhr.send(jsonPayload);
+		console.log("testy test");
 
 		var jsonObject = JSON.parse( xhr.responseText);
 
