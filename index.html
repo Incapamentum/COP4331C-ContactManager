@@ -2,8 +2,10 @@
 <head>
 	<meta charset="utf-8">
 	<title>Team Six Star</title>
-	<script type="text/javascript" src="js/script.js"></script>
-	<links href="css/" rel="stylesheet">
+	<script type"text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/3.1.2/rollups/aes.js"></script>
+	<script type="text/javascript" src="js/code.js"></script>
+
+	<links href="css/styles.css" rel="stylesheet">
 </head>
 <body>
 	<h1 id="title">Scouter Contacts</h1>
@@ -14,7 +16,8 @@
 		<label for="loginPassword">Password</label>
 		<input type="password" id="loginPassword"><br>
 		<button type="button" id="loginButton" class="buttons" onclick="doLogin();">Log In</button>
-		<button type="button" id="registerButton" class="buttons" onclick="displayRegisterUser();">Register</button>
+		<button type="button" id="registerButton" class="buttons" onclick="displayRegister();">Register</button>
+		<span id="loginResult"></span>
 	</div>
 	<div id="registerDiv" style="display:none; visibility:hidden;">
 		<span id="register-title">REGISTER NEW USER</span><br>
@@ -24,12 +27,13 @@
 		<input type="password" id="registerPassword"><br>
 		<label for="registerPasswordConfirm">Confirm Password</label>
 		<input type="password" id="registerPasswordConfirm"><br>
+		<span id="registerResult"></span>
 		<label for="registerEmail">Email</label>
 		<input type="email" id="registerEmail"><br>
 		<label for="registerPhoneNumber">Phone Number</label>
 		<input type="tel" id="registerPhoneNumber"><br>
-		<button type="button" id="createNewUserButton" class="buttons" onclick="doRegisterUser();">Create Account</button>
-		<button type="button" id="cancelRegisterButton" class="buttons" onclick="hideRegisterUser();">Cancel</button>
+		<button type="button" id="createNewUserButton" class="buttons" onclick="doRegister();">Create Account</button>
+		<button type="button" id="cancelRegisterButton" class="buttons" onclick="hideRegister();">Cancel</button>
 	</div>
 	<div id="contactControlDiv" style="display:none; visibility:hidden;">
 		<input type="text" id="contactSearch" placeholder="Search your contacts">
