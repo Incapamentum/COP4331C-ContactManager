@@ -10,7 +10,7 @@ function doLogin()
 	userId = 0;
 
 
-	var login = document.getElementById("loginName").value;
+	var login = document.getElementById("loginUsername").value;
 	var password = document.getElementById("loginPassword").value;
 
 	var hashed = CryptoJS.MD5(password);
@@ -29,6 +29,7 @@ function doLogin()
 
 		var jsonObject = JSON.parse( xhr.responseText);
 
+
 		userId = jsonObject.id;
 
 		if( userId < 1 )
@@ -37,12 +38,10 @@ function doLogin()
 			return;
 		}
 
-
-		document.getElementById("loginName").value = "";
+		document.getElementById("loginUsername").value = "";
 		document.getElementById("loginPassword").value = "";
 
-		hideOrShow( "loggedInDiv", true);
-		hideOrShow( "accessUIDiv", true);
+		hideOrShow( "contactControlDiv", true);
 		hideOrShow( "loginDiv", false);
 	}
 	catch(err)
@@ -56,8 +55,8 @@ function doLogout()
 {
 	userId = 0;
 
-	hideOrShow( "loggedInDiv", false);
-	hideOrShow( "accessUIDiv", false);
+	// hideOrShow( "loggedInDiv", false);
+	hideOrShow( "contactControlDiv", false);
 	hideOrShow( "loginDiv", true);
 }
 
@@ -86,9 +85,9 @@ function doRegister()
 	userId = 0;
 
 
-	var login = document.getElementById("registerName").value;
+	var login = document.getElementById("registerUsername").value;
 	var password = document.getElementById("registerPassword").value;
-	var verification = document.getElementById("verificationPassword").value;
+	var verification = document.getElementById("registerPasswordConfirm").value;
 
 	document.getElementById("registerResult").innerHTML = "";
 
