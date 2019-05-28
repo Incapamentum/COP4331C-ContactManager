@@ -26,21 +26,24 @@ function doLogin()
 	try
 	{
 		xhr.send(jsonPayload);
-
+		console.log("test 1");
 
 		var jsonObject = JSON.parse( xhr.responseText);
 
-		console.log("testy test");
-		
+		console.log("test 2");
+
 		userId = jsonObject.id;
 
+		console.log("test 3");
 		if( userId < 1 )
 		{
+			console.log("test 4");
 			document.getElementById("loginResult").innerHTML = "User/Password combination incorrect";
+			console.log("test 5");
 			return;
 		}
 
-
+		console.log("test 6");
 		document.getElementById("loginUsername").value = "";
 		document.getElementById("loginPassword").value = "";
 
