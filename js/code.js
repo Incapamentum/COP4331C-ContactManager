@@ -86,9 +86,9 @@ function doRegister()
 	userId = 0;
 
 
-	var login = document.getElementById("registerName").value;
+	var login = document.getElementById("registerUsername").value;
 	var password = document.getElementById("registerPassword").value;
-	var verification = document.getElementById("verificationPassword").value;
+	var verification = document.getElementById("registerPasswordConfirm").value;
 
 	document.getElementById("registerResult").innerHTML = "";
 
