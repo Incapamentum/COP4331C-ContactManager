@@ -53,6 +53,7 @@ function doLogin()
 	}
 	catch(err)
 	{
+		console.log("test 7");
 		document.getElementById("loginResult").innerHTML = err.message;
 	}
 
