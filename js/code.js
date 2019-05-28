@@ -26,10 +26,12 @@ function doLogin()
 	try
 	{
 		xhr.send(jsonPayload);
-		console.log("testy test");
+
 
 		var jsonObject = JSON.parse( xhr.responseText);
 
+		console.log("testy test");
+		
 		userId = jsonObject.id;
 
 		if( userId < 1 )
