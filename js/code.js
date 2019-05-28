@@ -3,6 +3,7 @@ var urlBase = 'http://teamsixstar.online/ContactManager';
 var extension = "php";
 
 var userId = 0;
+var contactID = 0;
 
 function doLogin()
 {
@@ -12,9 +13,11 @@ function doLogin()
 	var login = document.getElementById("loginName").value;
 	var password = document.getElementById("loginPassword").value;
 
+	var hashed = CryptoJS.MD5(password);
+
 	document.getElementById("loginResult").innerHTML = "";
 
-	var jsonPayload = '{"login" : "' + login + '", "password" : "' + password + '"}';
+	var jsonPayload = '{"login" : "' + login + '", "password" : "' + hashed + '"}';
 	var url = urlBase + '/Login.' + extension;
 
 	var xhr = new XMLHttpRequest();
@@ -91,12 +94,12 @@ function doRegister()
 
 	if (password != verification)
 	{
-		document.getElementById("registerResult").innerHTML = "Passwords do not match";
+		document.getElementById("registerResult").innerHTML = "Passwords do not match<br>";
 		return;
 	}
 
-
-	var jsonPayload = '{"login" : "' + login + '", "password" : "' + password + '"}';
+	var hashed = CryptoJS.MD5(password);
+	var jsonPayload = '{"login" : "' + login + '", "password" : "' + hashed + '"}';
 	var url = urlBase + '/Register.' + extension;
 
 	var xhr = new XMLHttpRequest();
@@ -221,6 +224,18 @@ function searchContact()
 		document.getElementById("contactSearchResult").innerHTML = err.message;
 	}
 
+}
+
+function displayRegister()
+{
+	hideOrShow("loginDiv", false);
+	hideOrShow("registerDiv", true);
+}
+
+function hideRegister()
+{
+	hideOrShow("registerDiv", false);
+	hideOrShow("loginDiv", true);
 }
 
 function deleteContact()
