@@ -10,7 +10,7 @@ function doLogin()
 	userId = 0;
 
 
-	var login = document.getElementById("loginName").value;
+	var login = document.getElementById("loginUsername").value;
 	var password = document.getElementById("loginPassword").value;
 
 	var hashed = CryptoJS.MD5(password);
@@ -38,7 +38,7 @@ function doLogin()
 		}
 
 
-		document.getElementById("loginName").value = "";
+		document.getElementById("loginUsername").value = "";
 		document.getElementById("loginPassword").value = "";
 
 		hideOrShow( "loggedInDiv", true);
