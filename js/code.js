@@ -47,8 +47,8 @@ function doLogin()
 		document.getElementById("loginUsername").value = "";
 		document.getElementById("loginPassword").value = "";
 
-		hideOrShow( "loggedInDiv", true);
-		hideOrShow( "accessUIDiv", true);
+		// hideOrShow( "loggedInDiv", true);
+		hideOrShow( "contactControlDiv", true);
 		hideOrShow( "loginDiv", false);
 	}
 	catch(err)
@@ -63,8 +63,8 @@ function doLogout()
 {
 	userId = 0;
 
-	hideOrShow( "loggedInDiv", false);
-	hideOrShow( "accessUIDiv", false);
+	// hideOrShow( "loggedInDiv", false);
+	hideOrShow( "contactControlDiv", false);
 	hideOrShow( "loginDiv", true);
 }
 
