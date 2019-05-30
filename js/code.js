@@ -133,9 +133,9 @@ function doRegister()
 
 		userId = jsonObject.id;
 
-		document.getElementById("registerName").value = "";
+		document.getElementById("registerUsername").value = "";
 		document.getElementById("registerPassword").value = "";
-		document.getElementById("verificationPassword").value = "";
+		document.getElementById("registerPasswordConfirm").value = "";
 		hideOrShow( "loggedInDiv", true);
 		hideOrShow( "accessUIDiv", true);
 		hideOrShow( "registerDiv", false);
