@@ -18,7 +18,7 @@ function doLogin()
 	document.getElementById("loginResult").innerHTML = "";
 
 	var jsonPayload = '{"login" : "' + login + '", "password" : "' + hashed + '"}';
-	var url = urlBase + '/Login.' + extension;
+	var url = urlBase + '/LAMPAPI/Login.' + extension;
 
 	var xhr = new XMLHttpRequest();
 	xhr.open("POST", url, false);
@@ -54,8 +54,6 @@ function doLogin()
 function doLogout()
 {
 	userId = 0;
-
-	// hideOrShow( "loggedInDiv", false);
 	hideOrShow( "contactControlDiv", false);
 	hideOrShow( "loginDiv", true);
 }
@@ -99,7 +97,7 @@ function doRegister()
 
 	var hashed = CryptoJS.MD5(password);
 	var jsonPayload = '{"login" : "' + login + '", "password" : "' + hashed + '"}';
-	var url = urlBase + '/Register.' + extension;
+	var url = urlBase + '/LAMPAPI/Register.' + extension;
 
 	var xhr = new XMLHttpRequest();
 	xhr.open("POST", url, true);
@@ -120,7 +118,7 @@ function doRegister()
 		document.getElementById("registerResult").innerHTML = err.message;
 	}
 
-	var url = urlBase + '/Login.' + extension;
+	var url = urlBase + '/LAMPAPI/Login.' + extension;
 
 	xhr = new XMLHttpRequest();
 	xhr.open("POST", url, false);
@@ -157,7 +155,7 @@ function searchContact()
 	contactList.innerHTML = "";
 
 	var jsonPayload = '{"search" : "' + srch + '", "userId" : "' + userId + '"}';
-	var url = urlBase + '/SearchContacts.' + extension;
+	var url = urlBase + '/LAMPAPI/SearchContacts.' + extension;
 
 	var xhr = new XMLHttpRequest();
 	xhr.open("POST", url, true);
@@ -192,12 +190,14 @@ function searchContact()
 
 }
 
+// The following function displays the register div
 function displayRegister()
 {
 	hideOrShow("loginDiv", false);
 	hideOrShow("registerDiv", true);
 }
 
+// The following functino hides the register div
 function hideRegister()
 {
 	hideOrShow("registerDiv", false);
@@ -215,7 +215,7 @@ function addContact()
 	document.getElementById("contactAddResult").innerHTML = "";
 
 	var jsonPayload = '{"firstName" : "' + fName + '", "lastName" : "' + lName + '", "phoneNumber" : "' + phoneNum + '", "address" : "' + address + '", "email" : "' + email + '", "powerLevel" : "' + plevel +  '", "userId" : ' + userId + '}';
-	var url = urlBase + '/AddContact.' + extension;
+	var url = urlBase + '/LAMPAPI/AddContact.' + extension;
 
 	var xhr = new XMLHttpRequest();
 	xhr.open("POST", url, true);
