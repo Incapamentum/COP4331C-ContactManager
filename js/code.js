@@ -150,7 +150,7 @@ function doRegister()
 
 function searchContact()
 {
-	var srch = document.getElementById("searchText").value;
+	var srch = document.getElementById("contactSearch").value;
 	document.getElementById("contactSearchResult").innerHTML = "";
 
 	var contactList = document.getElementById("contactList");
