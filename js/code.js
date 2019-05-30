@@ -279,7 +279,7 @@ function deleteContact()
 	contactID = document.getElementById("contactID").value
 
 	var jsonPayload = '{"contactID" : "' + contactID + '"}';
-	var url = urlBase + '/LAMPAPI/deleteContact' + extension;
+	var url = urlBase + '/LAMPAPI/deleteContact.' + extension;
 	var xhr = new XMLHttpRequest();
 
 	xhr.open("POST", url, true);
