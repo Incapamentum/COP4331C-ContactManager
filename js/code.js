@@ -276,6 +276,34 @@ function hideAddContact()
 function deleteContact()
 {
 	// TODO
+	contactID = document.getElementById("contactID").value
+
+	var jsonPayload = '{"contactID" : "' + contactID + '"}';
+	var url = urlBase + '/LAMPAPI/deleteContact' + extension;
+	var xhr = new XMLHttpRequest();
+
+	xhr.open("POST", url, true);
+	xhr.setRequestHeader("Content-type", "application/json; charset=UTF-8");
+	try
+	{
+		xhr.onreadystatechange = function()
+		{
+			if (this.readyState == 4 && this.status == 200)
+			{
+				document.getElementById("contactAddResult").innerHTML = "Contact deleted successfully<br>";
+				setTimeout(delayHide, 3000);
+			}
+		}
+	}
+	catch(err)
+	{
+		document.getElementById("contactAddResult").innerHTML = err.message;
+	}
+}
+
+function delayHide()
+{
+	document.getElementById("contactAddResult").innerHTML = "";
 }
 
 function editContact()
