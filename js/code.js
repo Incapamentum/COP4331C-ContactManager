@@ -190,6 +190,12 @@ function searchContact()
 
 }
 
+// The following function displays the table of search results
+function displaySearchResults()
+{
+	var searchResultTable = document.getElementById("searchResultTable").value;
+}
+
 // The following function displays the register div
 function displayRegister()
 {
