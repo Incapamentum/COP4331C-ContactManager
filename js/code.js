@@ -249,7 +249,10 @@ function addContact()
 	document.getElementById("newAddress").value = "";
 	document.getElementById("newEmail").value = "";
 	document.getElementById("newPowerLevel").value = "";
-	setTimeout(hideAddContact, 3000);
+
+	hideOrShow("addContactDiv", false);
+
+	setTimeout(hideAddContact, 1500);
 }
 
 // The following function empties out all the fields in the add contact div
