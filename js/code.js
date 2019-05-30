@@ -146,39 +146,7 @@ function doRegister()
 
 }
 
-function addContact()
-{
-	var fName = document.getElementById("fNameText").value;
-	var lName = document.getElementById("lNameText").value;
-	var phoneNum = document.getElementById("phoneText").value;
-	var address = document.getElementById("addressText").value;
-	var email = document.getElementById("emailText").value;
-	var plevel = document.getElementById("plevelText").value;
-	document.getElementById("ContactAddResult").innerHTML = "";
 
-	var jsonPayload = '{"firstName" : "' + fName + '", "lastName" : "' + lName + '", "phoneNumber" : "' + phoneNum + '", "address" : "' + address + '", "email" : "' + email + '", "powerLevel" : "' + plevel +  '", "userId" : ' + userId + '}';
-	var url = urlBase + '/AddContact.' + extension;
-
-	var xhr = new XMLHttpRequest();
-	xhr.open("POST", url, true);
-	xhr.setRequestHeader("Content-type", "application/json; charset=UTF-8");
-	try
-	{
-		xhr.onreadystatechange = function()
-		{
-			if (this.readyState == 4 && this.status == 200)
-			{
-				document.getElementById("ContactAddResult").innerHTML = "Contact has been added";
-			}
-		};
-		xhr.send(jsonPayload);
-	}
-	catch(err)
-	{
-		document.getElementById("ContactAddResult").innerHTML = err.message;
-	}
-
-}
 
 function searchContact()
 {
@@ -234,6 +202,75 @@ function hideRegister()
 {
 	hideOrShow("registerDiv", false);
 	hideOrShow("loginDiv", true);
+}
+
+function addContact()
+{
+	var fName = document.getElementById("newFirstName").value;
+	var lName = document.getElementById("newLastName").value;
+	var phoneNum = document.getElementById("newPhoneNumber").value;
+	var address = document.getElementById("newAddress").value;
+	var email = document.getElementById("newEmail").value;
+	var plevel = document.getElementById("newPowerLevel").value;
+	document.getElementById("ContactAddResult").innerHTML = "";
+
+	var jsonPayload = '{"firstName" : "' + fName + '", "lastName" : "' + lName + '", "phoneNumber" : "' + phoneNum + '", "address" : "' + address + '", "email" : "' + email + '", "powerLevel" : "' + plevel +  '", "userId" : ' + userId + '}';
+	var url = urlBase + '/AddContact.' + extension;
+
+	var xhr = new XMLHttpRequest();
+	xhr.open("POST", url, true);
+	xhr.setRequestHeader("Content-type", "application/json; charset=UTF-8");
+	try
+	{
+		xhr.onreadystatechange = function()
+		{
+			if (this.readyState == 4 && this.status == 200)
+			{
+				document.getElementById("ContactAddResult").innerHTML = "Contact has been added";
+			}
+		};
+		xhr.send(jsonPayload);
+	}
+	catch(err)
+	{
+		document.getElementById("ContactAddResult").innerHTML = err.message;
+	}
+
+	// Clearing fields and hiding div
+	document.getElementById("newFirstName").value = "";
+	document.getElementById("newLastName").value = "";
+	document.getElementById("newPhoneNumber").value = "";
+	document.getElementById("newAddress").value = "";
+	document.getElementById("newEmail").value = "";
+	document.getElementById("newPowerLevel").value = "";
+	hideAddContact();
+
+}
+
+// The following function empties out all the fields in the add contact div
+// and hides it.
+function cancelAddContact()
+{
+	// Clearing fields and hiding div
+	document.getElementById("newFirstName").value = "";
+	document.getElementById("newLastName").value = "";
+	document.getElementById("newPhoneNumber").value = "";
+	document.getElementById("newAddress").value = "";
+	document.getElementById("newEmail").value = "";
+	document.getElementById("newPowerLevel").value = "";
+	hideAddContact();
+}
+
+// The following function displays the add contact div
+function displayAddContact()
+{
+	hideOrShow("addContactDiv", true);
+}
+
+// The following function hides the add contact div
+function hideAddContact()
+{
+	hideOrShow("addContactDiv", false);
 }
 
 function deleteContact()
