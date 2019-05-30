@@ -136,9 +136,8 @@ function doRegister()
 		document.getElementById("registerUsername").value = "";
 		document.getElementById("registerPassword").value = "";
 		document.getElementById("registerPasswordConfirm").value = "";
-		hideOrShow( "loggedInDiv", true);
-		hideOrShow( "accessUIDiv", true);
-		hideOrShow( "registerDiv", false);
+		hideRegister();
+
 	}
 	catch(err)
 	{
