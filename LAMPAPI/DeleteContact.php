@@ -22,7 +22,7 @@
 	}
 	else
 	{
-		$sql = "DELETE FROM Contacts WHERE id = $contactID";					// Deleting contact that has an id equal to $contactID
+		$sql = "DELETE FROM Contacts WHERE ID ='" . $contactID ."'";					// Deleting contact that has an id equal to $contactID
 		if( $result = $conn->query($sql) != TRUE )								// Executing query and determining if query was successful
 		{
 			returnWithError( $conn->error );									// Exiting with an error
