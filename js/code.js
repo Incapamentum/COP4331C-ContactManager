@@ -206,6 +206,7 @@ function hideRegister()
 
 function addContact()
 {
+	console.log("In add contact");
 	var fName = document.getElementById("newFirstName").value;
 	var lName = document.getElementById("newLastName").value;
 	var phoneNum = document.getElementById("newPhoneNumber").value;
