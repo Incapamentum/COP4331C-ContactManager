@@ -249,8 +249,7 @@ function addContact()
 	document.getElementById("newAddress").value = "";
 	document.getElementById("newEmail").value = "";
 	document.getElementById("newPowerLevel").value = "";
-	hideAddContact();
-
+	setTimeout(hideAddContact, 3000);
 }
 
 // The following function empties out all the fields in the add contact div
@@ -297,8 +296,6 @@ function deleteContact()
 			if (this.readyState == 4 && this.status == 200)
 			{
 				document.getElementById("contactAddResult").innerHTML = "Contact deleted successfully<br>";
-				hideOrShow("contactInfoDiv", false);
-				setTimeout(delayHide, 3000);
 			}
 		}
 	}
@@ -306,6 +303,9 @@ function deleteContact()
 	{
 		document.getElementById("contactAddResult").innerHTML = err.message;
 	}
+
+	hideOrShow("contactInfoDiv", false);
+	setTimeout(delayHide, 3000);
 }
 
 function delayHide()
