@@ -44,6 +44,11 @@
 		<button type="button" id="showAddNewContactButton" class="buttons" onclick="displayAddContact();">Add Contact</button>
 		<button type="button" id="logoutButton" class="buttons" onclick="doLogout();">Logout</button><br>
 		<span id="contactSearchResult"></span>
+		<!--TO BE DELETED-->
+		<select id="contactList" style="display:none; visibility:hidden;">
+			<!--This is an empty select tag so that it can be dynamically updated via CSS and JSON loads-->
+		</select><br>
+		
 		<!--Table containing matches to user search; first, last name and phone visible, contactID invisible-->
 		<table id="searchResultTable">
 
