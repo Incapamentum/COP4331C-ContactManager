@@ -9,6 +9,7 @@
 </head>
 <body>
 	<h1 id="title">Scouter Contacts</h1>
+	<!--Login-->
 	<div id="loginDiv">
 		<span id="login-title">LOG IN</span><br>
 		<label for="loginUsername">Username</label>
@@ -19,6 +20,7 @@
 		<button type="button" id="registerButton" class="buttons" onclick="displayRegister();">Register</button>
 		<span id="loginResult"></span>
 	</div>
+	<!--Register new user-->
 	<div id="registerDiv" style="display:none; visibility:hidden;">
 		<span id="register-title">REGISTER NEW USER</span><br>
 		<label for="registerUsername">New Username</label>
@@ -35,16 +37,19 @@
 		<button type="button" id="createNewUserButton" class="buttons" onclick="doRegister();">Create Account</button>
 		<button type="button" id="cancelRegisterButton" class="buttons" onclick="hideRegister();">Cancel</button>
 	</div>
+	<!--Logged in control panel (includes search, add, logout buttons)-->
 	<div id="contactControlDiv" style="display:none; visibility:hidden;">
 		<input type="text" id="contactSearch" placeholder="Search your contacts">
 		<button type="button" id="contactSearchButton" class="buttons" onclick="searchContact();">Search</button>
 		<button type="button" id="showAddNewContactButton" class="buttons" onclick="displayAddContact();">Add Contact</button>
 		<button type="button" id="logoutButton" class="buttons" onclick="doLogout();">Logout</button><br>
 		<span id="contactSearchResult"></span>
-		<select id="contactList" style="display:none; visibility:hidden;">
-			<!--This is an empty select tag so that it can be dynamically updated via CSS and JSON loads-->
-		</select><br>
+		<!--Table containing matches to user search; first, last name and phone visible, contactID invisible-->
+		<table id="searchResultTable">
+
+		</table>
 	</div>
+	<!--Selected contact information (includes buttons for edit and delete)-->
 	<div id="contactInfoDiv" style="display:none; visibility:hidden;">
 		<label for="selectedFirstName">First Name</label>
 		<span id="selectedFirstName"></span><br>
@@ -62,6 +67,7 @@
 		<button type="button" id="editContactButton" class="buttons" onclick="showEditContact();">Edit</button>
 		<span id="contactAddResult"></span>
 	</div>
+	<!--Add contact (includes buttons for adding and cancelling new contact)-->
 	<div id="addContactDiv" style="display:none; visibility:hidden;">
 		<span id="new-contact-title"> ADD NEW CONTACT</span><br>
 		<label for="newFirstName">First Name </label>
@@ -79,9 +85,9 @@
 		<button type="button" id="enterNewContactButton" class="buttons" onclick="addContact();">Add</button>
 		<button type="button" id="cancelNewContactButton" class="buttons" onclick="cancelAddContact();">Cancel</button>
 	</div>
+	<!--Edit contact allows changes to existing contact (includes buttons for confirming and cancelling changes)-->
 	<div id="editContactDiv" style="display:none; visibility:hidden;">
-<span id="new-contact-title">EDIT CONTACT</span><br>
-		<!--Eventually, I want the existing contact to show up and be editable in the input field.-->
+		<span id="new-contact-title">EDIT CONTACT</span><br>
 		<label for="editedFirstName">First Name</label>
 		<input type="text" id="editedFirstName"><br>
 		<label for="editedLastName">Last Name</label>
