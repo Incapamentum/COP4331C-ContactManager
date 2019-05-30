@@ -1,4 +1,13 @@
 <?php
+	//JSON FORMATS
+	//  RECIEVED JSON
+	// 	{
+	//		"contactID" : "contactID of current user"
+	//	}
+	//  SENT JSON
+	//	{
+	//		NONE
+	//	}
 
 	// Calling function to get info needed
 	$inData = getRequestInfo();													// Storing all sent data in $inData

@@ -1,4 +1,19 @@
 <?php
+	//JSON FORMATS
+	//  RECIEVED JSON
+	// 	{
+	//		"firstName" : "login of new user"
+	//		"lastName" : "hashed password of new user"
+	//		"phoneNumber" : "login of new user"
+	//		"address" : "hashed password of new user"
+	//		"email" : "login of new user"
+	//		"powerLevel" : "hashed password of new user"
+	//		"userId" : "login of new user"
+	//	}
+	//  SENT JSON
+	// 	{
+	//		NONE
+	//	}
 	$inData = getRequestInfo();
 
 	$fName = $inData["firstName"];

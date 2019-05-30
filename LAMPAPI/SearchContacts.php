@@ -1,5 +1,17 @@
 <?php
-
+	//JSON FORMATS
+	//  RECIEVED JSON
+	// 	{
+	//		"userId" : "UserID of current user""
+	//		"search" : "Search term for first name"
+	//	}
+	//  SENT JSON
+	// 	{
+	//		"fName" 	: "(first Name)",
+	//		"lName" 	: "(last Name)",
+	//		"phoneNum	: "(phone number)",
+	//		"contactID" : "(id of contact)",
+	//	}
 	$inData = getRequestInfo();
 
 	$searchResults = "";

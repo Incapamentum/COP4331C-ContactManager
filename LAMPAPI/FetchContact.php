@@ -9,6 +9,7 @@
 	//		"fName" 	: "(first Name)",
 	//		"lName" 	: "(last Name)",
 	//		"phoneNum" 	: "(phone number)",
+	//		"email"		: "(email)""
 	//		"address" 	: "(Address)",
 	//		"powerlvl"	: "(Powerlevel)"
 	//	}
