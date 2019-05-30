@@ -206,14 +206,13 @@ function hideRegister()
 
 function addContact()
 {
-	console.log("In add contact");
 	var fName = document.getElementById("newFirstName").value;
 	var lName = document.getElementById("newLastName").value;
 	var phoneNum = document.getElementById("newPhoneNumber").value;
 	var address = document.getElementById("newAddress").value;
 	var email = document.getElementById("newEmail").value;
 	var plevel = document.getElementById("newPowerLevel").value;
-	document.getElementById("ContactAddResult").innerHTML = "";
+	document.getElementById("contactAddResult").innerHTML = "";
 
 	var jsonPayload = '{"firstName" : "' + fName + '", "lastName" : "' + lName + '", "phoneNumber" : "' + phoneNum + '", "address" : "' + address + '", "email" : "' + email + '", "powerLevel" : "' + plevel +  '", "userId" : ' + userId + '}';
 	var url = urlBase + '/AddContact.' + extension;
@@ -227,14 +226,14 @@ function addContact()
 		{
 			if (this.readyState == 4 && this.status == 200)
 			{
-				document.getElementById("ContactAddResult").innerHTML = "Contact has been added";
+				document.getElementById("contactAddResult").innerHTML = "Contact has been added";
 			}
 		};
 		xhr.send(jsonPayload);
 	}
 	catch(err)
 	{
-		document.getElementById("ContactAddResult").innerHTML = err.message;
+		document.getElementById("contactAddResult").innerHTML = err.message;
 	}
 
 	// Clearing fields and hiding div
