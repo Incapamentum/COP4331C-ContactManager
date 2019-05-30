@@ -91,6 +91,7 @@
 	// The following function creates a string in JSON format to send. Used to return contact info
 	function returnWithInfo($fName, $lName, $phoneNum, $email, $address, $powerlvl, $contactID)
 	{
+		$err = "";
 		$retValue = '{
 						"fName":"' . $fName . '",
 						"lName":"' . $lName . '",
@@ -99,7 +100,7 @@
 						"address":"' . $address . '",
 						"powerlvl":"' . $powerlvl . '",
 						"contactID":"' . $contactID . '",
-						"error":"' . $err . '"
+						"error":""
 					}';
 		sendResultInfoAsJson( $retValue );
 	}

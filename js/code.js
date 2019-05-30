@@ -150,6 +150,8 @@ function searchContact()
 {
 	var srch = document.getElementById("contactSearch").value;
 	document.getElementById("contactSearchResult").innerHTML = "";
+	
+	var searchResultTable = document.getElementById("searchResultTable");
 
 	var contactList = document.getElementById("contactList");
 	contactList.innerHTML = "";
@@ -178,6 +180,19 @@ function searchContact()
 					opt.text = jsonObject.results[i];
 					opt.value = "";
 					contactList.options.add(opt);
+					
+					// Iterative creation of search result entries in table
+					var resultRow = document.createElement("tr");
+					var resultCell = document.createElement("td");
+					
+					var clickableResult = document.createElement("a");
+					clickableResult.href = "#contactInfoDiv";
+					var resultText = document.createTextNode(); // This will receive the parsed payload
+					clickableResult.appendChild(resultText);
+					resultCell.appendChild(clickableResult);
+					resultRow.appendChild(resultCell);
+
+					searchResultTable.appendChild(resultRow);
 				}
 			}
 		};
@@ -203,7 +218,7 @@ function displayRegister()
 	hideOrShow("registerDiv", true);
 }
 
-// The following functino hides the register div
+// The following function hides the register div
 function hideRegister()
 {
 	hideOrShow("registerDiv", false);
@@ -249,7 +264,10 @@ function addContact()
 	document.getElementById("newAddress").value = "";
 	document.getElementById("newEmail").value = "";
 	document.getElementById("newPowerLevel").value = "";
-	setTimeout(hideAddContact, 3000);
+
+	hideOrShow("addContactDiv", false);
+
+	setTimeout(hideAddContact, 1500);
 }
 
 // The following function empties out all the fields in the add contact div
