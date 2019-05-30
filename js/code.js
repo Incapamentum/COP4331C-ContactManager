@@ -244,7 +244,6 @@ function addContact()
 	document.getElementById("newEmail").value = "";
 	document.getElementById("newPowerLevel").value = "";
 	setTimeout(hideAddContact, 3000);
-	document.getElementById("contactAddResult").innerHTML = "";
 }
 
 // The following function empties out all the fields in the add contact div
@@ -270,6 +269,7 @@ function displayAddContact()
 // The following function hides the add contact div
 function hideAddContact()
 {
+	document.getElementById("contactAddResult").innerHTML = "";
 	hideOrShow("addContactDiv", false);
 }
 
