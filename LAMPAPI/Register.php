@@ -1,4 +1,14 @@
 <?php
+	//JSON FORMATS
+	//  RECIEVED JSON
+	// 	{
+	//		"login" : "login of new user"
+	//		"password" : "hashed password of new user"
+	//	}
+	//  SENT JSON
+	// 	{
+	//		NONE
+	//	}
 	$inData = getRequestInfo();
 
 	$conn = new mysqli("localhost", "raph", "password", "Contact Manager");

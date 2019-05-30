@@ -1,4 +1,16 @@
+
 <?php
+	//JSON FORMATS
+	//  RECIEVED JSON
+	// 	{
+	//		"login" 	: "login of new user"
+	//		"password" 	: "hashed password of new user"
+	//	}
+	//  SENT JSON
+	// 	{
+	//		"id"	:	"userID"
+	//		"login" :	"The username of the user"
+	//	}
 
 	$inData = getRequestInfo();
 
