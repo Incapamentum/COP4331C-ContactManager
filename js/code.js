@@ -56,6 +56,13 @@ function doLogout()
 	userId = 0;
 	hideOrShow( "contactControlDiv", false);
 	hideOrShow( "loginDiv", true);
+
+	// Reset search results to blank upon logout
+	var searchResultTable = document.getElementById("searchResultTable");
+	while(searchResultTable.firstChild)
+	{
+		searchResultTable.removeChild(searchResultTable.firstChild);
+	}
 }
 
 function hideOrShow( elementId, showState )
@@ -151,10 +158,16 @@ function searchContact()
 	var srch = document.getElementById("contactSearch").value;
 	document.getElementById("contactSearchResult").innerHTML = "";
 	
-	var searchResultTable = document.getElementById("searchResultTable");
-
+	// Clear existing search result list (TO BE DELETED)
 	var contactList = document.getElementById("contactList");
 	contactList.innerHTML = "";
+	
+	// Clear existing search result table
+	var searchResultTable = document.getElementById("searchResultTable");
+	while(searchResultTable.firstChild)
+	{
+		searchResultTable.removeChild(searchResultTable.firstChild);
+	}
 
 	var jsonPayload = '{"search" : "' + srch + '", "userId" : "' + userId + '"}';
 	var url = urlBase + '/LAMPAPI/SearchContacts.' + extension;
@@ -169,7 +182,6 @@ function searchContact()
 			if (this.readyState == 4 && this.status == 200)
 			{
 				hideOrShow( "contactList", true );
-
 
 				document.getElementById("contactSearchResult").innerHTML = "Contact(s) has been retrieved";
 				var jsonObject = JSON.parse( xhr.responseText );
@@ -198,13 +210,6 @@ function searchContact()
 					resultRow.appendChild(resultCell);
 					searchResultTable.appendChild(resultRow);
 				}
-				if(jsonObject.results.length == null)
-				{
-					searchResultTable.parentNode.removeChild(searchResultTable);
-					var noResult = document.createElement("span");
-					var noResultText = document.createTextNode("No matching contacts.");
-					noResult.appendChild(noResultText);
-				}
 			}
 		};
 		xhr.send(jsonPayload);
@@ -214,12 +219,6 @@ function searchContact()
 		document.getElementById("contactSearchResult").innerHTML = err.message;
 	}
 
-}
-
-// The following function displays the table of search results
-function displaySearchResults()
-{
-	var searchResultTable = document.getElementById("searchResultTable").value;
 }
 
 // The following function displays the register div
