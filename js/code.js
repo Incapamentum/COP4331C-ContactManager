@@ -183,15 +183,18 @@ function searchContact()
 					
 					// Iterative creation of search result entries in table
 					var resultRow = document.createElement("tr");
+
 					var resultCell = document.createElement("td");
-					
+					resultCell.onclick = "document.location.href='#child;";
+
 					var clickableResult = document.createElement("a");
 					clickableResult.href = "#contactInfoDiv";
-					var resultText = document.createTextNode(); // This will receive the parsed payload
+
+					var resultText = document.createTextNode(jsonObject.results[i]); // This will receive the parsed payload
+
 					clickableResult.appendChild(resultText);
 					resultCell.appendChild(clickableResult);
 					resultRow.appendChild(resultCell);
-
 					searchResultTable.appendChild(resultRow);
 				}
 			}
