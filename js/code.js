@@ -170,6 +170,7 @@ function searchContact()
 			{
 				hideOrShow( "contactList", true );
 
+
 				document.getElementById("contactSearchResult").innerHTML = "Contact(s) has been retrieved";
 				var jsonObject = JSON.parse( xhr.responseText );
 
@@ -197,7 +198,7 @@ function searchContact()
 					resultRow.appendChild(resultCell);
 					searchResultTable.appendChild(resultRow);
 				}
-				if(jsonObject.results.length <= 0)
+				if(jsonObject.results.length == null)
 				{
 					searchResultTable.parentNode.removeChild(searchResultTable);
 					var noResult = document.createElement("span");
