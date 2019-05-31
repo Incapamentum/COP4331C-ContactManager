@@ -197,6 +197,13 @@ function searchContact()
 					resultRow.appendChild(resultCell);
 					searchResultTable.appendChild(resultRow);
 				}
+				if(jsonObject.results.length <= 0)
+				{
+					searchResultTable.parentNode.removeChild(searchResultTable);
+					var noResult = document.createElement("span");
+					var noResultText = document.createTextNode("No matching contacts.");
+					noResult.appendChild(noResultText);
+				}
 			}
 		};
 		xhr.send(jsonPayload);
