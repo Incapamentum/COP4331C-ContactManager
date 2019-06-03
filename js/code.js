@@ -56,6 +56,13 @@ function doLogout()
 	userId = 0;
 	hideOrShow( "contactControlDiv", false);
 	hideOrShow( "loginDiv", true);
+
+	// Reset search results to blank upon logout
+	var searchResultTable = document.getElementById("searchResultTable");
+	while(searchResultTable.firstChild)
+	{
+		searchResultTable.removeChild(searchResultTable.firstChild);
+	}
 }
 
 function hideOrShow( elementId, showState )
@@ -151,10 +158,16 @@ function searchContact()
 	var srch = document.getElementById("contactSearch").value;
 	document.getElementById("contactSearchResult").innerHTML = "";
 	
-	var searchResultTable = document.getElementById("searchResultTable");
-
+	// Clear existing search result list (TO BE DELETED)
 	var contactList = document.getElementById("contactList");
 	contactList.innerHTML = "";
+	
+	// Clear existing search result table
+	var searchResultTable = document.getElementById("searchResultTable");
+	while(searchResultTable.firstChild)
+	{
+		searchResultTable.removeChild(searchResultTable.firstChild);
+	}
 
 	var jsonPayload = '{"search" : "' + srch + '", "userId" : "' + userId + '"}';
 	var url = urlBase + '/LAMPAPI/SearchContacts.' + extension;
@@ -183,15 +196,18 @@ function searchContact()
 					
 					// Iterative creation of search result entries in table
 					var resultRow = document.createElement("tr");
+
 					var resultCell = document.createElement("td");
-					
+					resultCell.onclick = "document.location.href='#child;";
+
 					var clickableResult = document.createElement("a");
 					clickableResult.href = "#contactInfoDiv";
-					var resultText = document.createTextNode(); // This will receive the parsed payload
+
+					var resultText = document.createTextNode(jsonObject.results[i]); // This will receive the parsed payload
+
 					clickableResult.appendChild(resultText);
 					resultCell.appendChild(clickableResult);
 					resultRow.appendChild(resultCell);
-
 					searchResultTable.appendChild(resultRow);
 				}
 			}
@@ -203,12 +219,6 @@ function searchContact()
 		document.getElementById("contactSearchResult").innerHTML = err.message;
 	}
 
-}
-
-// The following function displays the table of search results
-function displaySearchResults()
-{
-	var searchResultTable = document.getElementById("searchResultTable").value;
 }
 
 // The following function displays the register div
