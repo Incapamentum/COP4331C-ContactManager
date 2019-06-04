@@ -151,8 +151,6 @@ function doRegister()
 
 }
 
-
-
 function searchContact()
 {
 	var srch = document.getElementById("contactSearch").value;
@@ -205,7 +203,9 @@ function searchContact()
 
 					var results = jsonObject.results[i].split(" ");
 
-					var resultText = document.createTextNode(results[0]); // This will receive the parsed payload
+					var resultText = document.createTextNode(results[0] + " " + results[1]); // This will receive the parsed payload
+					resultText.value = results[3];
+					console.log("debug: " + resultText.value);
 
 					clickableResult.appendChild(resultText);
 					resultCell.appendChild(clickableResult);
