@@ -157,11 +157,11 @@ function searchContact()
 {
 	var srch = document.getElementById("contactSearch").value;
 	document.getElementById("contactSearchResult").innerHTML = "";
-	
+
 	// Clear existing search result list (TO BE DELETED)
 	var contactList = document.getElementById("contactList");
 	contactList.innerHTML = "";
-	
+
 	// Clear existing search result table
 	var searchResultTable = document.getElementById("searchResultTable");
 	while(searchResultTable.firstChild)
@@ -193,7 +193,7 @@ function searchContact()
 					opt.text = jsonObject.results[i];
 					opt.value = "";
 					contactList.options.add(opt);
-					
+
 					// Iterative creation of search result entries in table
 					var resultRow = document.createElement("tr");
 
@@ -203,7 +203,9 @@ function searchContact()
 					var clickableResult = document.createElement("a");
 					clickableResult.href = "#contactInfoDiv";
 
-					var resultText = document.createTextNode(jsonObject.results[i]); // This will receive the parsed payload
+					var results = jsonObject.results[i].split(" ");
+
+					var resultText = document.createTextNode(results[0]); // This will receive the parsed payload
 
 					clickableResult.appendChild(resultText);
 					resultCell.appendChild(clickableResult);
@@ -324,7 +326,7 @@ function deleteContact()
 		{
 			if (this.readyState == 4 && this.status == 200)
 			{
-				document.getElementById("contactAddResult").innerHTML = "Contact deleted successfully<br>";
+				document.getElementById("contactAddResult").innerHTML = "Contact deleted successfully";
 			}
 		}
 	}
