@@ -204,7 +204,7 @@ function searchContact()
 
 					var resultRow = document.createElement("tr");
 
-					var resultCellF = document.createElement("td");
+					var resultCell = document.createElement("td");
 					resultCell.onclick = "document.location.href='#child;";
 
 					var clickableResult = document.createElement("a");
