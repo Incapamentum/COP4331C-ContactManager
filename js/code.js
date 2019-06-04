@@ -207,23 +207,23 @@ function searchContact()
 
 					var deleteBut = document.createElement("button");
 					deleteBut.type = "button";
-					deleteBut.id = results[2] + " " + i;
+					deleteBut.id = results[2] + " " + (i+1);
 					deleteBut.class = "button";
-					deleteBut.onclick = "deleteContact(this.id)";
+					deleteBut.onclick = deleteContact(this.id);
 					deleteBut.innerHTML = "Delete";
 
 					var editBut = document.createElement("button");
 					editBut.type = "button";
-					editBut.id = results[2] + " " + (i*2);
+					editBut.id = results[2] + " " + ((i+1)*2);
 					editBut.class = "button";
-					editBut.onclick = "editContact(this.id)";
+					editBut.onclick = editContact(this.id);
 					editBut.innerHTML = "Edit";
 
 					var details = document.createElement("button");
 					details.type = "button";
-					details.id = results[2] + " " + (i*3);
+					details.id = results[2] + " " + ((i+1)*3);
 					details.class = "button";
-					details.onclick = "fetchContact(this.id)";
+					details.onclick = fetchContact(this.id);
 					details.innerHTML = "Details";
 
 					var resultCell = document.createElement("td");
@@ -345,7 +345,7 @@ function deleteContact(idString)
 	// Extracting conactID from input string
 	var idArray = idString.split(" ");
 
-	var row = idArray[1]
+	var row = idArray[1] - 1;
 
 	contactID = idArray[0];
 	console.log("debug contactID  = " + contactID + ", row = " + row);
@@ -390,4 +390,10 @@ function editContact(idString)
 	var idArray = idString.split(" ");
 
 	contactID = idArray[0];
+}
+
+function fetchContact(idString)
+{
+	// Extracting conactID from input string
+	var idArray = idString.split(" ");
 }
