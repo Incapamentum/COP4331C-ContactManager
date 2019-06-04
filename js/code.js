@@ -193,19 +193,24 @@ function searchContact()
 					contactList.options.add(opt);
 
 					// Iterative creation of search result entries in table
+
+					var results = jsonObject.results[i].split(" ");
+
+					var tableHeader = document.createElement("tr");
+					var nameHeader = document.createElement("th");
+					nameHeader.innerHTML = "Contact Name";
+					tableHeader.appendChild(nameHeader);
+					searchResultTable.appendChild(tableHeader);
+
 					var resultRow = document.createElement("tr");
 
-					var resultCell = document.createElement("td");
+					var resultCellF = document.createElement("td");
 					resultCell.onclick = "document.location.href='#child;";
 
 					var clickableResult = document.createElement("a");
 					clickableResult.href = "#contactInfoDiv";
 
-					var results = jsonObject.results[i].split(" ");
-
 					var resultText = document.createTextNode(results[0] + " " + results[1]); // This will receive the parsed payload
-					resultText.nodeValue = results[3];
-					console.log("debug: " + resultText.nodeValue);
 
 					clickableResult.appendChild(resultText);
 					resultCell.appendChild(clickableResult);
