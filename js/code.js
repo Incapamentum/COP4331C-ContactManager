@@ -56,6 +56,13 @@ function doLogout()
 	userId = 0;
 	hideOrShow( "contactControlDiv", false);
 	hideOrShow( "loginDiv", true);
+
+	// Reset search results to blank upon logout
+	var searchResultTable = document.getElementById("searchResultTable");
+	while(searchResultTable.firstChild)
+	{
+		searchResultTable.removeChild(searchResultTable.firstChild);
+	}
 }
 
 function hideOrShow( elementId, showState )
@@ -144,15 +151,21 @@ function doRegister()
 
 }
 
-
-
 function searchContact()
 {
 	var srch = document.getElementById("contactSearch").value;
 	document.getElementById("contactSearchResult").innerHTML = "";
 
+	// Clear existing search result list (TO BE DELETED)
 	var contactList = document.getElementById("contactList");
 	contactList.innerHTML = "";
+
+	// Clear existing search result table
+	var searchResultTable = document.getElementById("searchResultTable");
+	while(searchResultTable.firstChild)
+	{
+		searchResultTable.removeChild(searchResultTable.firstChild);
+	}
 
 	var jsonPayload = '{"search" : "' + srch + '", "userId" : "' + userId + '"}';
 	var url = urlBase + '/LAMPAPI/SearchContacts.' + extension;
@@ -172,12 +185,63 @@ function searchContact()
 				var jsonObject = JSON.parse( xhr.responseText );
 
 				var i;
+
+				var tableHeader = document.createElement("tr");
+				var nameHeader = document.createElement("th");
+				nameHeader.innerHTML = "Contact Name";
+				tableHeader.appendChild(nameHeader);
+				searchResultTable.appendChild(tableHeader);
+
 				for( i=0; i<jsonObject.results.length; i++ )
 				{
 					var opt = document.createElement("option");
 					opt.text = jsonObject.results[i];
 					opt.value = "";
 					contactList.options.add(opt);
+
+					// Iterative creation of search result entries in table
+
+					var results = jsonObject.results[i].split(" ");
+
+					var resultRow = document.createElement("tr");
+
+					var deleteBut = document.createElement("button");
+					deleteBut.type = "button";
+					deleteBut.id = results[2] + " " + (i+1);
+					deleteBut.class = "button";
+					deleteBut.setAttribute("onclick", "deleteContact(this.id);");
+					deleteBut.innerHTML = "Delete";
+
+					var editBut = document.createElement("button");
+					editBut.type = "button";
+					editBut.id = results[2] + " " + ((i+1)*2);
+					editBut.class = "button";
+					editBut.setAttribute("onclick", "editContact(this.id);");
+					editBut.innerHTML = "Edit";
+
+					var details = document.createElement("button");
+					details.type = "button";
+					details.id = results[2] + " " + ((i+1)*3);
+					details.class = "button";
+					details.setAttribute("onclick", "fetchContact(this.id);");
+					details.innerHTML = "Details";
+
+					var resultCell = document.createElement("td");
+					//resultCell.onclick = "document.location.href='#child;";
+
+					//var clickableResult = document.createElement("a");
+					//clickableResult.href = "#contactInfoDiv";
+
+					//var resultText = document.createTextNode(results[0] + " " + results[1]); // This will receive the parsed payload
+
+					//clickableResult.appendChild(resultText);
+					//resultCell.appendChild(resultText);
+					resultCell.innerHTML = results[0] + " " + results[1];
+					resultRow.appendChild(resultCell);
+					resultRow.appendChild(details);
+					resultRow.appendChild(editBut);
+					resultRow.appendChild(deleteBut);
+					searchResultTable.appendChild(resultRow);
 				}
 			}
 		};
@@ -190,12 +254,6 @@ function searchContact()
 
 }
 
-// The following function displays the table of search results
-function displaySearchResults()
-{
-	var searchResultTable = document.getElementById("searchResultTable").value;
-}
-
 // The following function displays the register div
 function displayRegister()
 {
@@ -203,7 +261,7 @@ function displayRegister()
 	hideOrShow("registerDiv", true);
 }
 
-// The following functino hides the register div
+// The following function hides the register div
 function hideRegister()
 {
 	hideOrShow("registerDiv", false);
@@ -278,16 +336,22 @@ function displayAddContact()
 // The following function hides the add contact div
 function hideAddContact()
 {
+	document.getElementById("contactAddResult").innerHTML = "";
 	hideOrShow("addContactDiv", false);
 }
 
-function deleteContact()
+function deleteContact(idString)
 {
-	// TODO
-	contactID = document.getElementById("contactID").value
+	// Extracting conactID from input string
+	var idArray = idString.split(" ");
+
+	var row = idArray[1];
+
+	contactID = idArray[0];
+	console.log("debug contactID  = " + contactID + ", row = " + row);
 
 	var jsonPayload = '{"contactID" : "' + contactID + '"}';
-	var url = urlBase + '/LAMPAPI/deleteContact.' + extension;
+	var url = urlBase + '/LAMPAPI/DeleteContact.' + extension;
 	var xhr = new XMLHttpRequest();
 
 	xhr.open("POST", url, true);
@@ -298,9 +362,11 @@ function deleteContact()
 		{
 			if (this.readyState == 4 && this.status == 200)
 			{
-				document.getElementById("contactAddResult").innerHTML = "Contact deleted successfully<br>";
+				document.getElementById("contactAddResult").innerHTML = "Contact deleted successfully";
+				document.getElementById("searchResultTable").deleteRow(row);
 			}
 		}
+		xhr.send(jsonPayload);
 	}
 	catch(err)
 	{
@@ -316,7 +382,18 @@ function delayHide()
 	document.getElementById("contactAddResult").innerHTML = "";
 }
 
-function editContact()
+function editContact(idString)
 {
 	// TODO
+
+	// Extracting conactID from input string
+	var idArray = idString.split(" ");
+
+	contactID = idArray[0];
+}
+
+function fetchContact(idString)
+{
+	// Extracting conactID from input string
+	var idArray = idString.split(" ");
 }
