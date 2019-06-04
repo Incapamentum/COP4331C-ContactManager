@@ -219,17 +219,25 @@ function searchContact()
 					editBut.onclick = "editContact(this.id)";
 					editBut.innerHTML = "Edit";
 
+					var details = document.createElement("button");
+					details.type = "button";
+					details.id = results[2] + " " + (i*3);
+					details.class = "button";
+					details.onclick = "fetchContact(this.id)";
+					details.innerHTML = "Details";
+
 					var resultCell = document.createElement("td");
 					//resultCell.onclick = "document.location.href='#child;";
 
-					var clickableResult = document.createElement("a");
-					clickableResult.href = "#contactInfoDiv";
+					//var clickableResult = document.createElement("a");
+					//clickableResult.href = "#contactInfoDiv";
 
 					var resultText = document.createTextNode(results[0] + " " + results[1]); // This will receive the parsed payload
 
-					clickableResult.appendChild(resultText);
-					resultCell.appendChild(clickableResult);
+					//clickableResult.appendChild(resultText);
+					resultCell.appendChild(resultText);
 					resultRow.appendChild(resultCell);
+					resultRow.appendChild(details);
 					resultRow.appendChild(editBut);
 					resultRow.appendChild(deleteBut);
 					searchResultTable.appendChild(resultRow);
