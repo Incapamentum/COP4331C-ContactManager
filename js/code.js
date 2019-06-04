@@ -204,8 +204,8 @@ function searchContact()
 					var results = jsonObject.results[i].split(" ");
 
 					var resultText = document.createTextNode(results[0] + " " + results[1]); // This will receive the parsed payload
-					resultText.value = results[3];
-					console.log("debug: " + resultText.value);
+					resultText.nodeValue = results[3];
+					console.log("debug: " + resultText.nodeValue);
 
 					clickableResult.appendChild(resultText);
 					resultCell.appendChild(clickableResult);
