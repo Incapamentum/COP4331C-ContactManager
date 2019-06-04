@@ -223,7 +223,7 @@ function searchContact()
 					details.type = "button";
 					details.id = results[2] + " " + ((i+1)*3);
 					details.class = "button";
-					details.setAttribute("onclick", "fetchContact(thi.id);");
+					details.setAttribute("onclick", "fetchContact(this.id);");
 					details.innerHTML = "Details";
 
 					var resultCell = document.createElement("td");
@@ -351,7 +351,7 @@ function deleteContact(idString)
 	console.log("debug contactID  = " + contactID + ", row = " + row);
 
 	var jsonPayload = '{"contactID" : "' + contactID + '"}';
-	var url = urlBase + '/LAMPAPI/deleteContact.' + extension;
+	var url = urlBase + '/LAMPAPI/DeleteContact.' + extension;
 	var xhr = new XMLHttpRequest();
 
 	xhr.open("POST", url, true);
