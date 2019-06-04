@@ -102,6 +102,18 @@ function doRegister()
 		return;
 	}
 
+	if (password.length < 5 || password.indexOf(' ') >= 0 || password.indexOf('\t') >= 0)
+	{
+		document.getElementById("registerResult").innerHTML = "Password must be at least 5 characters without spaces<br>";
+		return;
+	}
+
+	if (login.length < 2 || password.indexOf(' ') >= 0 || password.indexOf('\t') >= 0)
+	{
+		document.getElementById("registerResult").innerHTML = "User name cannot have spaces<br>";
+		return;
+	}
+
 	var hashed = CryptoJS.MD5(password);
 	var jsonPayload = '{"login" : "' + login + '", "password" : "' + hashed + '"}';
 	var url = urlBase + '/LAMPAPI/Register.' + extension;
@@ -202,31 +214,41 @@ function searchContact()
 					// Iterative creation of search result entries in table
 
 					var results = jsonObject.results[i].split(" ");
+					var n = results.length - 3
+					var firstName = results[0];
+					while(n > 0)
+					{
+						firstName = firstName + " " + results[n];
+						n--;
+					}
+					var lastName = results[results.length-2];
+					var id = results[results.length-1];
 
 					var resultRow = document.createElement("tr");
 
 					var deleteBut = document.createElement("button");
 					deleteBut.type = "button";
-					deleteBut.id = results[2] + " " + (i+1);
+					deleteBut.id = id + " " + (i+1);
 					deleteBut.class = "button";
 					deleteBut.setAttribute("onclick", "deleteContact(this.id);");
 					deleteBut.innerHTML = "Delete";
 
 					var editBut = document.createElement("button");
 					editBut.type = "button";
-					editBut.id = results[2] + " " + ((i+1)*2);
+					editBut.id = id + " " + ((i+1)*2);
 					editBut.class = "button";
 					editBut.setAttribute("onclick", "editContact(this.id);");
 					editBut.innerHTML = "Edit";
 
 					var details = document.createElement("button");
 					details.type = "button";
-					details.id = results[2] + " " + ((i+1)*3);
+					details.id = id + " " + ((i+1)*3);
 					details.class = "button";
 					details.setAttribute("onclick", "fetchContact(this.id);");
 					details.innerHTML = "Details";
 
 					var resultCell = document.createElement("td");
+					resultCell.id = id + " " + ((i+1)*4);
 					//resultCell.onclick = "document.location.href='#child;";
 
 					//var clickableResult = document.createElement("a");
@@ -236,7 +258,7 @@ function searchContact()
 
 					//clickableResult.appendChild(resultText);
 					//resultCell.appendChild(resultText);
-					resultCell.innerHTML = results[0] + " " + results[1];
+					resultCell.innerHTML = firstName + " " + lastName;
 					resultRow.appendChild(resultCell);
 					resultRow.appendChild(details);
 					resultRow.appendChild(editBut);
@@ -388,8 +410,32 @@ function editContact(idString)
 
 	// Extracting conactID from input string
 	var idArray = idString.split(" ");
-
 	contactID = idArray[0];
+	var row = (idArray[1] / 2) - 1;
+
+	var jsonPayload = '{"contactID" : "' + contactID + '"}';
+	var url = urlBase + '/LAMPAPI/EditContact.' + extension;
+	var xhr = new XMLHttpRequest();
+
+	xhr.open("POST", url, true);
+	xhr.setRequestHeader("Content-type", "application/json; charset=UTF-8");
+
+	try
+	{
+		xhr.onreadystatechange = function()
+		{
+			if (this.readyState == 4 && this.status == 200)
+			{
+				document.getElementById("contactAddResult").innerHTML = "Contact edited successfully";
+
+			}
+		}
+		xhr.send(jsonPayload);
+	}
+	catch(err)
+	{
+		document.getElementById("contactAddResult").innerHTML = err.message;
+	}
 }
 
 function fetchContact(idString)
