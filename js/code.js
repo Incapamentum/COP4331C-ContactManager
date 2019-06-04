@@ -232,10 +232,11 @@ function searchContact()
 					//var clickableResult = document.createElement("a");
 					//clickableResult.href = "#contactInfoDiv";
 
-					var resultText = document.createTextNode(results[0] + " " + results[1]); // This will receive the parsed payload
+					//var resultText = document.createTextNode(results[0] + " " + results[1]); // This will receive the parsed payload
 
 					//clickableResult.appendChild(resultText);
-					resultCell.appendChild(resultText);
+					//resultCell.appendChild(resultText);
+					resultCell.innerHTML = results[0] + " " + results[1];
 					resultRow.appendChild(resultCell);
 					resultRow.appendChild(details);
 					resultRow.appendChild(editBut);
@@ -344,7 +345,10 @@ function deleteContact(idString)
 	// Extracting conactID from input string
 	var idArray = idString.split(" ");
 
+	var row = idArray[1]
+
 	contactID = idArray[0];
+	console.log("debug contactID  = " + contactID + ", row = " + row);
 
 	var jsonPayload = '{"contactID" : "' + contactID + '"}';
 	var url = urlBase + '/LAMPAPI/deleteContact.' + extension;
@@ -359,8 +363,10 @@ function deleteContact(idString)
 			if (this.readyState == 4 && this.status == 200)
 			{
 				document.getElementById("contactAddResult").innerHTML = "Contact deleted successfully";
+				document.getElementById("searchResultTable").deleteRow(row);
 			}
 		}
+		xhr.send(jsonPayload);
 	}
 	catch(err)
 	{
