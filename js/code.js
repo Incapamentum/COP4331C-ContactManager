@@ -209,21 +209,21 @@ function searchContact()
 					deleteBut.type = "button";
 					deleteBut.id = results[2] + " " + (i+1);
 					deleteBut.class = "button";
-					deleteBut.onclick = deleteContact(this.id);
+					deleteBut.onclick = deleteContact(deleteBut.id);
 					deleteBut.innerHTML = "Delete";
 
 					var editBut = document.createElement("button");
 					editBut.type = "button";
 					editBut.id = results[2] + " " + ((i+1)*2);
 					editBut.class = "button";
-					editBut.onclick = editContact(this.id);
+					editBut.onclick = editContact(editBut.id);
 					editBut.innerHTML = "Edit";
 
 					var details = document.createElement("button");
 					details.type = "button";
 					details.id = results[2] + " " + ((i+1)*3);
 					details.class = "button";
-					details.onclick = fetchContact(this.id);
+					details.onclick = fetchContact(details.id);
 					details.innerHTML = "Details";
 
 					var resultCell = document.createElement("td");
