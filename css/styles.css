@@ -1,0 +1,105 @@
+/* Global
+------------------*/
+html
+{
+    box-sizing: border-box;
+}
+
+*, *:before, *:after
+{
+    box-sizing: inherit;
+}
+
+body 
+{
+    background-color: #FFD7C1;
+    font-family: 'Open Sans', sans-serif;
+}
+
+/* Text fields */
+[type="text"]
+{
+    border: 3px solid #072083;
+    padding: 3px;
+    margin: 1% auto;
+    border-radius: 5px;
+}
+
+[type="password"]
+{
+    border: 3px solid #F86B1A;
+    padding: 3px;
+    margin: 1% auto;
+    border-radius: 5px;
+}
+
+[type="email"]
+{
+    border: 3px solid #F86B1A;
+    padding: 3px;
+    margin: 1% auto;
+    border-radius: 5px;
+}
+
+[type="tel"]
+{
+    border: 3px solid #072083;
+    padding: 3px;
+    margin: 1% auto;
+    border-radius: 5px;
+}
+
+/* Buttons */
+.buttons
+{
+    border: 1px solid black;
+    padding: 1px 4px;
+    display: inline-block;
+    font-size: 90%;
+    font-family: arial, sans-serif;
+    border-radius: 3px;
+}
+
+h1
+{
+    background-color: #E59982;
+    font-weight: 400;
+    width: 95%;
+    margin: 10px auto;
+    text-align: center;
+    color: #072083;
+}
+
+/* Login Page 
+-------------------*/
+.loginPage
+{
+    border-style: solid;
+    border-width: 5px;
+    border-color: #072083;
+    border-radius: 10px;
+    margin: 10% 20%;
+}
+
+#loginDiv
+{
+    background-color: #FFD7C1;
+    margin: auto 10% 5px 10%;
+}
+
+/* Register Page 
+-------------------*/
+.registerPage
+{
+    border-style: solid;
+    border-width: 5px;
+    border-color: #072083;
+    border-radius: 10px;
+    margin: 10% 20%;
+}
+
+#registerDiv
+{
+    background-color: #FFD7C1;
+    margin: auto 10% 5px 10%;
+}
