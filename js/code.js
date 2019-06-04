@@ -185,6 +185,13 @@ function searchContact()
 				var jsonObject = JSON.parse( xhr.responseText );
 
 				var i;
+
+				var tableHeader = document.createElement("tr");
+				var nameHeader = document.createElement("th");
+				nameHeader.innerHTML = "Contact Name";
+				tableHeader.appendChild(nameHeader);
+				searchResultTable.appendChild(tableHeader);
+
 				for( i=0; i<jsonObject.results.length; i++ )
 				{
 					var opt = document.createElement("option");
@@ -196,16 +203,24 @@ function searchContact()
 
 					var results = jsonObject.results[i].split(" ");
 
-					var tableHeader = document.createElement("tr");
-					var nameHeader = document.createElement("th");
-					nameHeader.innerHTML = "Contact Name";
-					tableHeader.appendChild(nameHeader);
-					searchResultTable.appendChild(tableHeader);
-
 					var resultRow = document.createElement("tr");
 
+					var deleteBut = document.createElement("button");
+					deleteBut.type = "button";
+					deleteBut.id = results[2] + " " + i;
+					deleteBut.class = "button";
+					deleteBut.onclick = "deleteContact(this.id)";
+					deleteBut.innerHTML = "Delete";
+
+					var editBut = document.createElement("button");
+					editBut.type = "button";
+					editBut.id = results[2] + " " + (i*2);
+					editBut.class = "button";
+					editBut.onclick = "editContact(this.id)";
+					editBut.innerHTML = "Edit";
+
 					var resultCell = document.createElement("td");
-					resultCell.onclick = "document.location.href='#child;";
+					//resultCell.onclick = "document.location.href='#child;";
 
 					var clickableResult = document.createElement("a");
 					clickableResult.href = "#contactInfoDiv";
@@ -215,6 +230,8 @@ function searchContact()
 					clickableResult.appendChild(resultText);
 					resultCell.appendChild(clickableResult);
 					resultRow.appendChild(resultCell);
+					resultRow.appendChild(editBut);
+					resultRow.appendChild(deleteBut);
 					searchResultTable.appendChild(resultRow);
 				}
 			}
@@ -314,10 +331,12 @@ function hideAddContact()
 	hideOrShow("addContactDiv", false);
 }
 
-function deleteContact()
+function deleteContact(idString)
 {
-	// TODO
-	contactID = document.getElementById("contactID").value
+	// Extracting conactID from input string
+	var idArray = idString.split(" ");
+
+	contactID = idArray[0];
 
 	var jsonPayload = '{"contactID" : "' + contactID + '"}';
 	var url = urlBase + '/LAMPAPI/deleteContact.' + extension;
@@ -349,7 +368,12 @@ function delayHide()
 	document.getElementById("contactAddResult").innerHTML = "";
 }
 
-function editContact()
+function editContact(idString)
 {
 	// TODO
+
+	// Extracting conactID from input string
+	var idArray = idString.split(" ");
+
+	contactID = idArray[0];
 }
