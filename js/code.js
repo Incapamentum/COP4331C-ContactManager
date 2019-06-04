@@ -108,7 +108,7 @@ function doRegister()
 		return;
 	}
 
-	if (login.length < 2 || password.indexOf(' ') >= 0 || password.indexOf('\t') >= 0)
+	if (login.length < 2 || login.indexOf(' ') >= 0 || login.indexOf('\t') >= 0)
 	{
 		document.getElementById("registerResult").innerHTML = "User name cannot have spaces<br>";
 		return;
