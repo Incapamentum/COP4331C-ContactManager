@@ -345,7 +345,7 @@ function deleteContact(idString)
 	// Extracting conactID from input string
 	var idArray = idString.split(" ");
 
-	var row = idArray[1] - 1;
+	var row = idArray[1];
 
 	contactID = idArray[0];
 	console.log("debug contactID  = " + contactID + ", row = " + row);
