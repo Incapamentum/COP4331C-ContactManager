@@ -63,6 +63,8 @@ function doLogout()
 	{
 		searchResultTable.removeChild(searchResultTable.firstChild);
 	}
+
+	document.getElementById("contactSearchResult").innerHTML = "";
 }
 
 function hideOrShow( elementId, showState )
@@ -156,10 +158,6 @@ function searchContact()
 	var srch = document.getElementById("contactSearch").value;
 	document.getElementById("contactSearchResult").innerHTML = "";
 
-	// Clear existing search result list (TO BE DELETED)
-	var contactList = document.getElementById("contactList");
-	contactList.innerHTML = "";
-
 	// Clear existing search result table
 	var searchResultTable = document.getElementById("searchResultTable");
 	while(searchResultTable.firstChild)
@@ -179,8 +177,6 @@ function searchContact()
 		{
 			if (this.readyState == 4 && this.status == 200)
 			{
-				hideOrShow( "contactList", true );
-
 				document.getElementById("contactSearchResult").innerHTML = "Contact(s) has been retrieved";
 				var jsonObject = JSON.parse( xhr.responseText );
 
@@ -194,13 +190,7 @@ function searchContact()
 
 				for( i=0; i<jsonObject.results.length; i++ )
 				{
-					var opt = document.createElement("option");
-					opt.text = jsonObject.results[i];
-					opt.value = "";
-					contactList.options.add(opt);
-
 					// Iterative creation of search result entries in table
-
 					var results = jsonObject.results[i].split(" ");
 
 					var resultRow = document.createElement("tr");
@@ -227,15 +217,6 @@ function searchContact()
 					details.innerHTML = "Details";
 
 					var resultCell = document.createElement("td");
-					//resultCell.onclick = "document.location.href='#child;";
-
-					//var clickableResult = document.createElement("a");
-					//clickableResult.href = "#contactInfoDiv";
-
-					//var resultText = document.createTextNode(results[0] + " " + results[1]); // This will receive the parsed payload
-
-					//clickableResult.appendChild(resultText);
-					//resultCell.appendChild(resultText);
 					resultCell.innerHTML = results[0] + " " + results[1];
 					resultRow.appendChild(resultCell);
 					resultRow.appendChild(details);
