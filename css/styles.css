@@ -13,7 +13,16 @@ html
 body 
 {
     background-color: #FFD7C1;
+    background: linear-gradient(rgba(255, 255, 255, 0.5),
+                                rgba(255, 255, 255, 0.5)), 
+                                url(../images/bgvalley.png) no-repeat;
+    
+    background-repeat: no-repeat;
+    background-position: center;
+    background-attachment: fixed;
+    background-size: cover;
     font-family: 'Open Sans', sans-serif;
+    margin: 0;
 }
 
 /* Text fields */
@@ -62,12 +71,78 @@ body
 
 h1
 {
+    color: #072083;
+    margin: 0;
+}
+
+h2
+{
     background-color: #E59982;
+    border-radius: 3px;
     font-weight: 400;
     width: 95%;
     margin: 10px auto;
     text-align: center;
     color: #072083;
+}
+
+/* Header and Footer 
+-------------------*/
+.sixstar
+{
+    float: center;
+}
+
+.headBanner
+{
+    max-width: 950px;
+    margin: 0 auto;
+    padding: 5px;
+    overflow: hidden;
+}
+
+header
+{
+    background: rgba(248, 91, 26, 0.7);
+    text-align: center;
+    color: #072083;
+    font-size: 17px;
+
+    border-style: solid;
+    border-width: 3px;
+    border-color: #072083;
+    border-radius: 5px;
+}
+
+.footBanner
+{
+    max-width: 950px;
+    margin: 0 auto;
+    padding: 5px;
+    overflow: hidden; 
+}
+
+footer
+{
+    width: 100%;
+    bottom: 100%;
+    background: rgba(248, 91, 26, 0.6);
+    text-align: center;
+    color: #072083;
+    font-size: 17px;
+    
+    border-style: solid;
+    border-width: 3px;
+    border-color: #072083;
+    border-radius: 5px;
+}
+
+.banner-img
+{
+    height: auto;
+    width: auto;
+    max-width: 65px;
+    max-height: 65px;
 }
 
 /* Login Page 
