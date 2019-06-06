@@ -255,7 +255,7 @@ function searchContact()
 					//resultCell.innerHTML = results[0] + " " + results[1];
 					resultRow.appendChild(resultCell);
 					resultRow.appendChild(details);
-					resultRow.appendChild(editBut);
+					//resultRow.appendChild(editBut);
 					resultRow.appendChild(deleteBut);
 					searchResultTable.appendChild(resultRow);
 				}
