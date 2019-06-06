@@ -447,6 +447,13 @@ function submitContact(idString)
 
 function editContact()
 {
+	document.getElementById("editedFirstName").value = document.getElementById("editedFirstName").placeholder;
+	document.getElementById("editedLastName").value = document.getElementById("editedLastName").placeholder;
+	document.getElementById("editedPhoneNumber").value = document.getElementById("editedPhoneNumber").placeholder;
+	document.getElementById("editedEmail").value = document.getElementById("editedEmail").placeholder;
+	document.getElementById("address").value = document.getElementById("address").placeholder;
+	document.getElementById("editedPowerLevel").value = document.getElementById("editedPowerLevel").placeholder;
+
 	document.getElementById("editedFirstName").readOnly = false;
 	document.getElementById("editedLastName").readOnly = false;
 	document.getElementById("editedPhoneNumber").readOnly = false;
@@ -504,5 +511,11 @@ function fetchContact(idString)
 
 function cancelEditContact()
 {
+	document.getElementById("editedFirstName").value = "";
+	document.getElementById("editedLastName").value = "";
+	document.getElementById("editedPhoneNumber").value = "";
+	document.getElementById("editedEmail").value = "";
+	document.getElementById("address").value = "";
+	document.getElementById("editedPowerLevel").value = "";
 	hideOrShow("editContactDiv", false);
 }
