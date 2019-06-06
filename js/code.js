@@ -313,6 +313,8 @@ function addContact()
 			if (this.readyState == 4 && this.status == 200)
 			{
 				document.getElementById("contactAddResult").innerHTML = "Contact has been added";
+				document.getElementById("contactSearch").value = "";
+				searchContact();
 			}
 		};
 		xhr.send(jsonPayload);
@@ -411,6 +413,7 @@ function submitContact()
 	contactID = document.getElementById("contactID").innerHTML;
 	var row = document.getElementById("row").innerHTML;
 	console.log("test1");
+
 	//contactID = document.getElementById("contactID").innerHTML;
 	var fName = document.getElementById("editedFirstName").value;
 	var lName = document.getElementById("editedLastName").value;
@@ -421,6 +424,7 @@ function submitContact()
 
 	var jsonPayload = '{"contactID" : "' + contactID + '", "newFName" : "' + fName + '", "newLName" : "' + lName + '", "newPhoneNum" : "' + phoneNum + '", "newEmail" : "' + newEmail + '", "newAddress" : "' + newAddress + '", "newPowerlvl" : ' + newPowerlvl + '}';
 	console.log("test2");
+
 	var url = urlBase + '/LAMPAPI/EditContact.' + extension;
 	var xhr = new XMLHttpRequest();
 
@@ -445,9 +449,10 @@ function submitContact()
 	}
 	catch(err)
 	{
-		document.getElementById("contactAddResult").innerHTML = err.message;
+		document.getElementById("submitError").innerHTML = err.message;
+		console.log("test4");
 	}
-	console.log("test4");
+	console.log("test5");
 }
 
 function editContact()
@@ -512,7 +517,7 @@ function fetchContact(idString)
 	}
 	catch(err)
 	{
-		document.getElementById("submitError").innerHTML = err.message;
+		document.getElementById("contactAddResult").innerHTML = err.message;
 	}
 }
 
