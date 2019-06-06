@@ -9,6 +9,9 @@ function doLogin()
 {
 	userId = 0;
 
+	// Loading all contacts
+	document.getElementById("contactSearch").value = "";
+	fetchContact();
 
 	var login = document.getElementById("loginUsername").value;
 	var password = document.getElementById("loginPassword").value;
@@ -280,6 +283,10 @@ function displayRegister()
 // The following function hides the register div
 function hideRegister()
 {
+	document.getElementById("registerUsername").value = "";
+	document.getElementById("registerPassword").value = "";
+	document.getElementById("registerEmail").value = "";
+	document.getElementById("registerPhoneNumber").value = "";
 	hideOrShow("registerDiv", false);
 	hideOrShow("loginDiv", true);
 }
@@ -398,14 +405,12 @@ function delayHide()
 	document.getElementById("contactAddResult").innerHTML = "";
 }
 
-function submitContact(idString)
+function submitContact()
 {
-	// TODO
-
 	// Extracting conactID from input string
-	var idArray = idString.split(" ");
-	contactID = idArray[0];
-	var row = (idArray[1] / 2) - 1;
+
+	contactID = document.getElementById("contactID").innerHTML;
+	var row = document.getElementById("row").innerHTML;
 
 	//contactID = document.getElementById("contactID").innerHTML;
 	var fName = document.getElementById("editedFirstName").value;
@@ -416,8 +421,6 @@ function submitContact(idString)
 	var newPowerlvl = document.getElementById("editedPowerLevel").value;
 
 	var jsonPayload = '{"contactID" : "' + contactID + '", "newFName" : "' + fName + '", "newLName" : "' + lName + '", "newPhoneNum" : "' + phoneNum + '", "newEmail" : "' + newEmail + '", "newAddress" : "' + newAddress + '", "newPowerlvl" : ' + newPowerlvl + '}';
-
-
 
 	var url = urlBase + '/LAMPAPI/EditContact.' + extension;
 	var xhr = new XMLHttpRequest();
@@ -484,19 +487,26 @@ function fetchContact(idString)
 			{
 				//document.getElementById("contactAddResult").innerHTML = "Contact edited successfully";
 				var jsonObject = JSON.parse( xhr.responseText );
+				document.getElementById("editedFirstName").value = jsonObject.fName;
 				document.getElementById("editedFirstName").placeholder = jsonObject.fName;
 				document.getElementById("editedFirstName").readOnly = true;
+				document.getElementById("editedLastName").value = jsonObject.lName;
 				document.getElementById("editedLastName").placeholder = jsonObject.lName;
 				document.getElementById("editedLastName").readOnly = true;
+				document.getElementById("editedPhoneNumber").value = jsonObject.phoneNum;
 				document.getElementById("editedPhoneNumber").placeholder = jsonObject.phoneNum;
 				document.getElementById("editedPhoneNumber").readOnly = true;
+				document.getElementById("editedEmail").value = jsonObject.email;
 				document.getElementById("editedEmail").placeholder = jsonObject.email;
 				document.getElementById("editedEmail").readOnly = true;
+				document.getElementById("address").value = jsonObject.address;
 				document.getElementById("address").placeholder = jsonObject.address;
 				document.getElementById("address").readOnly = true;
+				document.getElementById("editedPowerLevel").value = jsonObject.powerlvl;
 				document.getElementById("editedPowerLevel").placeholder = jsonObject.powerlvl;
 				document.getElementById("editedPowerLevel").readOnly = true;
 				document.getElementById("contactID").innerHTML = jsonObject.contactID;
+				document.getElementById("row"),innerHTML = row;
 				hideOrShow("contactID", false);
 				hideOrShow("editContactDiv", true);
 			}
