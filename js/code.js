@@ -9,9 +9,6 @@ function doLogin()
 {
 	userId = 0;
 
-	// Loading all contacts
-	document.getElementById("contactSearch").value = "";
-	searchContact();
 
 	var login = document.getElementById("loginUsername").value;
 	var password = document.getElementById("loginPassword").value;
@@ -439,6 +436,7 @@ function submitContact()
 				document.getElementById("contactAddResult").innerHTML = "Contact edited successfully";
 				var resultCellID = conactID + " " + ((row+1)*4);
 				document.getElementById(resultCellID).innerHTML = fName + " " + lName;
+				console.log("test3");
 
 			}
 		}
@@ -448,7 +446,7 @@ function submitContact()
 	{
 		document.getElementById("contactAddResult").innerHTML = err.message;
 	}
-	console.log("test3");
+	console.log("test4");
 }
 
 function editContact()
@@ -506,14 +504,14 @@ function fetchContact(idString)
 				document.getElementById("contactID").innerHTML = jsonObject.contactID;
 				document.getElementById("row"),innerHTML = row;
 				hideOrShow("contactID", false);
-				hideOrShow("editContactDiv", true);
+				hideOrShow("editContactDiv", false);
 			}
 		}
 		xhr.send(jsonPayload);
 	}
 	catch(err)
 	{
-		document.getElementById("contactAddResult").innerHTML = err.message;
+		document.getElementById("submitError").innerHTML = err.message;
 	}
 }
 
