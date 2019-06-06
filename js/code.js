@@ -44,6 +44,9 @@ function doLogin()
 		document.getElementById("loginUsername").value = "";
 		document.getElementById("loginPassword").value = "";
 
+		document.getElementById("contactSearch").value = "";
+		searchContact();
+
 		hideOrShow( "contactControlDiv", true);
 		hideOrShow( "loginDiv", false);
 	}
@@ -51,7 +54,6 @@ function doLogin()
 	{
 		document.getElementById("loginResult").innerHTML = err.message;
 	}
-
 }
 
 function doLogout()
@@ -411,7 +413,7 @@ function submitContact()
 
 	contactID = document.getElementById("contactID").innerHTML;
 	var row = document.getElementById("row").innerHTML;
-
+	console.log("test1");
 	//contactID = document.getElementById("contactID").innerHTML;
 	var fName = document.getElementById("editedFirstName").value;
 	var lName = document.getElementById("editedLastName").value;
@@ -421,7 +423,7 @@ function submitContact()
 	var newPowerlvl = document.getElementById("editedPowerLevel").value;
 
 	var jsonPayload = '{"contactID" : "' + contactID + '", "newFName" : "' + fName + '", "newLName" : "' + lName + '", "newPhoneNum" : "' + phoneNum + '", "newEmail" : "' + newEmail + '", "newAddress" : "' + newAddress + '", "newPowerlvl" : ' + newPowerlvl + '}';
-
+	console.log("test2");
 	var url = urlBase + '/LAMPAPI/EditContact.' + extension;
 	var xhr = new XMLHttpRequest();
 
@@ -446,6 +448,7 @@ function submitContact()
 	{
 		document.getElementById("contactAddResult").innerHTML = err.message;
 	}
+	console.log("test3");
 }
 
 function editContact()
@@ -488,22 +491,16 @@ function fetchContact(idString)
 			{
 				//document.getElementById("contactAddResult").innerHTML = "Contact edited successfully";
 				var jsonObject = JSON.parse( xhr.responseText );
-				document.getElementById("editedFirstName").value = jsonObject.fName;
 				document.getElementById("editedFirstName").placeholder = jsonObject.fName;
 				document.getElementById("editedFirstName").readOnly = true;
-				document.getElementById("editedLastName").value = jsonObject.lName;
 				document.getElementById("editedLastName").placeholder = jsonObject.lName;
 				document.getElementById("editedLastName").readOnly = true;
-				document.getElementById("editedPhoneNumber").value = jsonObject.phoneNum;
 				document.getElementById("editedPhoneNumber").placeholder = jsonObject.phoneNum;
 				document.getElementById("editedPhoneNumber").readOnly = true;
-				document.getElementById("editedEmail").value = jsonObject.email;
 				document.getElementById("editedEmail").placeholder = jsonObject.email;
 				document.getElementById("editedEmail").readOnly = true;
-				document.getElementById("address").value = jsonObject.address;
 				document.getElementById("address").placeholder = jsonObject.address;
 				document.getElementById("address").readOnly = true;
-				document.getElementById("editedPowerLevel").value = jsonObject.powerlvl;
 				document.getElementById("editedPowerLevel").placeholder = jsonObject.powerlvl;
 				document.getElementById("editedPowerLevel").readOnly = true;
 				document.getElementById("contactID").innerHTML = jsonObject.contactID;
