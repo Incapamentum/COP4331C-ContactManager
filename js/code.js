@@ -11,7 +11,7 @@ function doLogin()
 
 	// Loading all contacts
 	document.getElementById("contactSearch").value = "";
-	fetchContact();
+	searchContact();
 
 	var login = document.getElementById("loginUsername").value;
 	var password = document.getElementById("loginPassword").value;
@@ -468,6 +468,7 @@ function editContact()
 function fetchContact(idString)
 {
 	// Extracting conactID from input string
+
 	var idArray = idString.split(" ");
 	contactID = idArray[0];
 	var row = (idArray[1] / 3) - 1;
