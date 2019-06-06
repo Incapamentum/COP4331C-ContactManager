@@ -477,19 +477,19 @@ function fetchContact(idString)
 			{
 				//document.getElementById("contactAddResult").innerHTML = "Contact edited successfully";
 				var jsonObject = JSON.parse( xhr.responseText );
-				document.getElementById("editedFirstName").placeholder = jsonObject.results[0];
+				document.getElementById("editedFirstName").placeholder = jsonObject.fName;
 				document.getElementById("editedFirstName").readOnly = true;
-				document.getElementById("editedLastName").placeholder = jsonObject.results[1];
+				document.getElementById("editedLastName").placeholder = jsonObject.lName;
 				document.getElementById("editedLastName").readOnly = true;
-				document.getElementById("editedPhoneNumber").placeholder = jsonObject.results[2];
+				document.getElementById("editedPhoneNumber").placeholder = jsonObject.phoneNum;
 				document.getElementById("editedPhoneNumber").readOnly = true;
-				document.getElementById("editedEmail").placeholder = jsonObject.results[3];
+				document.getElementById("editedEmail").placeholder = jsonObject.email;
 				document.getElementById("editedEmail").readOnly = true;
-				document.getElementById("address").placeholder = jsonObject.results[4];
+				document.getElementById("address").placeholder = jsonObject.address;
 				document.getElementById("address").readOnly = true;
-				document.getElementById("editedPowerLevel").placeholder = jsonObject.results[5];
+				document.getElementById("editedPowerLevel").placeholder = jsonObject.powerlvl;
 				document.getElementById("editedPowerLevel").readOnly = true;
-				document.getElementById("contactID").innerHTML = jsonObject.results[6];
+				document.getElementById("contactID").innerHTML = jsonObject.contactID;
 				hideOrShow("contactID", false);
 				hideOrShow("editContactDiv", true);
 			}
