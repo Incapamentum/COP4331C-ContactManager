@@ -44,6 +44,9 @@ function doLogin()
 		document.getElementById("loginUsername").value = "";
 		document.getElementById("loginPassword").value = "";
 
+		document.getElementById("contactSearch").value = "";
+		searchContact();
+
 		hideOrShow( "contactControlDiv", true);
 		hideOrShow( "loginDiv", false);
 	}
@@ -51,9 +54,6 @@ function doLogin()
 	{
 		document.getElementById("loginResult").innerHTML = err.message;
 	}
-	document.getElementById("contactSearch").value = "";
-	searchContact();
-
 }
 
 function doLogout()
