@@ -12,17 +12,23 @@ html
 
 body 
 {
-    background-color: #FFD7C1;
     background: linear-gradient(rgba(255, 255, 255, 0.5),
                                 rgba(255, 255, 255, 0.5)), 
-                                url(../images/bgvalley.png) no-repeat;
-    
+                                url(../images/bggoku.jpg) no-repeat;
+    background-color: #F29921;
     background-repeat: no-repeat;
-    background-position: center;
+    background-position: left;
     background-attachment: fixed;
-    background-size: cover;
+/*    background-size: cover;*/
     font-family: 'Open Sans', sans-serif;
     margin: 0;
+}
+
+@font-face
+{
+    font-family: 'Saiyan Font';
+    src: url('fonts/ss-webfont.woff2') format('woff'),
+         url('fonts/ss-webfont.woff') format('woff');
 }
 
 /* Text fields */
@@ -58,7 +64,16 @@ body
     border-radius: 5px;
 }
 
+
 /* Buttons */
+.buttonLayout
+{
+    text-align: center;
+    display: inline-block;
+    margin: 1% 7.5%;
+    
+}
+
 .buttons
 {
     border: 1px solid black;
@@ -81,10 +96,27 @@ h2
     border-radius: 3px;
     font-weight: 400;
     width: 95%;
-    margin: 10px auto;
+    margin: 10px 0;
     text-align: center;
     color: #072083;
 }
+
+label
+{
+    display: inline-block;
+    float: left;
+    clear: left;
+    width: 200px;
+    /*    text-align: right;*/
+    text-align: center;
+}
+
+input 
+{
+    display: inline-block;
+    float: left;
+}
+
 
 /* Header and Footer 
 -------------------*/
@@ -103,38 +135,47 @@ h2
 
 header
 {
-    background: rgba(248, 91, 26, 0.7);
+    background: rgba(248, 91, 26, 0.6);
     text-align: center;
+    font-family: 'Saiyan Font', Arial, sans-serif;
     color: #072083;
-    font-size: 17px;
+    font-size: 25px;
+    
 
+/*
     border-style: solid;
-    border-width: 3px;
+    border-width: 0.5px;
     border-color: #072083;
     border-radius: 5px;
+*/
 }
 
 .footBanner
 {
     max-width: 950px;
     margin: 0 auto;
-    padding: 5px;
-    overflow: hidden; 
+    overflow: hidden;
 }
 
 footer
 {
-    width: 100%;
-    bottom: 100%;
+    height: 35px;
     background: rgba(248, 91, 26, 0.6);
     text-align: center;
     color: #072083;
-    font-size: 17px;
+    font-size: 12px;
     
+/*
     border-style: solid;
-    border-width: 3px;
+    border-width: 0.5px;
     border-color: #072083;
     border-radius: 5px;
+*/
+    
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    
 }
 
 .banner-img
@@ -147,34 +188,101 @@ footer
 
 /* Login Page 
 -------------------*/
-.loginPage
-{
-    border-style: solid;
-    border-width: 5px;
-    border-color: #072083;
-    border-radius: 10px;
-    margin: 10% 20%;
-}
 
 #loginDiv
 {
-    background-color: #FFD7C1;
-    margin: auto 10% 5px 10%;
+    border-style: solid;
+    border-width: 5px;
+    border-color: #072083;
+    border-radius: 10px;
+/*    background-color: #FFD7C1;*/
+    background: linear-gradient(rgba(255, 255, 255, 0.5),
+                                rgba(255, 255, 255, 0.5)), 
+                                url(../images/bgvalley.png) no-repeat;
+    background-color: #F29921;
+    background-repeat: no-repeat;
+    background-position: center;
+/*    background-attachment: scroll;*/
+    background-size: 100% 100%;
+    margin: 10% auto;
+    min-width: 500px;
+    min-height: 200px;
+    max-width: 400px;
+    max-height: 1200px;
+    padding: 0 0 0 20px;
+    
+    box-shadow: 10px 10px 10px grey;
 }
+
 
 /* Register Page 
 -------------------*/
-.registerPage
+
+#registerDiv
 {
     border-style: solid;
     border-width: 5px;
     border-color: #072083;
     border-radius: 10px;
+/*    background-color: #FFD7C1;*/
     margin: 10% 20%;
+        background: linear-gradient(rgba(255, 255, 255, 0.5),
+                                rgba(255, 255, 255, 0.5)), 
+                                url(../images/bgvalley.png) no-repeat;
+    background-color: #F29921;
+    background-repeat: no-repeat;
+    background-position: center;
+/*    background-attachment: fixed;*/
+    background-size: 100% 100%;
+    margin: 10% auto;
+    min-width: 450px;
+    min-height: 285px;
+    max-width: 400px;
+    max-height: 1200px;
+    padding: 0 0 0 20px;
+    
+    box-shadow: 10px 10px 10px grey;
 }
 
-#registerDiv
+/* Contact Control
+-------------------*/
+
+#contactControlDiv
 {
+    border-style: solid;
+    border-width: 5px;
+    border-color: #072083;
+    border-radius: 10px;
     background-color: #FFD7C1;
-    margin: auto 10% 5px 10%;
+    margin: 10% 20%; 
+}
+
+#contactInfoDiv
+{
+    border-style: solid;
+    border-width: 5px;
+    border-color: #072083;
+    border-radius: 10px;
+    background-color: #FFD7C1;
+    margin: 10% 20%; 
+}
+
+#addContactDiv
+{
+    border-style: solid;
+    border-width: 5px;
+    border-color: #072083;
+    border-radius: 10px;
+    background-color: #FFD7C1;
+    margin: 10% 20%;  
+}
+
+#editContactDiv
+{
+    border-style: solid;
+    border-width: 5px;
+    border-color: #072083;
+    border-radius: 10px;
+    background-color: #FFD7C1;
+    margin: 10% 20%;  
 }
