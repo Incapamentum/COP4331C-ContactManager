@@ -436,6 +436,7 @@ function submitContact()
 				document.getElementById("contactAddResult").innerHTML = "Contact edited successfully";
 				var resultCellID = conactID + " " + ((row+1)*4);
 				document.getElementById(resultCellID).innerHTML = fName + " " + lName;
+				hideOrShow("editContactDiv", false);
 				console.log("test3");
 
 			}
@@ -504,7 +505,7 @@ function fetchContact(idString)
 				document.getElementById("contactID").innerHTML = jsonObject.contactID;
 				document.getElementById("row"),innerHTML = row;
 				hideOrShow("contactID", false);
-				hideOrShow("editContactDiv", false);
+				hideOrShow("editContactDiv", true);
 			}
 		}
 		xhr.send(jsonPayload);
