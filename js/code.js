@@ -468,7 +468,7 @@ function editContact()
 	document.getElementById("editedLastName").readOnly = false;
 	document.getElementById("editedPhoneNumber").readOnly = false;
 	document.getElementById("editedEmail").readOnly = false;
-	document.getElementById("address").readOnly = true;
+	document.getElementById("address").readOnly = false;
 	document.getElementById("editedPowerLevel").readOnly = false;
 }
 
