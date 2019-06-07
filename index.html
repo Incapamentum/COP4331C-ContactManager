@@ -7,8 +7,9 @@
 	<script type"text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/3.1.2/rollups/aes.js"></script>
 	<script type="text/javascript" src="js/code.js"></script>
 	<link rel="stylesheet" href="css/styles.css">
+	<link rel="icon" type="image/png" href="images/favicon.png">
 </head>
-    
+
 <body>
 	<!-- Header -->
     <header>
@@ -17,46 +18,69 @@
             <h1>Team Six Star Management</h1>
         </div>
     </header>
- 
+
+    <div class="loginPage">
+        <h2 id="title">Scouter Contacts</h2>
+        <!--Login-->
+		<!--
+        <div id="loginDiv">
+            <span id="login-title">LOG IN</span><br>
+            <label for="loginUsername">Username</label>
+            <input type="text" id="loginUsername"><br>
+            <label for="loginPassword">Password</label>
+            <input type="password" id="loginPassword"><br>
+            <button type="button" id="loginButton" class="buttons" onclick="doLogin();">Log In</button>
+            <button type="button" id="registerButton" class="buttons" onclick="displayRegister();">Register</button>
+            <span id="loginResult"></span>
+        </div>
+		-->
+    </div>
+
+
     <!-- Main body -->
     <main>
         <!--Login-->
+
             <div id="loginDiv">
-                <h2 id="title">Scouter Login</h2>
-                <span id="login-title">LOG IN</span><br>
-                <label for="loginUsername">Username</label>
-                <input type="text" id="loginUsername"><br>
-                <label for="loginPassword">Password</label>
-                <input type="password" id="loginPassword"><br>
-                <div class="buttonLayout">
-                    <button type="button" id="loginButton" class="buttons" onclick="doLogin();">Log In</button>
-                    <button type="button" id="registerButton" class="buttons" onclick="displayRegister();">Register</button>
-                    <span id="loginResult"></span>
-                </div>
+                <h2 id="title">Scouter Login</h2><br>
+<!--                <span id="login-title">LOG IN</span><br>-->
+				<form id="loginDivForm">
+	                <label for="loginUsername">Username</label>
+	                <input type="text" id="loginUsername"><br>
+	                <label for="loginPassword">Password</label>
+	                <input type="password" id="loginPassword"><br>
+	                <div class="buttonLayout">
+	                    <button type="button" id="loginButton" class="buttons" onclick="doLogin();">Log In</button>
+	                    <button type="button" id="registerButton" class="buttons" onclick="displayRegister();">Register</button>
+	                    <span id="loginResult"></span>
+	                </div>
+				</form>
             </div>
-        
+
 		<!--Register new user-->
         <div id="registerDiv" style="display:none; visibility:hidden;">
             <h2 id="title">Register As New Scout</h2>
-            <span id="register-title">REGISTER NEW USER</span><br>
-            <label for="registerUsername">New Username</label>
-            <input type="text" id="registerUsername"><br>
-            <label for="registerPassword">New Password</label>
-            <input type="password" id="registerPassword"><br>
-            <label for="registerPasswordConfirm">Confirm Password</label>
-            <input type="password" id="registerPasswordConfirm"><br>
-            <span id="registerResult"></span>
-            <label for="registerEmail">Email</label>
-            <input type="email" id="registerEmail"><br>
-            <label for="registerPhoneNumber">Phone Number</label>
-            <input type="tel" id="registerPhoneNumber"><br>
-            <div class="buttonLayout">
-                <button type="button" id="createNewUserButton" class="buttons" onclick="doRegister();">Create Account</button>
-                <button type="button" id="cancelRegisterButton" class="buttons" onclick="hideRegister();">Cancel</button>
-            </div>
+<!--            <span id="register-title">REGISTER NEW USER</span><br>-->
+			<form id="regsiterDivForm">
+	            <label for="registerUsername">New Username</label>
+	            <input type="text" id="registerUsername"><br>
+	            <label for="registerPassword">New Password</label>
+	            <input type="password" id="registerPassword"><br>
+	            <label for="registerPasswordConfirm">Confirm Password</label>
+	            <input type="password" id="registerPasswordConfirm"><br>
+	            <span id="registerResult"></span>
+	            <label for="registerEmail">Email</label>
+	            <input type="email" id="registerEmail"><br>
+	            <label for="registerPhoneNumber">Phone Number</label>
+	            <input type="tel" id="registerPhoneNumber"><br>
+	            <div class="buttonLayout">
+	                <button type="button" id="createNewUserButton" class="buttons" onclick="doRegister();">Create Account</button>
+	                <button type="button" id="cancelRegisterButton" class="buttons" onclick="hideRegister();">Cancel</button>
+	            </div>
+			</form>
         </div>
-     
-		<!--Logged in control panel (includes search, add, logout buttons)-->
+
+<!--		Logged in control panel (includes search, add, logout buttons)-->
 		<div id="contactControlDiv" style="display:none; visibility:hidden;">
 <!--        <div id="contactControlDiv">-->
                 <h2 id="title">Scouter Database</h2>
@@ -70,7 +94,7 @@
                 <table id="searchResultTable">
                 </table>
 		</div>
-	    
+
 		<!--Selected contact information (includes buttons for edit and delete)-->
 		<div id="contactInfoDiv" style="display:none; visibility:hidden;">
 <!--        <div id="contactInfoDiv">-->
@@ -87,61 +111,65 @@
 			<span id="selectedPhoneNumber"></span><br>
 			<label for="selectedPowerLevel">Power Level</label>
 			<span id="selectedPowerLevel"></span><br>
-            <div class="buttonLayout">
-                <button type="button" id="deleteContactButton" class="buttons" onclick="deleteContact();">Delete</button>
-                <button type="button" id="editContactButton" class="buttons" onclick="showEditContact();">Edit</button>
-            </div>
+			<button type="button" id="deleteContactButton" class="buttons" onclick="deleteContact();">Delete</button>
+			<button type="button" id="editContactButton" class="buttons" onclick="showEditContact();">Edit</button>
 		</div>
-	    
+
 		<!--Add contact (includes buttons for adding and cancelling new contact)-->
 		<div id="addContactDiv" style="display:none; visibility:hidden;">
 <!--        <div id="addContactDiv">-->
             <h2 id="title">Add Contact</h2>
-			<span id="new-contact-title"> ADD NEW CONTACT</span><br>
-			<label for="newFirstName">First Name </label>
-			<input type="text" id="newFirstName"><br>
-			<label for="newLastName">Last Name </label>
-			<input type="text" id="newLastName"><br>
-			<label for="newEmail">Email </label>
-			<input type="email" id="newEmail"><br>
-			<label for="newAddress">Address </label>
-			<input type="text" id="newAddress"><br>
-			<label for="newPhoneNumber">Phone Number </label>
-			<input type="tel" id="newPhoneNumber"><br>
-			<label for="newPowerLevel">Power Level </label>
-			<input type="number" id="newPowerLevel"><br>
-            <div class="buttonLayout">
-                <button type="button" id="enterNewContactButton" class="buttons" onclick="addContact();">Add</button>
-                <button type="button" id="cancelNewContactButton" class="buttons" onclick="cancelAddContact();">Cancel</button>
-            </div>
+			<form id="addContactForm">
+				<span id="new-contact-title"> ADD NEW CONTACT</span><br>
+				<label for="newFirstName">First Name </label>
+				<input type="text" id="newFirstName"><br>
+				<label for="newLastName">Last Name </label>
+				<input type="text" id="newLastName"><br>
+				<label for="newEmail">Email </label>
+				<input type="email" id="newEmail"><br>
+				<label for="newAddress">Address </label>
+				<input type="text" id="newAddress"><br>
+				<label for="newPhoneNumber">Phone Number </label>
+				<input type="tel" id="newPhoneNumber"><br>
+				<label for="newPowerLevel">Power Level </label>
+				<input type="number" id="newPowerLevel"><br>
+				<button type="button" id="enterNewContactButton" class="buttons" onclick="addContact();">Add</button>
+				<button type="button" id="cancelNewContactButton" class="buttons" onclick="cancelAddContact();">Cancel</button>
+			</form>
 		</div>
-	    
+
 		<!--Edit contact allows changes to existing contact (includes buttons for confirming and cancelling changes)-->
 		<div id="editContactDiv" style="display:none; visibility:hidden;">
 <!--        <div id="editContactDiv">-->
             <h2 id="title">Edit Contact</h2>
-			<span id="new-contact-title">EDIT CONTACT</span><br>
-			<label for="editedFirstName">First Name</label>
-			<input type="text" id="editedFirstName"><br>
-			<label for="editedLastName">Last Name</label>
-			<input type="text" id="editedLastName"><br>
-			<label for="editedEmail">Email</label>
-			<input type="email" id="editedEmail"><br>
-			<label for="editedPhoneNumber">Phone Number</label>
-			<input type="tel" id="editedPhoneNumber"><br>
-			<label for="editedPowerLevel">Power Level</label>
-			<input type="number" id="editedPowerLevel"><br>
-            <div class="buttonLayout">
-                <button type="button" id="enterEditContactButton" class="buttons" onclick="editContact();">Confirm</button>
-                <button type="button" id="cancelEditContactButton" class="buttons" onclick="cancelEditContact();">Cancel</button>
-            </div>
+			<form id="editContactDivForm">
+				<span id="new-contact-title">EDIT CONTACT</span><br>
+				<label for="editedFirstName">First Name</label>
+				<input type="text" id="editedFirstName"><br>
+				<label for="editedLastName">Last Name</label>
+				<input type="text" id="editedLastName"><br>
+				<label for="editedEmail">Email</label>
+				<input type="email" id="editedEmail"><br>
+				<label for="address">Address</label>
+				<input type="text" id="address"><br>
+				<label for="editedPhoneNumber">Phone Number</label>
+				<input type="tel" id="editedPhoneNumber"><br>
+				<label for="editedPowerLevel">Power Level</label>
+				<input type="number" id="editedPowerLevel"><br>
+				<span id="contactID" style="display:none; visibility:hidden;"></span>
+				<span id="row" style="display:none; visibility:hidden;"></span>
+				<button type="button" id="enterEditContactButton" class="buttons" onclick="editContact();">Edit</button>
+				<button type="button" id="submitContactBut" class="buttons" onclick="submitContact();">Submit</button>
+				<button type="button" id="cancelEditContactButton" class="buttons" onclick="cancelEditContact();">Cancel</button>
+				<span id="submitError"></span>
+			</form>
 		</div>
 	</main>
 
 	<!-- Footer -->
 	<footer>
 		<div class="footBanner">
-			<p> Copy Right &copy; 2019 TeamSixStar</p>
+			<p> Copyright &copy; 2019 TeamSixStar</p>
 		</div>
 	</footer>
 </body>

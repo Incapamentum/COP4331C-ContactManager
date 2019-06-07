@@ -4,6 +4,7 @@ var extension = "php";
 
 var userId = 0;
 var contactID = 0;
+var cellID = -1;
 
 function doLogin()
 {
@@ -41,6 +42,9 @@ function doLogin()
 		document.getElementById("loginUsername").value = "";
 		document.getElementById("loginPassword").value = "";
 
+		document.getElementById("contactSearch").value = "";
+		searchContact();
+
 		hideOrShow( "contactControlDiv", true);
 		hideOrShow( "loginDiv", false);
 	}
@@ -48,7 +52,6 @@ function doLogin()
 	{
 		document.getElementById("loginResult").innerHTML = err.message;
 	}
-
 }
 
 function doLogout()
@@ -56,6 +59,7 @@ function doLogout()
 	userId = 0;
 	hideOrShow( "contactControlDiv", false);
 	hideOrShow( "loginDiv", true);
+	hideOrShow("addContactDiv", false);
 
 	// Reset search results to blank upon logout
 	var searchResultTable = document.getElementById("searchResultTable");
@@ -70,7 +74,7 @@ function doLogout()
 function hideOrShow( elementId, showState )
 {
 	var vis = "visible";
-	var dis = "block";
+	var dis = "inline-block";
 	if( !showState )
 	{
 		vis = "hidden";
@@ -110,7 +114,7 @@ function doRegister()
 		return;
 	}
 
-	if (login.length < 2 || password.indexOf(' ') >= 0 || password.indexOf('\t') >= 0)
+	if (login.length < 2 || login.indexOf(' ') >= 0 || login.indexOf('\t') >= 0)
 	{
 		document.getElementById("registerResult").innerHTML = "User name cannot have spaces<br>";
 		return;
@@ -222,24 +226,24 @@ function searchContact()
 					deleteBut.class = "button";
 					deleteBut.setAttribute("onclick", "deleteContact(this.id);");
 					deleteBut.innerHTML = "Delete";
-
+					/*
 					var editBut = document.createElement("button");
 					editBut.type = "button";
 					editBut.id = id + " " + ((i+1)*2);
 					editBut.class = "button";
 					editBut.setAttribute("onclick", "editContact(this.id);");
 					editBut.innerHTML = "Edit";
-
+					*/
 					var details = document.createElement("button");
 					details.type = "button";
-					details.id = id + " " + ((i+1)*3);
+					details.id = id + " " + ((i+1)*2);
 					details.class = "button";
 					details.setAttribute("onclick", "fetchContact(this.id);");
 					details.innerHTML = "Details";
 
 					var resultCell = document.createElement("td");
 
-					resultCell.id = id + " " + ((i+1)*4);
+					resultCell.id = id + " " + ((i+1)*2) + "b";
 					//resultCell.onclick = "document.location.href='#child;";
 
 					//var clickableResult = document.createElement("a");
@@ -249,12 +253,13 @@ function searchContact()
 
 					//clickableResult.appendChild(resultText);
 					//resultCell.appendChild(resultText);
+
 					resultCell.innerHTML = firstName + " " + lastName;
 
 					//resultCell.innerHTML = results[0] + " " + results[1];
 					resultRow.appendChild(resultCell);
 					resultRow.appendChild(details);
-					resultRow.appendChild(editBut);
+					//resultRow.appendChild(editBut);
 					resultRow.appendChild(deleteBut);
 					searchResultTable.appendChild(resultRow);
 				}
@@ -279,6 +284,10 @@ function displayRegister()
 // The following function hides the register div
 function hideRegister()
 {
+	document.getElementById("registerUsername").value = "";
+	document.getElementById("registerPassword").value = "";
+	document.getElementById("registerEmail").value = "";
+	document.getElementById("registerPhoneNumber").value = "";
 	hideOrShow("registerDiv", false);
 	hideOrShow("loginDiv", true);
 }
@@ -306,6 +315,8 @@ function addContact()
 			if (this.readyState == 4 && this.status == 200)
 			{
 				document.getElementById("contactAddResult").innerHTML = "Contact has been added";
+				document.getElementById("contactSearch").value = "";
+				searchContact();
 			}
 		};
 		xhr.send(jsonPayload);
@@ -379,6 +390,13 @@ function deleteContact(idString)
 			{
 				document.getElementById("contactAddResult").innerHTML = "Contact deleted successfully";
 				document.getElementById("searchResultTable").deleteRow(row);
+				document.getElementById("editedFirstName").value = "";
+				document.getElementById("editedLastName").value = "";
+				document.getElementById("editedPhoneNumber").value = "";
+				document.getElementById("editedEmail").value = "";
+				document.getElementById("address").value = "";
+				document.getElementById("editedPowerLevel").value = "";
+				hideOrShow("editContactDiv", false);
 			}
 		}
 		xhr.send(jsonPayload);
@@ -397,16 +415,23 @@ function delayHide()
 	document.getElementById("contactAddResult").innerHTML = "";
 }
 
-function editContact(idString)
+function submitContact()
 {
-	// TODO
-
 	// Extracting conactID from input string
-	var idArray = idString.split(" ");
-	contactID = idArray[0];
-	var row = (idArray[1] / 2) - 1;
 
-	var jsonPayload = '{"contactID" : "' + contactID + '"}';
+	//contactID = document.getElementById("contactID").innerHTML;
+	//var row = document.getElementById("row").innerHTML;
+
+	//contactID = document.getElementById("contactID").innerHTML;
+	var fName = document.getElementById("editedFirstName").value;
+	var lName = document.getElementById("editedLastName").value;
+	var phoneNum = document.getElementById("editedPhoneNumber").value;
+	var newEmail = document.getElementById("editedEmail").value;
+	var newAddress = document.getElementById("address").value;
+	var newPowerlvl = document.getElementById("editedPowerLevel").value;
+
+	var jsonPayload = '{"contactID" : "' + contactID + '", "newFName" : "' + fName + '", "newLName" : "' + lName + '", "newPhoneNum" : "' + phoneNum + '", "newEmail" : "' + newEmail + '", "newAddress" : "' + newAddress + '", "newPowerlvl" : ' + newPowerlvl + '}';
+
 	var url = urlBase + '/LAMPAPI/EditContact.' + extension;
 	var xhr = new XMLHttpRequest();
 
@@ -420,7 +445,85 @@ function editContact(idString)
 			if (this.readyState == 4 && this.status == 200)
 			{
 				document.getElementById("contactAddResult").innerHTML = "Contact edited successfully";
+				//var resultCellID = contactID + " " + ((row+1)*4);
+				document.getElementById(cellID).innerHTML = fName + " " + lName;
+				hideOrShow("editContactDiv", false);
+			}
+		}
+		xhr.send(jsonPayload);
+	}
+	catch(err)
+	{
+		document.getElementById("submitError").innerHTML = err.message;
+	}
+}
 
+function editContact()
+{
+	document.getElementById("editedFirstName").value = document.getElementById("editedFirstName").placeholder;
+	document.getElementById("editedLastName").value = document.getElementById("editedLastName").placeholder;
+	document.getElementById("editedPhoneNumber").value = document.getElementById("editedPhoneNumber").placeholder;
+	document.getElementById("editedEmail").value = document.getElementById("editedEmail").placeholder;
+	document.getElementById("address").value = document.getElementById("address").placeholder;
+	document.getElementById("editedPowerLevel").value = document.getElementById("editedPowerLevel").placeholder;
+
+	document.getElementById("editedFirstName").readOnly = false;
+	document.getElementById("editedLastName").readOnly = false;
+	document.getElementById("editedPhoneNumber").readOnly = false;
+	document.getElementById("editedEmail").readOnly = false;
+	document.getElementById("address").readOnly = false;
+	document.getElementById("editedPowerLevel").readOnly = false;
+}
+
+function fetchContact(idString)
+{
+	// Extracting conactID from input string
+
+	cellID = idString + "b";
+
+	var idArray = idString.split(" ");
+	contactID = idArray[0];
+	var row = (idArray[1] / 3) - 1;
+
+	var jsonPayload = '{"contactID" : "' + contactID + '"}';
+	var url = urlBase + '/LAMPAPI/FetchContact.' + extension;
+	var xhr = new XMLHttpRequest();
+
+	xhr.open("POST", url, true);
+	xhr.setRequestHeader("Content-type", "application/json; charset=UTF-8");
+
+	try
+	{
+		xhr.onreadystatechange = function()
+		{
+			if (this.readyState == 4 && this.status == 200)
+			{
+				document.getElementById("editedFirstName").value = "";
+				document.getElementById("editedLastName").value = "";
+				document.getElementById("editedPhoneNumber").value = "";
+				document.getElementById("editedEmail").value = "";
+				document.getElementById("address").value = "";
+				document.getElementById("editedPowerLevel").value = "";
+				//document.getElementById("contactAddResult").innerHTML = "Contact edited successfully";
+				var jsonObject = JSON.parse( xhr.responseText );
+				document.getElementById("editedFirstName").placeholder = jsonObject.fName;
+				document.getElementById("editedFirstName").readOnly = true;
+				document.getElementById("editedLastName").placeholder = jsonObject.lName;
+				document.getElementById("editedLastName").readOnly = true;
+				document.getElementById("editedPhoneNumber").placeholder = jsonObject.phoneNum;
+				document.getElementById("editedPhoneNumber").readOnly = true;
+				document.getElementById("editedEmail").placeholder = jsonObject.email;
+				document.getElementById("editedEmail").readOnly = true;
+				document.getElementById("address").placeholder = jsonObject.address;
+				document.getElementById("address").readOnly = true;
+				document.getElementById("editedPowerLevel").placeholder = jsonObject.powerlvl;
+				document.getElementById("editedPowerLevel").readOnly = true;
+				//document.getElementById("contactID").innerHTML = contactID;
+				//document.getElementById("row"),innerHTML = row;
+				//document.getElementById("resultCellID").innerHTML = idString;
+				//hideOrShow("resultCellID", false);
+				hideOrShow("contactID", false);
+				hideOrShow("editContactDiv", true);
 			}
 		}
 		xhr.send(jsonPayload);
@@ -431,8 +534,13 @@ function editContact(idString)
 	}
 }
 
-function fetchContact(idString)
+function cancelEditContact()
 {
-	// Extracting conactID from input string
-	var idArray = idString.split(" ");
+	document.getElementById("editedFirstName").value = "";
+	document.getElementById("editedLastName").value = "";
+	document.getElementById("editedPhoneNumber").value = "";
+	document.getElementById("editedEmail").value = "";
+	document.getElementById("address").value = "";
+	document.getElementById("editedPowerLevel").value = "";
+	hideOrShow("editContactDiv", false);
 }
