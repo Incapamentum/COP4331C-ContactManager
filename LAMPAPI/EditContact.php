@@ -13,7 +13,7 @@
 	//  SENT JSON
 	// 	{
 	//		"contactID"		: ""
-	//	}	
+	//	}
 
 	// Getting info from incomming JSON
 	$inData = getRequestInfo();
@@ -44,16 +44,16 @@
 				  address = '" . $newAddress . "',
 				  phoneNumber = '" . $newPhoneNum . "',
 				   email = '" . $newEmail . "',
-				    powerLevel = '" . $newPowerlvl . "' WHERE id = '" . $contactID ."'";			
-		if( $result = $conn->query($sql) != TRUE )								
+				    powerLevel = '" . $newPowerlvl . "' WHERE id = '" . $contactID ."'";
+		if( $result = $conn->query($sql) != TRUE )
 		{
-			returnWithError( $conn->error );									
+			returnWithError( $conn->error );
 		}
-		$conn->close();															
+		$conn->close();
 	}
 
-	returnWithInfo($contactID);													
-	}
+	returnWithInfo($contactID);
+
 
 	// The following function decodes the incoming JSON
 	function getRequestInfo()
@@ -89,4 +89,3 @@
 	}
 
 ?>
-

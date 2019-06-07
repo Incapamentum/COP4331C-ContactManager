@@ -493,6 +493,12 @@ function fetchContact(idString)
 		{
 			if (this.readyState == 4 && this.status == 200)
 			{
+				document.getElementById("editedFirstName").value = "";
+				document.getElementById("editedLastName").value = "";
+				document.getElementById("editedPhoneNumber").value = "";
+				document.getElementById("editedEmail").value = "";
+				document.getElementById("address").value = "";
+				document.getElementById("editedPowerLevel").value = "";
 				//document.getElementById("contactAddResult").innerHTML = "Contact edited successfully";
 				var jsonObject = JSON.parse( xhr.responseText );
 				document.getElementById("editedFirstName").placeholder = jsonObject.fName;
