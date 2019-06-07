@@ -438,7 +438,7 @@ function submitContact()
 			if (this.readyState == 4 && this.status == 200)
 			{
 				document.getElementById("contactAddResult").innerHTML = "Contact edited successfully";
-				var resultCellID = conactID + " " + ((row+1)*4);
+				var resultCellID = contactID + " " + ((row+1)*4);
 				document.getElementById(resultCellID).innerHTML = fName + " " + lName;
 				hideOrShow("editContactDiv", false);
 				console.log("test3");
