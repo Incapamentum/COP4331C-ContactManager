@@ -412,7 +412,6 @@ function submitContact()
 
 	contactID = document.getElementById("contactID").innerHTML;
 	var row = document.getElementById("row").innerHTML;
-	console.log("test1");
 
 	//contactID = document.getElementById("contactID").innerHTML;
 	var fName = document.getElementById("editedFirstName").value;
@@ -423,7 +422,6 @@ function submitContact()
 	var newPowerlvl = document.getElementById("editedPowerLevel").value;
 
 	var jsonPayload = '{"contactID" : "' + contactID + '", "newFName" : "' + fName + '", "newLName" : "' + lName + '", "newPhoneNum" : "' + phoneNum + '", "newEmail" : "' + newEmail + '", "newAddress" : "' + newAddress + '", "newPowerlvl" : ' + newPowerlvl + '}';
-	console.log("test2");
 
 	var url = urlBase + '/LAMPAPI/EditContact.' + extension;
 	var xhr = new XMLHttpRequest();
@@ -441,8 +439,6 @@ function submitContact()
 				var resultCellID = contactID + " " + ((row+1)*4);
 				document.getElementById(resultCellID).innerHTML = fName + " " + lName;
 				hideOrShow("editContactDiv", false);
-				console.log("test3");
-
 			}
 		}
 		xhr.send(jsonPayload);
@@ -450,9 +446,7 @@ function submitContact()
 	catch(err)
 	{
 		document.getElementById("submitError").innerHTML = err.message;
-		console.log("test4");
 	}
-	console.log("test5");
 }
 
 function editContact()
@@ -513,7 +507,7 @@ function fetchContact(idString)
 				document.getElementById("address").readOnly = true;
 				document.getElementById("editedPowerLevel").placeholder = jsonObject.powerlvl;
 				document.getElementById("editedPowerLevel").readOnly = true;
-				document.getElementById("contactID").innerHTML = jsonObject.contactID;
+				document.getElementById("contactID").innerHTML = contactID;
 				document.getElementById("row"),innerHTML = row;
 				hideOrShow("contactID", false);
 				hideOrShow("editContactDiv", true);
