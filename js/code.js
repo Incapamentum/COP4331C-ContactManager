@@ -4,6 +4,7 @@ var extension = "php";
 
 var userId = 0;
 var contactID = 0;
+var cellID = -1;
 
 function doLogin()
 {
@@ -235,7 +236,7 @@ function searchContact()
 					*/
 					var details = document.createElement("button");
 					details.type = "button";
-					details.id = id + " " + ((i+1)*3);
+					details.id = id + " " + ((i+1)*2);
 					details.class = "button";
 					details.setAttribute("onclick", "fetchContact(this.id);");
 					details.innerHTML = "Details";
@@ -436,8 +437,8 @@ function submitContact()
 			if (this.readyState == 4 && this.status == 200)
 			{
 				document.getElementById("contactAddResult").innerHTML = "Contact edited successfully";
-				var resultCellID = contactID + " " + ((row+1)*4);
-				document.getElementById(resultCellID).innerHTML = fName + " " + lName;
+				//var resultCellID = contactID + " " + ((row+1)*4);
+				document.getElementById(cellID).innerHTML = fName + " " + lName;
 				hideOrShow("editContactDiv", false);
 			}
 		}
@@ -469,6 +470,8 @@ function editContact()
 function fetchContact(idString)
 {
 	// Extracting conactID from input string
+
+	cellID = idString;
 
 	var idArray = idString.split(" ");
 	contactID = idArray[0];
@@ -507,8 +510,10 @@ function fetchContact(idString)
 				document.getElementById("address").readOnly = true;
 				document.getElementById("editedPowerLevel").placeholder = jsonObject.powerlvl;
 				document.getElementById("editedPowerLevel").readOnly = true;
-				document.getElementById("contactID").innerHTML = contactID;
-				document.getElementById("row"),innerHTML = row;
+				//document.getElementById("contactID").innerHTML = contactID;
+				//document.getElementById("row"),innerHTML = row;
+				//document.getElementById("resultCellID").innerHTML = idString;
+				//hideOrShow("resultCellID", false);
 				hideOrShow("contactID", false);
 				hideOrShow("editContactDiv", true);
 			}
