@@ -74,7 +74,7 @@ function doLogout()
 function hideOrShow( elementId, showState )
 {
 	var vis = "visible";
-	var dis = "block";
+	var dis = "inline-block";
 	if( !showState )
 	{
 		vis = "hidden";
@@ -389,6 +389,13 @@ function deleteContact(idString)
 			{
 				document.getElementById("contactAddResult").innerHTML = "Contact deleted successfully";
 				document.getElementById("searchResultTable").deleteRow(row);
+				document.getElementById("editedFirstName").value = "";
+				document.getElementById("editedLastName").value = "";
+				document.getElementById("editedPhoneNumber").value = "";
+				document.getElementById("editedEmail").value = "";
+				document.getElementById("address").value = "";
+				document.getElementById("editedPowerLevel").value = "";
+				hideOrShow("editContactDiv", false);
 			}
 		}
 		xhr.send(jsonPayload);
@@ -422,7 +429,7 @@ function submitContact()
 	var newAddress = document.getElementById("address").value;
 	var newPowerlvl = document.getElementById("editedPowerLevel").value;
 
-	var jsonPayload = '{"contactID" : "' + contactID + '", "newFName" : "' + fName + '", "newLName" : "' + lName + '", "newPhoneNum" : "' + phoneNum + '", "newEmail" : "' + newEmail + '", "newAddress" : "' + newAddress + '", "newPowerlvl" : ' + newPowerlvl + '}';
+	var jsonPayload = '{"contactID" : "' + contactID + '", "newFName" : "' + fName + '", "newLName" : "' + lName + '", "newPhoneNum" : "' + phoneNum + '", "newEmail" : "' + newEmail + '", "newAddress" : "' + newAddress + '", "newPowerlvl" : ' + newPowerlvl + '"}';
 
 	var url = urlBase + '/LAMPAPI/EditContact.' + extension;
 	var xhr = new XMLHttpRequest();
