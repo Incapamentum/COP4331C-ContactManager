@@ -243,7 +243,7 @@ function searchContact()
 
 					var resultCell = document.createElement("td");
 
-					resultCell.id = id + " " + ((i+1)*2) + "b";
+					resultCell.id = id + " " + ((i+1)*4);
 					//resultCell.onclick = "document.location.href='#child;";
 
 					//var clickableResult = document.createElement("a");
@@ -471,7 +471,7 @@ function fetchContact(idString)
 {
 	// Extracting conactID from input string
 
-	cellID = idString + "b";
+	cellID = idString;
 
 	var idArray = idString.split(" ");
 	contactID = idArray[0];
