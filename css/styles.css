@@ -14,11 +14,12 @@ body
 {
     background: linear-gradient(rgba(255, 255, 255, 0.5),
                                 rgba(255, 255, 255, 0.5)), 
+                                rgba(242, 153, 33, 0.5)
                                 url(../images/bggoku.jpg) no-repeat;
-    background-color: #F29921;
     background-repeat: no-repeat;
-    background-position: left;
+    background-position: bottom left;
     background-attachment: fixed;
+    background-size: 300px 500px;
 /*    background-size: cover;*/
     font-family: 'Open Sans', sans-serif;
     margin: 0;
@@ -135,11 +136,11 @@ input
 
 header
 {
-    background: rgba(248, 91, 26, 0.6);
+    background: rgba(248, 91, 26, 0.5);
     text-align: center;
     font-family: 'Saiyan Font', Arial, sans-serif;
-    color: #072083;
-    font-size: 25px;
+    color: linear-gradient(rgba(7, 32, 131, 0.2));
+    font-size: 20px;
     
 
 /*
@@ -226,7 +227,7 @@ footer
     border-radius: 10px;
 /*    background-color: #FFD7C1;*/
     margin: 10% 20%;
-        background: linear-gradient(rgba(255, 255, 255, 0.5),
+    background: linear-gradient(rgba(255, 255, 255, 0.5),
                                 rgba(255, 255, 255, 0.5)), 
                                 url(../images/bgvalley.png) no-repeat;
     background-color: #F29921;
@@ -253,8 +254,24 @@ footer
     border-width: 5px;
     border-color: #072083;
     border-radius: 10px;
-    background-color: #FFD7C1;
-    margin: 10% 20%; 
+/*    background-color: #FFD7C1;*/
+    margin: 10% 20%;
+    background: linear-gradient(rgba(255, 255, 255, 0.5),
+                                rgba(255, 255, 255, 0.5)), 
+                                url(../images/bgvalley.png) no-repeat;
+    background-color: #F29921;
+    background-repeat: no-repeat;
+    background-position: center;
+/*    background-attachment: fixed;*/
+    background-size: 100% 100%;
+    margin: 10% auto;
+    min-width: 450px;
+    min-height: 285px;
+    max-width: 400px;
+    max-height: 1200px;
+    padding: 0 0 0 20px;
+    
+    box-shadow: 10px 10px 10px grey; 
 }
 
 #contactInfoDiv
@@ -263,8 +280,24 @@ footer
     border-width: 5px;
     border-color: #072083;
     border-radius: 10px;
-    background-color: #FFD7C1;
-    margin: 10% 20%; 
+/*    background-color: #FFD7C1;*/
+    margin: 10% 20%;
+    background: linear-gradient(rgba(255, 255, 255, 0.5),
+                                rgba(255, 255, 255, 0.5)), 
+                                url(../images/bgvalley.png) no-repeat;
+    background-color: #F29921;
+    background-repeat: no-repeat;
+    background-position: center;
+/*    background-attachment: fixed;*/
+    background-size: 100% 100%;
+    margin: 10% auto;
+    min-width: 450px;
+    min-height: 285px;
+    max-width: 400px;
+    max-height: 1200px;
+    padding: 0 0 0 20px;
+    
+    box-shadow: 10px 10px 10px grey;
 }
 
 #addContactDiv
@@ -273,8 +306,24 @@ footer
     border-width: 5px;
     border-color: #072083;
     border-radius: 10px;
-    background-color: #FFD7C1;
-    margin: 10% 20%;  
+/*    background-color: #FFD7C1;*/
+    margin: 10% 20%;
+    background: linear-gradient(rgba(255, 255, 255, 0.5),
+                                rgba(255, 255, 255, 0.5)), 
+                                url(../images/bgvalley.png) no-repeat;
+    background-color: #F29921;
+    background-repeat: no-repeat;
+    background-position: center;
+/*    background-attachment: fixed;*/
+    background-size: 100% 100%;
+    margin: 10% auto;
+    min-width: 450px;
+    min-height: 285px;
+    max-width: 400px;
+    max-height: 1200px;
+    padding: 0 0 0 20px;
+    
+    box-shadow: 10px 10px 10px grey;
 }
 
 #editContactDiv
@@ -283,6 +332,27 @@ footer
     border-width: 5px;
     border-color: #072083;
     border-radius: 10px;
-    background-color: #FFD7C1;
-    margin: 10% 20%;  
+/*    background-color: #FFD7C1;*/
+    margin: 10% 20%;
+    background: linear-gradient(rgba(255, 255, 255, 0.5),
+                                rgba(255, 255, 255, 0.5)), 
+                                url(../images/bgvalley.png) no-repeat;
+    background-color: #F29921;
+    background-repeat: no-repeat;
+    background-position: center;
+/*    background-attachment: fixed;*/
+    background-size: 100% 100%;
+    margin: 10% auto;
+    min-width: 450px;
+    min-height: 285px;
+    max-width: 400px;
+    max-height: 1200px;
+    padding: 0 0 0 20px;
+    
+    box-shadow: 10px 10px 10px grey;
+}
+
+#contactSearch
+{
+    margin: auto 5px;
 }
