@@ -253,6 +253,7 @@ function searchContact()
 
 					//clickableResult.appendChild(resultText);
 					//resultCell.appendChild(resultText);
+
 					resultCell.innerHTML = firstName + " " + lastName;
 
 					//resultCell.innerHTML = results[0] + " " + results[1];
@@ -418,8 +419,8 @@ function submitContact()
 {
 	// Extracting conactID from input string
 
-	contactID = document.getElementById("contactID").innerHTML;
-	var row = document.getElementById("row").innerHTML;
+	//contactID = document.getElementById("contactID").innerHTML;
+	//var row = document.getElementById("row").innerHTML;
 
 	//contactID = document.getElementById("contactID").innerHTML;
 	var fName = document.getElementById("editedFirstName").value;
@@ -429,7 +430,7 @@ function submitContact()
 	var newAddress = document.getElementById("address").value;
 	var newPowerlvl = document.getElementById("editedPowerLevel").value;
 
-	var jsonPayload = '{"contactID" : "' + contactID + '", "newFName" : "' + fName + '", "newLName" : "' + lName + '", "newPhoneNum" : "' + phoneNum + '", "newEmail" : "' + newEmail + '", "newAddress" : "' + newAddress + '", "newPowerlvl" : ' + newPowerlvl + '"}';
+	var jsonPayload = '{"contactID" : "' + contactID + '", "newFName" : "' + fName + '", "newLName" : "' + lName + '", "newPhoneNum" : "' + phoneNum + '", "newEmail" : "' + newEmail + '", "newAddress" : "' + newAddress + '", "newPowerlvl" : ' + newPowerlvl + '}';
 
 	var url = urlBase + '/LAMPAPI/EditContact.' + extension;
 	var xhr = new XMLHttpRequest();
