@@ -74,7 +74,7 @@ function doLogout()
 function hideOrShow( elementId, showState )
 {
 	var vis = "visible";
-	var dis = "inline-block";
+	var dis = "block";
 	if( !showState )
 	{
 		vis = "hidden";
@@ -417,12 +417,6 @@ function delayHide()
 
 function submitContact()
 {
-	// Extracting conactID from input string
-
-	//contactID = document.getElementById("contactID").innerHTML;
-	//var row = document.getElementById("row").innerHTML;
-
-	//contactID = document.getElementById("contactID").innerHTML;
 	var fName = document.getElementById("editedFirstName").value;
 	var lName = document.getElementById("editedLastName").value;
 	var phoneNum = document.getElementById("editedPhoneNumber").value;
@@ -445,7 +439,6 @@ function submitContact()
 			if (this.readyState == 4 && this.status == 200)
 			{
 				document.getElementById("contactAddResult").innerHTML = "Contact edited successfully";
-				//var resultCellID = contactID + " " + ((row+1)*4);
 				document.getElementById(cellID).innerHTML = fName + " " + lName;
 				hideOrShow("editContactDiv", false);
 			}
