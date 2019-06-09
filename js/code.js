@@ -318,7 +318,8 @@ function addContact()
 	document.getElementById("newEmail").value = "";
 	document.getElementById("newPowerLevel").value = "";
 
-	hideOrShow("addContactDiv", false);
+	//hideOrShow("addContactDiv", false);
+	document.getElementById('addContactDiv').style.display = 'none';
 
 	setTimeout(hideAddContact, 1500);
 }
@@ -379,7 +380,8 @@ function deleteContact(idString)
 				document.getElementById("editedEmail").value = "";
 				document.getElementById("address").value = "";
 				document.getElementById("editedPowerLevel").value = "";
-				hideOrShow("editContactDiv", false);
+				//hideOrShow("editContactDiv", false);
+				document.getElementById('editContactDiv').style.display = 'none';
 			}
 		}
 		xhr.send(jsonPayload);
@@ -426,7 +428,8 @@ function submitContact()
 				document.getElementById("contactAddResult").innerHTML = "Contact edited successfully";
 				document.getElementById(cellID).innerHTML = fName + " " + lName;
 				boolean = false;
-				hideOrShow("editContactDiv", false);
+				//hideOrShow("editContactDiv", false);
+				document.getElementById('editContactDiv').style.display = 'none';
 			}
 		}
 		xhr.send(jsonPayload);
