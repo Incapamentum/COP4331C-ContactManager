@@ -1,4 +1,3 @@
-
 var urlBase = 'http://teamsixstar.online/ContactManager';
 var extension = "php";
 
@@ -356,14 +355,14 @@ function cancelAddContact()
 // The following function displays the add contact div
 function displayAddContact()
 {
-	hideOrShow("addContactDiv", true);
+	document.getElementById('addContactDiv').style.display = 'block';
 }
 
 // The following function hides the add contact div
 function hideAddContact()
 {
 	document.getElementById("contactAddResult").innerHTML = "";
-	hideOrShow("addContactDiv", false);
+	document.getElementById('addContactDiv').style.display = 'none';
 }
 
 function deleteContact(idString)
@@ -516,7 +515,7 @@ function fetchContact(idString)
 				//document.getElementById("resultCellID").innerHTML = idString;
 				//hideOrShow("resultCellID", false);
 				hideOrShow("contactID", false);
-				hideOrShow("editContactDiv", true);
+				document.getElementById('editContactDiv').style.display = 'block';
 			}
 		}
 		xhr.send(jsonPayload);
@@ -535,5 +534,5 @@ function cancelEditContact()
 	document.getElementById("editedEmail").value = "";
 	document.getElementById("address").value = "";
 	document.getElementById("editedPowerLevel").value = "";
-	hideOrShow("editContactDiv", false);
+	document.getElementById('editContactDiv').style.display = 'none';
 }

@@ -13,7 +13,7 @@
 	<!-- Header -->
     <header>
         <div class="headBanner">
-            <img class="banner-img sixstar" src="images/sixstar.png" alt="Team Six Star">
+            <img class="banner-img" src="images/sixstar.png" alt="Team Six Star">
             <h1>Team Six Star Management</h1>
         </div>
     </header>
@@ -21,20 +21,20 @@
     <!-- Main body -->
     <main>
         <!--Login-->
-            <div id="loginDiv">
-                <h2 id="title">Scouter Login</h2>
-                <span id="login-title">LOG IN</span><br>
-                <label for="loginUsername">Username</label>
-                <input type="text" id="loginUsername"><br>
-                <label for="loginPassword">Password</label>
-                <input type="password" id="loginPassword"><br>
-                <div class="buttonLayout">
-                    <button type="button" id="loginButton" class="buttons" onclick="doLogin();">Log In</button>
-                    <button type="button" id="registerButton" class="buttons" onclick="displayRegister();">Register</button>
-                    <span id="loginResult"></span>
-                </div>
+        <div id="loginDiv">
+            <h2 id="title">Scouter Login</h2>
+            <span id="login-title">LOG IN</span><br>
+            <label for="loginUsername">Username</label>
+            <input type="text" id="loginUsername"><br>
+            <label for="loginPassword">Password</label>
+            <input type="password" id="loginPassword"><br>
+            <div class="buttonLayout">
+                <button type="button" id="loginButton" class="buttons" onclick="doLogin();">Log In</button>
+                <button type="button" id="registerButton" class="buttons" onclick="displayRegister();">Register</button>
+                <span id="loginResult"></span>
             </div>
-        
+        </div>
+
 		<!--Register new user-->
         <div id="registerDiv" style="display:none; visibility:hidden;">
             <h2 id="title">Register As New Scout</h2>
@@ -55,10 +55,10 @@
                 <button type="button" id="cancelRegisterButton" class="buttons" onclick="hideRegister();">Cancel</button>
             </div>
         </div>
-     
+
 		<!--Logged in control panel (includes search, add, logout buttons)-->
 		<div id="contactControlDiv" style="display:none; visibility:hidden;">
-<!--        <div id="contactControlDiv">-->
+        <!-- <div id="contactControlDiv"> -->
                 <h2 id="title">Scouter Database</h2>
                 <input type="text" id="contactSearch" placeholder="Search your contacts">
                 <button type="button" id="contactSearchButton" class="buttons" onclick="searchContact();">Search</button>
@@ -72,8 +72,8 @@
 		</div>
 	    
 		<!--Selected contact information (includes buttons for edit and delete)-->
-		<div id="contactInfoDiv" style="display:none; visibility:hidden;">
-<!--        <div id="contactInfoDiv">-->
+		<!-- <div id="contactInfoDiv" style="display:none; visibility:hidden;"> -->
+       <!-- <div id="contactInfoDiv">
             <h2 id="title">Scouter Stats</h2>
 			<label for="selectedFirstName">First Name</label>
 			<span id="selectedFirstName"></span><br>
@@ -91,58 +91,60 @@
                 <button type="button" id="deleteContactButton" class="buttons" onclick="deleteContact();">Delete</button>
                 <button type="button" id="editContactButton" class="buttons" onclick="showEditContact();">Edit</button>
             </div>
-		</div>
+		</div> -->
 	    
-		<!--Add contact (includes buttons for adding and cancelling new contact)-->
-		<div id="addContactDiv" style="display:none; visibility:hidden;">
-<!--        <div id="addContactDiv">-->
-            <h2 id="title">Add Contact</h2>
-			<span id="new-contact-title"> ADD NEW CONTACT</span><br>
-			<label for="newFirstName">First Name </label>
-			<input type="text" id="newFirstName"><br>
-			<label for="newLastName">Last Name </label>
-			<input type="text" id="newLastName"><br>
-			<label for="newEmail">Email </label>
-			<input type="email" id="newEmail"><br>
-			<label for="newAddress">Address </label>
-			<input type="text" id="newAddress"><br>
-			<label for="newPhoneNumber">Phone Number </label>
-			<input type="tel" id="newPhoneNumber"><br>
-			<label for="newPowerLevel">Power Level </label>
-			<input type="number" id="newPowerLevel"><br>
-            <div class="buttonLayout">
-                <button type="button" id="enterNewContactButton" class="buttons" onclick="addContact();">Add</button>
-                <button type="button" id="cancelNewContactButton" class="buttons" onclick="cancelAddContact();">Cancel</button>
+	    <!--Add contact (includes buttons for adding and cancelling new contact)-->
+        <div id="addContactDiv" class="contactModal">
+            <div class="modal-content">
+                <h2 id="title">Add Contact</h2>
+                <span id="new-contact-title"> ADD NEW CONTACT</span><br>
+                <label for="newFirstName">First Name </label>
+                <input type="text" id="newFirstName"><br>
+                <label for="newLastName">Last Name </label>
+                <input type="text" id="newLastName"><br>
+                <label for="newEmail">Email </label>
+                <input type="email" id="newEmail"><br>
+                <label for="newAddress">Address </label>
+                <input type="text" id="newAddress"><br>
+                <label for="newPhoneNumber">Phone Number </label>
+                <input type="tel" id="newPhoneNumber"><br>
+                <label for="newPowerLevel">Power Level </label>
+                <input type="number" id="newPowerLevel"><br>
+                <div class="buttonLayout">
+                    <button type="button" id="enterNewContactButton" class="buttons" onclick="addContact();">Add</button>
+                    <button type="button" id="cancelNewContactButton" class="buttons" onclick="cancelAddContact();">Cancel</button>
+                </div>
             </div>
 		</div>
 	    
 		<!--Edit contact allows changes to existing contact (includes buttons for confirming and cancelling changes)-->
-		<div id="editContactDiv" style="display:none; visibility:hidden;">
-<!--        <div id="editContactDiv">-->
-            <h2 id="title">Edit Contact</h2>
-			<form id="editContactDivForm">
-				<span id="new-contact-title">EDIT CONTACT</span><br>
-				<label for="editedFirstName">First Name</label>
-				<input type="text" id="editedFirstName"><br>
-				<label for="editedLastName">Last Name</label>
-				<input type="text" id="editedLastName"><br>
-				<label for="editedEmail">Email</label>
-				<input type="email" id="editedEmail"><br>
-				<label for="address">Address</label>
-				<input type="text" id="address"><br>
-				<label for="editedPhoneNumber">Phone Number</label>
-				<input type="tel" id="editedPhoneNumber"><br>
-				<label for="editedPowerLevel">Power Level</label>
-				<input type="number" id="editedPowerLevel"><br>
-				<span id="contactID" style="display:none; visibility:hidden;"></span>
-				<span id="row" style="display:none; visibility:hidden;"></span>
-                <div class="buttonLayout">
-                    <button type="button" id="enterEditContactButton" class="buttons" onclick="editContact();">Edit</button>
-                    <button type="button" id="submitContactBut" class="buttons" onclick="submitContact();">Submit</button>
-                    <button type="button" id="cancelEditContactButton" class="buttons" onclick="cancelEditContact();">Cancel</button>
-                    <span id="submitError"></span>
-                </div>
-			</form>
+       <div id="editContactDiv" class="editContactModal">
+            <div class="modal-content">
+                <h2 id="title">Edit Contact</h2>
+                <form id="editContactDivForm">
+                    <span id="new-contact-title">EDIT CONTACT</span><br>
+                    <label for="editedFirstName">First Name</label>
+                    <input type="text" id="editedFirstName"><br>
+                    <label for="editedLastName">Last Name</label>
+                    <input type="text" id="editedLastName"><br>
+                    <label for="editedEmail">Email</label>
+                    <input type="email" id="editedEmail"><br>
+                    <label for="address">Address</label>
+                    <input type="text" id="address"><br>
+                    <label for="editedPhoneNumber">Phone Number</label>
+                    <input type="tel" id="editedPhoneNumber"><br>
+                    <label for="editedPowerLevel">Power Level</label>
+                    <input type="number" id="editedPowerLevel"><br>
+                    <span id="contactID" style="display:none; visibility:hidden;"></span>
+                    <span id="row" style="display:none; visibility:hidden;"></span>
+                    <div class="buttonLayout">
+                        <button type="button" id="enterEditContactButton" class="buttons" onclick="editContact();">Edit</button>
+                        <button type="button" id="submitContactBut" class="buttons" onclick="submitContact();">Submit</button>
+                        <button type="button" id="cancelEditContactButton" class="buttons" onclick="cancelEditContact();">Cancel</button>
+                        <span id="submitError"></span>
+                    </div>
+                </form>
+            </div>
 		</div>
 	</main>
 
@@ -151,6 +153,6 @@
 		<div class="footBanner">
 			<p> Copy Right &copy; 2019 TeamSixStar</p>
 		</div>
-	</footer>
+    </footer>
 </body>
 </html>
