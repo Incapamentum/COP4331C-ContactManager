@@ -5,19 +5,19 @@ var extension = "php";
 var userId = 0;
 var contactID = 0;
 var cellID = -1;
+var boolean = false;
 
 function doLogin()
 {
 	userId = 0;
-
-
+	// retrieving and hashing user password
 	var login = document.getElementById("loginUsername").value;
 	var password = document.getElementById("loginPassword").value;
-
 	var hashed = CryptoJS.MD5(password);
 
 	document.getElementById("loginResult").innerHTML = "";
 
+	// Setting up the data to be sent to the server
 	var jsonPayload = '{"login" : "' + login + '", "password" : "' + hashed + '"}';
 	var url = urlBase + '/LAMPAPI/Login.' + extension;
 
@@ -39,9 +39,9 @@ function doLogin()
 			return;
 		}
 
+		// Clearing login fields and loading contacts
 		document.getElementById("loginUsername").value = "";
 		document.getElementById("loginPassword").value = "";
-
 		document.getElementById("contactSearch").value = "";
 		searchContact();
 
@@ -67,10 +67,10 @@ function doLogout()
 	{
 		searchResultTable.removeChild(searchResultTable.firstChild);
 	}
-
+	// Clearing message to user field
 	document.getElementById("contactSearchResult").innerHTML = "";
 }
-
+// Function to hide or show divs
 function hideOrShow( elementId, showState )
 {
 	var vis = "visible";
@@ -94,32 +94,31 @@ function openRegister()
 function doRegister()
 {
 	userId = 0;
-
-
+	// Retrieving user info
 	var login = document.getElementById("registerUsername").value;
 	var password = document.getElementById("registerPassword").value;
 	var verification = document.getElementById("registerPasswordConfirm").value;
 
 	document.getElementById("registerResult").innerHTML = "";
-
+	// Checking if passwords are the same
 	if (password != verification)
 	{
 		document.getElementById("registerResult").innerHTML = "Passwords do not match<br>";
 		return;
 	}
-
+	// Chcking that password doesn't contain spaces or tabs
 	if (password.length < 5 || password.indexOf(' ') >= 0 || password.indexOf('\t') >= 0)
 	{
 		document.getElementById("registerResult").innerHTML = "Password must be at least 5 characters without spaces<br>";
 		return;
 	}
-
+	// Checking that username is at least 2 chatacters and have no spaces or tabs
 	if (login.length < 2 || login.indexOf(' ') >= 0 || login.indexOf('\t') >= 0)
 	{
 		document.getElementById("registerResult").innerHTML = "User name cannot have spaces<br>";
 		return;
 	}
-
+	// Hashing and setting up data to be sent to the server
 	var hashed = CryptoJS.MD5(password);
 	var jsonPayload = '{"login" : "' + login + '", "password" : "' + hashed + '"}';
 	var url = urlBase + '/LAMPAPI/Register.' + extension;
@@ -155,10 +154,12 @@ function doRegister()
 		var jsonObject = JSON.parse(xhr.responseText);
 
 		userId = jsonObject.id;
-
+		// Clearing register fields and hiding register div
 		document.getElementById("registerUsername").value = "";
 		document.getElementById("registerPassword").value = "";
 		document.getElementById("registerPasswordConfirm").value = "";
+		document.getElementById("registerResult").innerHTML = "";
+		document.getElementById("registerPhoneNumber").value = "";
 		hideRegister();
 
 	}
@@ -180,7 +181,7 @@ function searchContact()
 	{
 		searchResultTable.removeChild(searchResultTable.firstChild);
 	}
-
+	// Setting up data to be sent to the server
 	var jsonPayload = '{"search" : "' + srch + '", "userId" : "' + userId + '"}';
 	var url = urlBase + '/LAMPAPI/SearchContacts.' + extension;
 
@@ -195,9 +196,9 @@ function searchContact()
 			{
 				document.getElementById("contactSearchResult").innerHTML = "Contact(s) has been retrieved";
 				var jsonObject = JSON.parse( xhr.responseText );
-
 				var i;
 
+				// Contsrcting a table for results
 				var tableHeader = document.createElement("tr");
 				var nameHeader = document.createElement("th");
 				nameHeader.innerHTML = "Contact Name";
@@ -215,51 +216,35 @@ function searchContact()
 						firstName = firstName + " " + results[n];
 						n--;
 					}
+
+					// Extracting incomming data
 					var lastName = results[results.length-2];
 					var id = results[results.length-1];
 
 					var resultRow = document.createElement("tr");
-
+					// Contsructing delete button
 					var deleteBut = document.createElement("button");
 					deleteBut.type = "button";
-					deleteBut.id = id + " " + (i+1);
+					deleteBut.id = id + " " + (i+1); // Embedding contact ID and row number info in button ID
 					deleteBut.class = "button";
 					deleteBut.setAttribute("onclick", "deleteContact(this.id);");
 					deleteBut.innerHTML = "Delete";
-					/*
-					var editBut = document.createElement("button");
-					editBut.type = "button";
-					editBut.id = id + " " + ((i+1)*2);
-					editBut.class = "button";
-					editBut.setAttribute("onclick", "editContact(this.id);");
-					editBut.innerHTML = "Edit";
-					*/
+					// Contsructing details button
 					var details = document.createElement("button");
 					details.type = "button";
-					details.id = id + " " + ((i+1)*2);
+					details.id = id + " " + ((i+1)*2); // Embedding contact ID row number info in button ID
 					details.class = "button";
 					details.setAttribute("onclick", "fetchContact(this.id);");
 					details.innerHTML = "Details";
 
 					var resultCell = document.createElement("td");
-
+					// Embedding contact ID info in result cell ID
 					resultCell.id = id + " " + ((i+1)*2) + "b";
-					//resultCell.onclick = "document.location.href='#child;";
-
-					//var clickableResult = document.createElement("a");
-					//clickableResult.href = "#contactInfoDiv";
-
-					//var resultText = document.createTextNode(results[0] + " " + results[1]); // This will receive the parsed payload
-
-					//clickableResult.appendChild(resultText);
-					//resultCell.appendChild(resultText);
 
 					resultCell.innerHTML = firstName + " " + lastName;
-
-					//resultCell.innerHTML = results[0] + " " + results[1];
+					// Adding components to the row in the table
 					resultRow.appendChild(resultCell);
 					resultRow.appendChild(details);
-					//resultRow.appendChild(editBut);
 					resultRow.appendChild(deleteBut);
 					searchResultTable.appendChild(resultRow);
 				}
@@ -368,14 +353,12 @@ function hideAddContact()
 
 function deleteContact(idString)
 {
-	// Extracting conactID from input string
+	// Extracting conactID and row number from cell ID
 	var idArray = idString.split(" ");
-
 	var row = idArray[1];
-
 	contactID = idArray[0];
-	console.log("debug contactID  = " + contactID + ", row = " + row);
 
+	// Setting up the data to be sent to the server
 	var jsonPayload = '{"contactID" : "' + contactID + '"}';
 	var url = urlBase + '/LAMPAPI/DeleteContact.' + extension;
 	var xhr = new XMLHttpRequest();
@@ -388,6 +371,7 @@ function deleteContact(idString)
 		{
 			if (this.readyState == 4 && this.status == 200)
 			{
+				// Displaying success message and clearing form
 				document.getElementById("contactAddResult").innerHTML = "Contact deleted successfully";
 				document.getElementById("searchResultTable").deleteRow(row);
 				document.getElementById("editedFirstName").value = "";
@@ -405,7 +389,7 @@ function deleteContact(idString)
 	{
 		document.getElementById("contactAddResult").innerHTML = err.message;
 	}
-
+	// Hiding contact info div and setting up a timer for success message
 	hideOrShow("contactInfoDiv", false);
 	setTimeout(delayHide, 3000);
 }
@@ -417,6 +401,8 @@ function delayHide()
 
 function submitContact()
 {
+	if (boolean == false)
+		return;
 	var fName = document.getElementById("editedFirstName").value;
 	var lName = document.getElementById("editedLastName").value;
 	var phoneNum = document.getElementById("editedPhoneNumber").value;
@@ -440,6 +426,7 @@ function submitContact()
 			{
 				document.getElementById("contactAddResult").innerHTML = "Contact edited successfully";
 				document.getElementById(cellID).innerHTML = fName + " " + lName;
+				boolean = false;
 				hideOrShow("editContactDiv", false);
 			}
 		}
@@ -453,6 +440,7 @@ function submitContact()
 
 function editContact()
 {
+	boolean = true;
 	document.getElementById("editedFirstName").value = document.getElementById("editedFirstName").placeholder;
 	document.getElementById("editedLastName").value = document.getElementById("editedLastName").placeholder;
 	document.getElementById("editedPhoneNumber").value = document.getElementById("editedPhoneNumber").placeholder;
@@ -511,10 +499,6 @@ function fetchContact(idString)
 				document.getElementById("address").readOnly = true;
 				document.getElementById("editedPowerLevel").placeholder = jsonObject.powerlvl;
 				document.getElementById("editedPowerLevel").readOnly = true;
-				//document.getElementById("contactID").innerHTML = contactID;
-				//document.getElementById("row"),innerHTML = row;
-				//document.getElementById("resultCellID").innerHTML = idString;
-				//hideOrShow("resultCellID", false);
 				hideOrShow("contactID", false);
 				hideOrShow("editContactDiv", true);
 			}
@@ -529,6 +513,7 @@ function fetchContact(idString)
 
 function cancelEditContact()
 {
+	boolean = false;
 	document.getElementById("editedFirstName").value = "";
 	document.getElementById("editedLastName").value = "";
 	document.getElementById("editedPhoneNumber").value = "";
