@@ -58,7 +58,7 @@ function doLogout()
 	userId = 0;
 	hideOrShow( "contactControlDiv", false);
 	hideOrShow( "loginDiv", true);
-	hideOrShow("addContactDiv", false);
+	//hideOrShow("addContactDiv", false);
 
 	// Reset search results to blank upon logout
 	var searchResultTable = document.getElementById("searchResultTable");
@@ -247,6 +247,7 @@ function searchContact()
 					resultRow.appendChild(deleteBut);
 					searchResultTable.appendChild(resultRow);
 				}
+				document.getElementById("contactAddResult").innerHTML = "";
 			}
 		};
 		xhr.send(jsonPayload);
@@ -341,6 +342,7 @@ function cancelAddContact()
 // The following function displays the add contact div
 function displayAddContact()
 {
+
 	document.getElementById('addContactDiv').style.display = 'block';
 }
 
@@ -372,7 +374,7 @@ function deleteContact(idString)
 			if (this.readyState == 4 && this.status == 200)
 			{
 				// Displaying success message and clearing form
-				document.getElementById("contactAddResult").innerHTML = "Contact deleted successfully";
+				document.getElementById("contactAddResult").innerHTML = "<br>Contact deleted successfully<br>";
 				document.getElementById("searchResultTable").deleteRow(row);
 				document.getElementById("editedFirstName").value = "";
 				document.getElementById("editedLastName").value = "";
@@ -391,8 +393,8 @@ function deleteContact(idString)
 		document.getElementById("contactAddResult").innerHTML = err.message;
 	}
 	// Hiding contact info div and setting up a timer for success message
-	hideOrShow("contactInfoDiv", false);
-	setTimeout(delayHide, 3000);
+	//hideOrShow("contactInfoDiv", false);
+	setTimeout(delayHide, 1000);
 }
 
 function delayHide()
