@@ -4,6 +4,7 @@
 	<meta charset="utf-8">
 	<title>Team Six Star</title>
     <link href="https://fonts.googleapis.com/css?family=Caveat|Open+Sans:400,400i,700" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Capriola&display=swap" rel="stylesheet">
 	<script type"text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/3.1.2/rollups/aes.js"></script>
 	<script type="text/javascript" src="js/code.js"></script>
 	<link rel="stylesheet" href="css/styles.css">
@@ -23,7 +24,6 @@
         <!--Login-->
         <div id="loginDiv">
             <h2 id="title">Scouter Login</h2>
-            <span id="login-title">LOG IN</span><br>
             <label for="loginUsername">Username</label>
             <input type="text" id="loginUsername"><br>
             <label for="loginPassword">Password</label>
@@ -38,7 +38,6 @@
 		<!--Register new user-->
         <div id="registerDiv" style="display:none; visibility:hidden;">
             <h2 id="title">Register As New Scout</h2>
-            <span id="register-title">REGISTER NEW USER</span><br>
             <label for="registerUsername">New Username</label>
             <input type="text" id="registerUsername"><br>
             <label for="registerPassword">New Password</label>
@@ -91,14 +90,12 @@
                 <button type="button" id="deleteContactButton" class="buttons" onclick="deleteContact();">Delete</button>
                 <button type="button" id="editContactButton" class="buttons" onclick="showEditContact();">Edit</button>
             </div>
-
 		</div> -->
 
 	    <!--Add contact (includes buttons for adding and cancelling new contact)-->
         <div id="addContactDiv" class="contactModal">
             <div class="modal-content">
                 <h2 id="title">Add Contact</h2>
-                <span id="new-contact-title"> ADD NEW CONTACT</span><br>
                 <label for="newFirstName">First Name </label>
                 <input type="text" id="newFirstName"><br>
                 <label for="newLastName">Last Name </label>
@@ -111,7 +108,7 @@
                 <input type="tel" id="newPhoneNumber"><br>
                 <label for="newPowerLevel">Power Level </label>
                 <input type="number" id="newPowerLevel"><br>
-                <div class="buttonLayout">
+                <div class="modalButtonLayout">
                     <button type="button" id="enterNewContactButton" class="buttons" onclick="addContact();">Add</button>
                     <button type="button" id="cancelNewContactButton" class="buttons" onclick="cancelAddContact();">Cancel</button>
                 </div>
@@ -123,7 +120,6 @@
             <div class="modal-content">
                 <h2 id="title">Edit Contact</h2>
                 <form id="editContactDivForm">
-                    <span id="new-contact-title">EDIT CONTACT</span><br>
                     <label for="editedFirstName">First Name</label>
                     <input type="text" id="editedFirstName"><br>
                     <label for="editedLastName">Last Name</label>
@@ -138,7 +134,7 @@
                     <input type="number" id="editedPowerLevel"><br>
                     <span id="contactID" style="display:none; visibility:hidden;"></span>
                     <span id="row" style="display:none; visibility:hidden;"></span>
-                    <div class="buttonLayout">
+                    <div class="modalButtonLayout">
                         <button type="button" id="enterEditContactButton" class="buttons" onclick="editContact();">Edit</button>
                         <button type="button" id="submitContactBut" class="buttons" onclick="submitContact();">Submit</button>
                         <button type="button" id="cancelEditContactButton" class="buttons" onclick="cancelEditContact();">Cancel</button>

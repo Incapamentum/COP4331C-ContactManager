@@ -1,3 +1,4 @@
+    
 /* Global
 ------------------*/
 html
@@ -29,14 +30,28 @@ body
 @font-face
 {
     font-family: 'Saiyan Font';
-    src: url('fonts/ss-webfont.woff2') format('woff'),
+    src: url('fonts/SaiyanFont/ss-webfont.woff2') format('woff'),
          url('fonts/ss-webfont.woff') format('woff');
+}
+
+@font-face
+{
+    font-family: 'Bebas';
+    src: url('fonts/BebasNeue/bebasneue-bold-webfont.woff2') format('woff'),
+         url('fonts/bebasneue-bold-webfont.woff') format('woff');
+}
+
+@font-face
+{
+    font-family: 'Simplifica';
+    src: url('fonts/Simplifica/simplifica_typeface-webfont.woff2') format('woff'),
+         url('fonts/simplifica_typeface-webfont.woff') format('woff');
 }
 
 /* Text fields */
 [type="text"]
 {
-    border: 3px solid #072083;
+    border: 2.5px solid rgba(7, 32, 131, 0.7);
     padding: 3px;
     margin: 1% auto;
     border-radius: 5px;
@@ -44,7 +59,7 @@ body
 
 [type="password"]
 {
-    border: 3px solid #F86B1A;
+    border: 2.5px solid rgba(248, 107, 26, 0.7);
     padding: 3px;
     margin: 1% auto;
     border-radius: 5px;
@@ -52,7 +67,7 @@ body
 
 [type="email"]
 {
-    border: 3px solid #F86B1A;
+    border: 2.5px solid rgba(248, 107, 26, 0.7);
     padding: 3px;
     margin: 1% auto;
     border-radius: 5px;
@@ -60,7 +75,7 @@ body
 
 [type="tel"]
 {
-    border: 3px solid #072083;
+    border: 2.5px solid rgba(7, 32, 131, 0.7);
     padding: 3px;
     margin: 1% auto;
     border-radius: 5px;
@@ -70,36 +85,56 @@ body
 /* Buttons */
 .buttonLayout
 {
-    text-align: center;
+    text-align: left;
     display: inline-block;
-    margin: 1% 7.5%;
-    
+    margin: 1% 1.75%;
+}
+
+.modalButtonLayout
+{
+    text-align: left;
+    display: inline-block;
+    margin: 3% 1.75%;
 }
 
 .buttons
 {
-    border: 1px solid black;
-    padding: 1px 4px;
+    background: rgba(255, 215, 193, 0.6);
+    border: 1px solid rgba(0, 0, 0, 0.2);
+    padding: 2px 4px;
     display: inline-block;
-    font-size: 90%;
-    font-family: arial, sans-serif;
+    color: rgba(0, 0, 0, 0.8);
+    font-size: 70%;
+    font-family: Capriola, sans-serif;
     border-radius: 3px;
+}
+
+.buttons:hover
+{
+    background: rgb(253, 195, 165, 0.5);
+    color: rgba(0, 0, 0, 0.6);
 }
 
 h1
 {
-    color: #072083;
+    color: rgba(7, 32, 131, 0.8);
+    letter-spacing: 2px;
     margin-top: 25px;
     display: inline-block;
 }
 
 h2
 {
-    background-color: #E59982;
-    border-radius: 3px;
-    font-weight: 400;
+    /* background-image: linear-gradient(to right, rgba(229, 153, 130, 1), rgba(248, 91, 26, 0)); */
+    background-color: rgba(229, 153, 130, 0.65);
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+    font-family: Bebas, sans-serif;
+    font-size: 30px;
+    letter-spacing: 3px;
     width: 95%;
     margin: 10px 0;
+    padding: 5px;
     text-align: center;
     color: #072083;
 }
@@ -107,17 +142,26 @@ h2
 label
 {
     display: inline-block;
-    float: left;
     clear: left;
-    width: 200px;
-    /*    text-align: right;*/
-    text-align: center;
+    width: 156px;
+    text-align: left;
+    margin-left: 10px;
+    margin-right: 30px;
+    font-family: Capriola, sans-serif;
+    font-size: 15px;
+    letter-spacing: 1px;
+}
+
+label[for=loginUsername], label[for=loginPassword]
+{
+    margin-left: 50px;
+    margin-right: 10px;
 }
 
 input 
 {
+    background: rgba(255, 215, 193, 0.6);
     display: inline-block;
-    float: left;
 }
 
 
@@ -135,7 +179,7 @@ input
 
 header
 {
-    background-image: linear-gradient(to right, #F85B1A, rgba(248, 91, 26, 0.05));
+    background-image: linear-gradient(to right, rgba(248, 91, 26, 0.375), rgba(248, 91, 26, 0.05));
     font-family: 'Saiyan Font', Arial, sans-serif;
     text-align: center;
     font-size: 20px;
@@ -163,9 +207,10 @@ header
 footer
 {
     height: 35px;
-    background: rgba(248, 91, 26, 0.6);
+    background-image: linear-gradient(rgba(242, 153, 33, 0), rgba(248, 91, 26, 0.4));
     text-align: center;
-    color: #072083;
+    color: rgba(7, 32, 131, 0.4);
+    font-family: Capriola;
     font-size: 12px;
     position: fixed;
     bottom: 0;
@@ -182,23 +227,20 @@ footer
     border-width: 5px;
     border-color: #072083;
     border-radius: 10px;
-/*    background-color: #FFD7C1;*/
-    background: linear-gradient(rgba(255, 255, 255, 0.5),
-                                rgba(255, 255, 255, 0.5)), 
+    background: linear-gradient(rgba(255, 255, 255, 0.65),
+                                rgba(255, 255, 255, 0.65)), 
                                 url(../images/bgvalley.png) no-repeat;
     background-color: #F29921;
     background-repeat: no-repeat;
     background-position: center;
-/*    background-attachment: scroll;*/
     background-size: 100% 100%;
     margin: 10% auto;
     min-width: 500px;
     min-height: 200px;
     max-width: 400px;
     max-height: 1200px;
-    padding: 0 0 0 20px;
-    
-    box-shadow: 10px 10px 10px grey;
+    padding: 10px 0 0 20px;
+    box-shadow: 9px 9px 9px rgba(128, 128, 128, 1);
 }
 
 
@@ -211,23 +253,20 @@ footer
     border-width: 5px;
     border-color: #072083;
     border-radius: 10px;
-/*    background-color: #FFD7C1;*/
     margin: 10% 20%;
-    background: linear-gradient(rgba(255, 255, 255, 0.5),
-                                rgba(255, 255, 255, 0.5)), 
+    background: linear-gradient(rgba(255, 255, 255, 0.65),
+                                rgba(255, 255, 255, 0.65)), 
                                 url(../images/bgvalley.png) no-repeat;
     background-color: #F29921;
     background-repeat: no-repeat;
     background-position: center;
-/*    background-attachment: fixed;*/
     background-size: 100% 100%;
     margin: 10% auto;
     min-width: 450px;
     min-height: 285px;
     max-width: 400px;
     max-height: 1200px;
-    padding: 0 0 0 20px;
-    
+    padding: 5px 0 10px 20px;
     box-shadow: 10px 10px 10px grey;
 }
 
@@ -240,7 +279,6 @@ footer
     border-width: 5px;
     border-color: #072083;
     border-radius: 10px;
-/*    background-color: #FFD7C1;*/
     margin: 10% 20%;
     background: linear-gradient(rgba(255, 255, 255, 0.5),
                                 rgba(255, 255, 255, 0.5)), 
@@ -248,7 +286,6 @@ footer
     background-color: #F29921;
     background-repeat: no-repeat;
     background-position: center;
-/*    background-attachment: fixed;*/
     background-size: 100% 100%;
     margin: 10% auto;
     min-width: 450px;
@@ -322,8 +359,8 @@ footer
     min-width: 450px;
     min-height: 285px;
     max-width: 400px;
-    max-height: 1200px;
-    padding: 0 0 0 20px;
+    max-height: 350px;
+    padding: 10px 0 0 20px;
    
     margin: 20% auto;
     padding: 20px;
