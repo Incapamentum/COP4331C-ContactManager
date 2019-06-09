@@ -502,6 +502,7 @@ function fetchContact(idString)
 				document.getElementById("editedPowerLevel").placeholder = jsonObject.powerlvl;
 				document.getElementById("editedPowerLevel").readOnly = true;
 				hideOrShow("contactID", false);
+				hideOrShow("editContactDiv", true);
 				document.getElementById('editContactDiv').style.display = 'block';
 			}
 		}
