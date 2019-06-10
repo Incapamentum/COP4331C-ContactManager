@@ -45,7 +45,8 @@ function doLogin()
 		searchContact();
 
 		hideOrShow( "contactControlDiv", true);
-		hideOrShow( "loginDiv", false);
+		hideOrShow( "loginDiv", false);	
+		hideOrShow("teamInfo", false);
 	}
 	catch(err)
 	{
@@ -53,11 +54,14 @@ function doLogin()
 	}
 }
 
+
+
 function doLogout()
 {
 	userId = 0;
 	hideOrShow( "contactControlDiv", false);
 	hideOrShow( "loginDiv", true);
+	hideOrShow("teamInfo", true);
 	//hideOrShow("addContactDiv", false);
 
 	// Reset search results to blank upon logout
@@ -69,6 +73,7 @@ function doLogout()
 	// Clearing message to user field
 	document.getElementById("contactSearchResult").innerHTML = "";
 }
+
 // Function to hide or show divs
 function hideOrShow( elementId, showState )
 {
@@ -195,7 +200,7 @@ function searchContact()
 			{
 				document.getElementById("searchRes").style.display = 'block';
 				document.getElementById("contactSearchResult").innerHTML = "Contact(s) has been retrieved";
-				document.getElementById("searchRes").style.display = 'none';
+				setTimeout(delaySearchRes, 2500);
 				var jsonObject = JSON.parse( xhr.responseText );
 				var i;
 
@@ -249,7 +254,7 @@ function searchContact()
 					resultRow.appendChild(deleteBut);
 					searchResultTable.appendChild(resultRow);
 				}
-				document.getElementById("contactAddResult").innerHTML = "";
+				// document.getElementById("contactAddResult").innerHTML = "";
 			}
 		};
 		xhr.send(jsonPayload);
@@ -259,6 +264,13 @@ function searchContact()
 		document.getElementById("contactSearchResult").innerHTML = err.message;
 	}
 
+}
+
+// To hide confirmation Modal
+function delaySearchRes()
+{
+	document.getElementById("searchRes").style.display = 'none';
+	document.getElementById("contactAddResult").innerHTML = "";
 }
 
 // The following function displays the register div
@@ -303,7 +315,8 @@ function addContact()
 			{
 				document.getElementById("addRes").style.display = 'block';
 				document.getElementById("contactAddResult").innerHTML = "Contact has been added";
-				setTimeout(document.getElementById("addRes").style.display = 'none', 3000);
+				setTimeout(delayAddContact, 2500);
+				document.getElementById('addContactDiv').style.display = 'none';
 				document.getElementById("contactSearch").value = "";
 				searchContact();
 			}
@@ -324,8 +337,15 @@ function addContact()
 	document.getElementById("newPowerLevel").value = "";
 
 	//hideOrShow("addContactDiv", false);
-	document.getElementById('addContactDiv').style.display = 'none';
-	setTimeout(hideAddContact, 1500);
+	// document.getElementById('addContactDiv').style.display = 'none';
+	// setTimeout(hideAddContact, 1500);
+}
+
+// To hide confirmation Modal
+function delayAddContact()
+{
+	document.getElementById("contactAddResult").innerHTML = "";
+	document.getElementById("addRes").style.display = 'none';
 }
 
 // The following function empties out all the fields in the add contact div
@@ -378,7 +398,7 @@ function deleteContact(idString)
 				// Displaying success message and clearing form
 				document.getElementById("addRes").style.display = 'block';
 				document.getElementById("contactAddResult").innerHTML = "Contact deleted successfully";
-				document.getElementById('addRes').style.display = 'none';
+				setTimeout(delayDeleteContact, 2500);
 				document.getElementById("searchResultTable").deleteRow(row);
 				document.getElementById("editedFirstName").value = "";
 				document.getElementById("editedLastName").value = "";
@@ -396,18 +416,15 @@ function deleteContact(idString)
 	{
 		document.getElementById("contactAddResult").innerHTML = err.message;
 	}
-	// Hiding contact info div and setting up a timer for success message
-	//hideOrShow("contactInfoDiv", false);
 
-	// setTimeout(delayHide, 1000);
-	document.getElementById("contactAddResult").innerHTML = "";
 }
 
-// function delayHide()
-// {
-// 	document.getElementById("contactAddResult").innerHTML = "";
-// 	document.getElementById('addRes').style.display = 'none';
-// }
+// To hide confirmation Modal
+function delayDeleteContact()
+{
+	document.getElementById("contactAddResult").innerHTML = "";
+	document.getElementById('addRes').style.display = 'none';
+}
 
 function submitContact()
 {
@@ -436,7 +453,7 @@ function submitContact()
 			{
 				document.getElementById("addRes").style.display = 'block';
 				document.getElementById("contactAddResult").innerHTML = "Contact edited successfully";
-				document.getElementById("addRes").style.display = 'none';
+				setTimeout(delayEditContact, 2500);
 				document.getElementById(cellID).innerHTML = fName + " " + lName;
 				boolean = false;
 				//hideOrShow("editContactDiv", false);
@@ -449,6 +466,13 @@ function submitContact()
 	{
 		document.getElementById("submitError").innerHTML = err.message;
 	}
+}
+
+// To hide confirmation Modal
+function delayEditContact()
+{
+	document.getElementById("contactAddResult").innerHTML = "";
+	document.getElementById('addRes').style.display = 'none';
 }
 
 function editContact()
@@ -536,3 +560,33 @@ function cancelEditContact()
 	document.getElementById("editedPowerLevel").value = "";
 	document.getElementById('editContactDiv').style.display = 'none';
 }
+
+
+
+
+/* Tessssssst */
+// function doLoginTest()
+// {
+// 	hideOrShow( "contactControlDiv", true);
+// 	hideOrShow( "loginDiv", false);	
+// 	hideOrShow("teamInfo", false);
+// }
+// function doLogoutTest()
+// {
+// 	hideOrShow( "contactControlDiv", false);
+// 	hideOrShow( "loginDiv", true);
+// 	hideOrShow("teamInfo", true);
+// }
+// function addContactTest()
+// {
+// 	document.getElementById("addRes").style.display = 'block';
+// 	document.getElementById("contactAddResult").innerHTML = "Contact has been added";
+// 	setTimeout(delayAddContact, 2500);
+// 	document.getElementById('addContactDiv').style.display = 'none';
+// }
+// function searchContactTester()
+// {
+// 	document.getElementById("searchRes").style.display = 'block';
+// 	document.getElementById("contactSearchResult").innerHTML = "Contact(s) has been retrieved";
+// 	setTimeout(delaySearchRes, 2500);
+// }
