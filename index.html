@@ -21,6 +21,14 @@
 
     <!-- Main body -->
     <main>
+
+        <!--Company Info-->
+        <!-- <div class="teamInfo">
+            <h3>Contact Manager</h3>
+            <hr>
+            <h4>Team Six Star</h4>
+        </div> -->
+
         <!--Login-->
         <div id="loginDiv">
             <h2 id="title">Scouter Login</h2>
@@ -58,17 +66,35 @@
 		<!--Logged in control panel (includes search, add, logout buttons)-->
 		<div id="contactControlDiv" style="display:none; visibility:hidden;">
         <!-- <div id="contactControlDiv"> -->
-                <h2 id="title">Scouter Database</h2>
-                <input type="text" id="contactSearch" placeholder="Search your contacts">
-                <button type="button" id="contactSearchButton" class="buttons" onclick="searchContact();">Search</button>
-                <button type="button" id="showAddNewContactButton" class="buttons" onclick="displayAddContact();">Add Contact</button>
-                <button type="button" id="logoutButton" class="buttons" onclick="doLogout();">Logout</button><br>
-                <span id="contactSearchResult"></span>
+            <h2 id="title">Scouter Database</h2>
+            <input type="text" id="contactSearch" placeholder="Search your contacts">
+            <button type="button" id="contactSearchButton" class="buttons" onclick="searchContact();">Search</button>
+            <button type="button" id="showAddNewContactButton" class="buttons" onclick="displayAddContact();">Add Contact</button>
+            <button type="button" id="logoutButton" class="buttons" onclick="doLogout();">Logout</button><br>
+
+            <!-- <span id="contactSearchResult"></span>
+            <span id="contactAddResult"></span> -->
+
+            <!--Table containing matches to user search; first, last name and phone visible, contactID invisible-->
+            <table id="searchResultTable">
+            </table>
+        </div>
+        
+        <div id="addRes" class="modal-two">
+            <div class="confirmModal">
+                <img class="roshi-img" src="images/roshi-peace.png" alt="Master Roshi">
                 <span id="contactAddResult"></span>
-                <!--Table containing matches to user search; first, last name and phone visible, contactID invisible-->
-                <table id="searchResultTable">
-                </table>
-		</div>
+                <!-- <span>Contact deleted successfully</span> -->
+            </div>
+        </div>
+
+        <div id="searchRes" class="modal-two">
+            <div class="confirmModal">
+                <img class="roshi-img" src="images/roshi-peace.png" alt="Master Roshi">
+                <span id="contactSearchResult"></span>
+                <!-- <span>Contact(s) has been retrieved</span> -->
+            </div>
+        </div>
 
 		<!--Selected contact information (includes buttons for edit and delete)-->
 		<!-- <div id="contactInfoDiv" style="display:none; visibility:hidden;"> -->
@@ -93,7 +119,7 @@
 		</div> -->
 
 	    <!--Add contact (includes buttons for adding and cancelling new contact)-->
-        <div id="addContactDiv" class="contactModal">
+        <div id="addContactDiv" class="modal">
             <div class="modal-content">
                 <h2 id="title">Add Contact</h2>
                 <label for="newFirstName">First Name </label>
@@ -116,10 +142,10 @@
 		</div>
 
 		<!--Edit contact allows changes to existing contact (includes buttons for confirming and cancelling changes)-->
-       <div id="editContactDiv" class="editContactModal">
+       <div id="editContactDiv" class="modal">
             <div class="modal-content">
                 <h2 id="title">Edit Contact</h2>
-        <!--        <form id="editContactDivForm">	-->
+                <form id="editContactDivForm">
                     <label for="editedFirstName">First Name</label>
                     <input type="text" id="editedFirstName"><br>
                     <label for="editedLastName">Last Name</label>
@@ -140,7 +166,7 @@
                         <button type="button" id="cancelEditContactButton" class="buttons" onclick="cancelEditContact();">Cancel</button>
                         <span id="submitError"></span>
                     </div>
-        <!--     </form>	-->
+                </form>
             </div>
 		</div>
 	</main>
