@@ -303,7 +303,7 @@ function addContact()
 			{
 				document.getElementById("addRes").style.display = 'block';
 				document.getElementById("contactAddResult").innerHTML = "Contact has been added";
-				// document.getElementById("addRes").style.display = 'none';
+				setTimeout(document.getElementById("addRes").style.display = 'none', 3000);
 				document.getElementById("contactSearch").value = "";
 				searchContact();
 			}
