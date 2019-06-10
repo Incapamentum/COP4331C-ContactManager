@@ -193,9 +193,7 @@ function searchContact()
 		{
 			if (this.readyState == 4 && this.status == 200)
 			{
-				document.getElementById("searchRes").style.display = 'block';
 				document.getElementById("contactSearchResult").innerHTML = "Contact(s) has been retrieved";
-				document.getElementById("searchRes").style.display = 'none';
 				var jsonObject = JSON.parse( xhr.responseText );
 				var i;
 
@@ -227,22 +225,14 @@ function searchContact()
 					var deleteBut = document.createElement("button");
 					deleteBut.type = "button";
 					deleteBut.id = id + " " + (i+1); // Embedding contact ID and row number info in button ID
-<<<<<<< HEAD
-					deleteBut.className = "button";
-=======
 					deleteBut.className = "buttons";
->>>>>>> 028ecc13767201d4e6a9825eba409f9129ef3290
 					deleteBut.setAttribute("onclick", "deleteContact(this.id);");
 					deleteBut.innerHTML = "Delete";
 					// Contsructing details button
 					var details = document.createElement("button");
 					details.type = "button";
 					details.id = id + " " + ((i+1)*2); // Embedding contact ID row number info in button ID
-<<<<<<< HEAD
-					details.className = "button";
-=======
 					details.className = "buttons";
->>>>>>> 028ecc13767201d4e6a9825eba409f9129ef3290
 					details.setAttribute("onclick", "fetchContact(this.id);");
 					details.innerHTML = "Details";
 
@@ -309,9 +299,7 @@ function addContact()
 		{
 			if (this.readyState == 4 && this.status == 200)
 			{
-				document.getElementById("addRes").style.display = 'block';
 				document.getElementById("contactAddResult").innerHTML = "Contact has been added";
-				document.getElementById("addRes").style.display = 'none';
 				document.getElementById("contactSearch").value = "";
 				searchContact();
 			}
@@ -333,6 +321,7 @@ function addContact()
 
 	//hideOrShow("addContactDiv", false);
 	document.getElementById('addContactDiv').style.display = 'none';
+
 	setTimeout(hideAddContact, 1500);
 }
 
@@ -353,6 +342,7 @@ function cancelAddContact()
 // The following function displays the add contact div
 function displayAddContact()
 {
+
 	document.getElementById('addContactDiv').style.display = 'block';
 }
 
@@ -384,9 +374,7 @@ function deleteContact(idString)
 			if (this.readyState == 4 && this.status == 200)
 			{
 				// Displaying success message and clearing form
-				document.getElementById("addRes").style.display = 'block';
-				document.getElementById("contactAddResult").innerHTML = "Contact deleted successfully";
-				document.getElementById('addRes').style.display = 'none';
+				document.getElementById("contactAddResult").innerHTML = "<br>Contact deleted successfully<br>";
 				document.getElementById("searchResultTable").deleteRow(row);
 				document.getElementById("editedFirstName").value = "";
 				document.getElementById("editedLastName").value = "";
@@ -406,16 +394,13 @@ function deleteContact(idString)
 	}
 	// Hiding contact info div and setting up a timer for success message
 	//hideOrShow("contactInfoDiv", false);
-
-	// setTimeout(delayHide, 1000);
-	document.getElementById("contactAddResult").innerHTML = "";
+	setTimeout(delayHide, 1000);
 }
 
-// function delayHide()
-// {
-// 	document.getElementById("contactAddResult").innerHTML = "";
-// 	document.getElementById('addRes').style.display = 'none';
-// }
+function delayHide()
+{
+	document.getElementById("contactAddResult").innerHTML = "";
+}
 
 function submitContact()
 {
@@ -442,9 +427,7 @@ function submitContact()
 		{
 			if (this.readyState == 4 && this.status == 200)
 			{
-				document.getElementById("addRes").style.display = 'block';
 				document.getElementById("contactAddResult").innerHTML = "Contact edited successfully";
-				document.getElementById("addRes").style.display = 'none';
 				document.getElementById(cellID).innerHTML = fName + " " + lName;
 				boolean = false;
 				//hideOrShow("editContactDiv", false);
