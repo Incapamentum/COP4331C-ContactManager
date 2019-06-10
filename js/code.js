@@ -225,14 +225,14 @@ function searchContact()
 					var deleteBut = document.createElement("button");
 					deleteBut.type = "button";
 					deleteBut.id = id + " " + (i+1); // Embedding contact ID and row number info in button ID
-					deleteBut.class = "button";
+					deleteBut.className = "buttons";
 					deleteBut.setAttribute("onclick", "deleteContact(this.id);");
 					deleteBut.innerHTML = "Delete";
 					// Contsructing details button
 					var details = document.createElement("button");
 					details.type = "button";
 					details.id = id + " " + ((i+1)*2); // Embedding contact ID row number info in button ID
-					details.class = "button";
+					details.className = "buttons";
 					details.setAttribute("onclick", "fetchContact(this.id);");
 					details.innerHTML = "Details";
 
