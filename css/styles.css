@@ -27,6 +27,15 @@ body
     margin: 0;
 }
 
+/* hr
+{
+    display: inline-block;
+    width: 100px;
+    height: 6px;
+    background: #F85B1A;
+    
+} */
+
 @font-face
 {
     font-family: 'Saiyan Font';
@@ -170,9 +179,9 @@ input
 
 .headBanner
 {
-    max-width: 950px;
+    max-width: 650px;
     margin: 0 auto;
-    overflow: auto;
+    overflow: hidden;
     display: inline-block;
     padding: 5px;
 }
@@ -199,7 +208,7 @@ header
 
 .footBanner
 {
-    max-width: 950px;
+    max-width: 650px;
     margin: 0 auto;
     overflow: hidden;
 }
@@ -210,7 +219,7 @@ footer
     background-image: linear-gradient(rgba(242, 153, 33, 0), rgba(248, 91, 26, 0.4));
     text-align: center;
     color: rgba(7, 32, 131, 0.4);
-    font-family: Capriola;
+    font-family: Capriola, sans-serif;
     font-size: 12px;
     position: fixed;
     bottom: 0;
@@ -227,6 +236,7 @@ footer
     border-width: 5px;
     border-color: #072083;
     border-radius: 10px;
+
     background: linear-gradient(rgba(255, 255, 255, 0.65),
                                 rgba(255, 255, 255, 0.65)), 
                                 url(../images/bgvalley.png) no-repeat;
@@ -234,12 +244,14 @@ footer
     background-repeat: no-repeat;
     background-position: center;
     background-size: 100% 100%;
-    margin: 10% auto;
+
+    margin: 13% auto;
     min-width: 500px;
     min-height: 200px;
-    max-width: 400px;
-    max-height: 1200px;
+    max-width: 500px;
+    max-height: 200px;
     padding: 10px 0 0 20px;
+
     box-shadow: 9px 9px 9px rgba(128, 128, 128, 1);
 }
 
@@ -253,7 +265,6 @@ footer
     border-width: 5px;
     border-color: #072083;
     border-radius: 10px;
-    margin: 10% 20%;
     background: linear-gradient(rgba(255, 255, 255, 0.65),
                                 rgba(255, 255, 255, 0.65)), 
                                 url(../images/bgvalley.png) no-repeat;
@@ -261,12 +272,15 @@ footer
     background-repeat: no-repeat;
     background-position: center;
     background-size: 100% 100%;
+
+    margin: 10% 20%;
     margin: 10% auto;
     min-width: 450px;
     min-height: 285px;
     max-width: 400px;
     max-height: 1200px;
     padding: 5px 0 10px 20px;
+
     box-shadow: 10px 10px 10px grey;
 }
 
@@ -279,7 +293,6 @@ footer
     border-width: 5px;
     border-color: #072083;
     border-radius: 10px;
-    margin: 10% 20%;
     background: linear-gradient(rgba(255, 255, 255, 0.5),
                                 rgba(255, 255, 255, 0.5)), 
                                 url(../images/bgvalley.png) no-repeat;
@@ -287,6 +300,8 @@ footer
     background-repeat: no-repeat;
     background-position: center;
     background-size: 100% 100%;
+
+    margin: 10% 20%;
     margin: 10% auto;
     min-width: 450px;
     min-height: 285px;
@@ -297,7 +312,7 @@ footer
     box-shadow: 10px 10px 10px grey; 
 }
 
-#contactInfoDiv
+/* #contactInfoDiv
 {
     border-style: solid;
     border-width: 5px;
@@ -318,7 +333,7 @@ footer
     padding: 0 0 0 20px;
     
     box-shadow: 10px 10px 10px grey;
-}
+} */
 
 #contactSearch
 {
@@ -328,7 +343,7 @@ footer
 /* Modal Implementation 6/8 - Kenny
 -------------------------------------*/
 
-.contactModal, .editContactModal
+.modal
 {
     display: none;
     position: fixed;
@@ -338,7 +353,44 @@ footer
     width: 100%;
     height: 100%;
     overflow: auto;
-    background-color: rgba(0, 0, 0, 0.5);
+    background-color: rgba(0, 0, 0, 0.6);
+}
+
+.modal-two
+{
+    display: none;
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0, 0, 0, 0.95);
+    font-size: 0.9em;
+    font-family: Capriola, sans-serif;
+}
+
+.confirmModal
+{
+    border-style: solid;
+    border-width: 5px;
+    border-color: #F29921;
+    border-radius: 10px;
+    background: #F6F6F6;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 100% 100%;
+
+    min-width: 250px;
+    min-height: 160px;
+    max-width: 250px;
+    max-height: 160px;
+    margin: 20% auto;
+
+    animation: modalOpenClose 3s;
+    text-align: center;
+    color: black;
 }
 
 .modal-content
@@ -347,32 +399,50 @@ footer
     border-width: 5px;
     border-color: #072083;
     border-radius: 10px;
-
-    background: linear-gradient(rgba(255, 255, 255, 0.5),
-                                rgba(255, 255, 255, 0.5)), 
-                                url(../images/bgpond.png) no-repeat;
     background-color: #F29921;
     background-repeat: no-repeat;
     background-position: center;
     background-size: 100% 100%;
+    background: linear-gradient(rgba(255, 255, 255, 0.5),
+                                rgba(255, 255, 255, 0.5)), 
+                                url(../images/bgpond.png) no-repeat;
 
     min-width: 450px;
     min-height: 285px;
     max-width: 400px;
     max-height: 350px;
     padding: 10px 0 0 20px;
-   
-    margin: 20% auto;
+    margin: 13% auto;
     padding: 20px;
-    width: 70%;
-    height: 55%;
-    box-shadow: 0 5px 8px 0 rgba(0, 0, 0, 0.2), 0 7px 20px 0 rgba(0, 0, 0, 0.17);
+
+    /* width: 70%; */
+    /* height: 55%; */
     animation-name: modalOpen;
-    animation-duration: 1s;
+    animation-duration: 0.8s;
+}
+
+.roshi-img
+{
+    max-width: 35%;
+    max-height: 30%;
+    float: center;
+    margin-top: 15px;
+    margin-right: 25%;
+    margin-left: 23%;
+    margin-bottom: 5px;
+    opacity: 0.8;
 }
 
 @keyframes modalOpen
 {
     from {opacity: 0}
     to {opacity: 1}
+}
+
+@keyframes modalOpenClose
+{
+    0% {opacity: 0}
+    50% {opacity: 1}
+    80% {opacity: 0}
+    100% {opacity: 0}
 }
