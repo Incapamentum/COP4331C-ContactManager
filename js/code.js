@@ -374,7 +374,7 @@ function deleteContact(idString)
 			if (this.readyState == 4 && this.status == 200)
 			{
 				// Displaying success message and clearing form
-				document.getElementById("contactAddResult").innerHTML = "<br>Contact deleted successfully<br>";
+				document.getElementById("contactAddResult").innerHTML = "Contact deleted successfully";
 				document.getElementById("searchResultTable").deleteRow(row);
 				document.getElementById("editedFirstName").value = "";
 				document.getElementById("editedLastName").value = "";
