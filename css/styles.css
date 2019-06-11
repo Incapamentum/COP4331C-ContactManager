@@ -1,4 +1,3 @@
-    
 /* Global
 ------------------*/
 
@@ -468,7 +467,7 @@ hr
     animation: backgroundFade 3s;
 }
 
-.modal-search
+/* .modal-search
 {
     display: none;
     position: fixed;
