@@ -1,6 +1,6 @@
-    
 /* Global
 ------------------*/
+
 html
 {
     box-sizing: border-box;
@@ -13,7 +13,6 @@ html
 
 body 
 {
-    /* background-image: linear-gradient(to right, #F85B1A, rgba(248, 91, 26, 0.05)); */
     background: linear-gradient(rgba(255, 255, 255, 0.5),
                                 rgba(255, 255, 255, 0.5)), 
                                 rgba(242, 153, 33, 0.5)
@@ -22,29 +21,12 @@ body
     background-position: bottom left;
     background-attachment: fixed;
     background-size: 300px 500px;
-/*    background-size: cover;*/
     font-family: 'Open Sans', sans-serif;
     margin: 0;
+    height: 100%;
 }
 
-hr
-{
-    display: inline-block;
-    width: 200px;
-    height: 3px;
-    background: rgba(248, 91, 26, 0.6);
-    border-color: rgba(248, 91, 26, 0.6);
-    border: 1px;
-    border-radius: 6%;
-}
-
-.teamInfo
-{
-    background: rgba(248, 91, 26, 0.5);
-    max-width: 300px;
-    text-align: center;
-}
-
+/* Fonts */
 @font-face
 {
     font-family: 'Saiyan Font';
@@ -65,40 +47,6 @@ hr
     src: url('fonts/Simplifica/simplifica_typeface-webfont.woff2') format('woff'),
          url('fonts/simplifica_typeface-webfont.woff') format('woff');
 }
-
-/* Text fields */
-[type="text"]
-{
-    border: 2.5px solid rgba(7, 32, 131, 0.7);
-    padding: 3px;
-    margin: 1% auto;
-    border-radius: 5px;
-}
-
-[type="password"]
-{
-    border: 2.5px solid rgba(248, 107, 26, 0.7);
-    padding: 3px;
-    margin: 1% auto;
-    border-radius: 5px;
-}
-
-[type="email"]
-{
-    border: 2.5px solid rgba(248, 107, 26, 0.7);
-    padding: 3px;
-    margin: 1% auto;
-    border-radius: 5px;
-}
-
-[type="tel"]
-{
-    border: 2.5px solid rgba(7, 32, 131, 0.7);
-    padding: 3px;
-    margin: 1% auto;
-    border-radius: 5px;
-}
-
 
 /* Buttons */
 .buttonLayout
@@ -133,6 +81,27 @@ hr
     color: rgba(0, 0, 0, 0.6);
 }
 
+/* Buttons for Delete and Details */
+.button
+{
+    background: rgba(255, 215, 193, 0.6);
+    border: 1px solid rgba(0, 0, 0, 0.2);
+    padding: 2px 4px;
+    display: inline-block;
+    color: rgba(0, 0, 0, 0.8);
+    font-size: 70%;
+    font-family: Capriola, sans-serif;
+    border-radius: 3px;
+    margin: 2px 2px;
+}
+
+.button:hover
+{
+    background: rgb(253, 195, 165, 0.5);
+    color: rgba(0, 0, 0, 0.6);
+}
+
+/* Headers */
 h1
 {
     color: rgba(7, 32, 131, 0.8);
@@ -143,7 +112,6 @@ h1
 
 h2
 {
-    /* background-image: linear-gradient(to right, rgba(229, 153, 130, 1), rgba(248, 91, 26, 0)); */
     background-color: rgba(229, 153, 130, 0.65);
     border: 1px solid rgba(0, 0, 0, 0.1);
     border-radius: 8px;
@@ -157,6 +125,87 @@ h2
     color: #072083;
 }
 
+h3
+{
+    font-family: Bebas, sans-serif;
+    letter-spacing: 3px;
+    font-size: 3.25em;
+    color: #FFD7C1;
+}
+
+h4
+{
+    font-family: Bebas, sans-serif;
+    font-size: 2.25em;
+    letter-spacing: 3px;
+    color: #072083;
+}
+
+ul
+{
+    font-family: Capriola, sans-serif;
+    font-size: 0.95em;
+    padding-left: 90px;
+    padding-top: 5px;
+    text-align: left;
+    color: #FFD7C1;
+}
+
+li
+{
+    padding-bottom: 10px;
+}
+
+q
+{
+    font-style: italic;
+    font-size: 0.95em;
+    color: #072083;
+}
+
+/* Labels and input Fields 
+-----------------------------*/
+
+input 
+{
+    background: rgba(255, 215, 193, 0.6);
+    display: inline-block;
+}
+
+/* Input boxes */
+[type="text"]
+{
+    border: 2.5px solid rgba(7, 32, 131, 0.7);
+    padding: 3px;
+    margin: 1% auto;
+    border-radius: 5px;
+}
+
+[type="password"]
+{
+    border: 2.5px solid rgba(248, 107, 26, 0.7);
+    padding: 3px;
+    margin: 1% auto;
+    border-radius: 5px;
+}
+
+[type="email"]
+{
+    border: 2.5px solid rgba(248, 107, 26, 0.7);
+    padding: 3px;
+    margin: 1% auto;
+    border-radius: 5px;
+}
+
+[type="tel"]
+{
+    border: 2.5px solid rgba(7, 32, 131, 0.7);
+    padding: 3px;
+    margin: 1% auto;
+    border-radius: 5px;
+}
+
+/* Labels */
 label
 {
     display: inline-block;
@@ -176,13 +225,6 @@ label[for=loginUsername], label[for=loginPassword]
     margin-right: 10px;
 }
 
-input 
-{
-    background: rgba(255, 215, 193, 0.6);
-    display: inline-block;
-}
-
-
 /* Header and Footer 
 -------------------*/
 
@@ -191,88 +233,116 @@ input
     max-width: 650px;
     margin: 0 auto;
     overflow: hidden;
-    display: inline-block;
     padding: 5px;
 }
 
 header
 {
-    background-image: linear-gradient(to right, rgba(248, 91, 26, 0.375), rgba(248, 91, 26, 0.05));
+    background-image: linear-gradient(to bottom right, rgba(252, 125, 71, 0.65), rgba(248, 91, 26, 0));
     font-family: 'Saiyan Font', Arial, sans-serif;
     text-align: center;
     font-size: 20px;
+    top: 0;
     margin: 0 0;
-}
-
-.banner-img
-{
-    height: auto;
-    width: auto;
-    max-width: 65px;
-    max-height: 65px;
-    float: left;
-    margin-right: 15px;
-    margin-top: 5px;
-}
-
-.footBanner
-{
-    max-width: 650px;
-    margin: 0 auto;
-    overflow: hidden;
+    height: 75px;
+    width: 100%;
 }
 
 footer
 {
-    height: 35px;
+    height: 50px;
     background-image: linear-gradient(rgba(242, 153, 33, 0), rgba(248, 91, 26, 0.4));
     text-align: center;
     color: rgba(7, 32, 131, 0.4);
     font-family: Capriola, sans-serif;
     font-size: 12px;
-    position: fixed;
     bottom: 0;
     width: 100%;
-    
+    position: fixed;
+    padding-top: 8px;
 }
 
-/* Login Page 
--------------------*/
+/* Front Page
+-----------------*/
+
+.front-page
+{
+    max-width: 1100px;
+    min-height: 100%;
+    margin: 5% auto;
+    padding: 25px;
+    overflow: hidden;
+}
+
+hr
+{
+    width: 200px;
+    height: 3px;
+    background: rgba(248, 91, 26, 0.6);
+    border-color: rgba(248, 91, 26, 0.6);
+    border: 1px;
+    border-radius: 6%;
+}
+
+#teamInfo
+{
+    background: rgba(248, 91, 26, 0.35);
+    width: 425px;
+    padding: 20px 30px; 
+    padding-top: 15px;
+    text-align: center;
+    float: left;
+    animation: contactOpen 1.5s;
+}
+
+/* #sonGoku
+{
+    max-height: 150px;
+    max-width: 150x;
+    opacity: 0.6;
+    margin-top: 30px;
+    margin-left: 375px;
+    margin-bottom: -2px;
+    animation: sonGokuOpen 3s;
+    float: left;
+} */
+
+/* Login Page */
 
 #loginDiv
 {
     border-style: solid;
     border-width: 5px;
-    border-color: #072083;
+    border-color: rgba(7, 32, 131, 0.9);
     border-radius: 10px;
 
     background: linear-gradient(rgba(255, 255, 255, 0.65),
                                 rgba(255, 255, 255, 0.65)), 
                                 url(../images/bgvalley.png) no-repeat;
-    background-color: #F29921;
     background-repeat: no-repeat;
     background-position: center;
     background-size: 100% 100%;
 
-    margin: 13% auto;
+    margin-left: 105px;
+    margin-top: 19.5%;
     min-width: 500px;
     min-height: 200px;
-    max-width: 500px;
-    max-height: 200px;
+    max-width: 520px;
+    max-height: 400px;
     padding: 10px 0 0 20px;
 
-    box-shadow: 9px 9px 9px rgba(128, 128, 128, 1);
+    float: left;
+    box-shadow: 9px 9px 9px gray;
+    animation: loginOpen 3s;
 }
 
-
-/* Register Page 
--------------------*/
+/* Register Page */
 
 #registerDiv
 {
     border-style: solid;
     border-width: 5px;
-    border-color: #072083;
+    border-color: rgba(7, 32, 131, 0.9);
     border-radius: 10px;
     background: linear-gradient(rgba(255, 255, 255, 0.65),
                                 rgba(255, 255, 255, 0.65)), 
@@ -282,25 +352,31 @@ footer
     background-position: center;
     background-size: 100% 100%;
 
-    margin: 10% 20%;
-    margin: 10% auto;
+    margin-left: 105px;
+    margin-top: 16%;
     min-width: 450px;
     min-height: 285px;
     max-width: 400px;
     max-height: 1200px;
     padding: 5px 0 10px 20px;
 
+    float: left;
     box-shadow: 10px 10px 10px grey;
 }
 
-/* Contact Control
--------------------*/
+.credentials
+{
+    background: #072083;
+    margin-right: 20px;
+}
+
+/* Contact Control */
 
 #contactControlDiv
 {
     border-style: solid;
     border-width: 5px;
-    border-color: #072083;
+    border-color: rgba(7, 32, 131, 0.9);
     border-radius: 10px;
     background: linear-gradient(rgba(255, 255, 255, 0.5),
                                 rgba(255, 255, 255, 0.5)), 
@@ -310,43 +386,48 @@ footer
     background-position: center;
     background-size: 100% 100%;
 
-    margin: 10% 20%;
-    margin: 10% auto;
-    min-width: 450px;
+    min-width: 100px;
     min-height: 285px;
-    max-width: 400px;
-    max-height: 1200px;
-    padding: 0 0 0 20px;
+    max-width: 550px;
+    max-height: 950px; 
+    margin: 5% auto;
+    padding: 0 0 5px 20px;
     
     box-shadow: 10px 10px 10px grey; 
+    animation: contactOpen 4.5s;
 }
 
-/* #contactInfoDiv
+#searchResultTable
 {
-    border-style: solid;
-    border-width: 5px;
-    border-color: #072083;
-    border-radius: 10px;
-    background: linear-gradient(rgba(255, 255, 255, 0.5),
-                                rgba(255, 255, 255, 0.5)), 
-                                url(../images/bgvalley.png) no-repeat;
-    background-color: #F29921;
-    background-repeat: no-repeat;
-    background-position: center;
-    background-size: 100% 100%;
-    margin: 10% auto;
-    min-width: 450px;
-    min-height: 285px;
-    max-width: 400px;
-    max-height: 1200px;
-    padding: 0 0 0 20px;
-    
-    box-shadow: 10px 10px 10px grey;
-} */
+    font-family: Capriola, sans-serif;
+    font-size: 14px;
+    letter-spacing: 1px;
+}
 
 #contactSearch
 {
     margin: auto 5px;
+}
+
+/* Animations */
+@keyframes contactOpen
+{
+    from {opacity: 0}
+    to {opacity: 1}
+}
+
+@keyframes loginOpen
+{
+    0% {opacity: 0}
+    20% {opacity: 0}
+    100% {opacity: 1}
+}
+
+@keyframes sonGokuOpen
+{
+    0% {opacity: 0}
+    20% {opacity: 0}
+    100% {opacity: 0.6}
 }
 
 /* Modal Implementation 6/8 - Kenny
@@ -365,57 +446,6 @@ footer
     background-color: rgba(0, 0, 0, 0.6);
 }
 
-.modal-add
-{
-    display: none;
-    position: fixed;
-    z-index: 1;
-    left: 0;
-    top: 0;
-    width: 100%;
-    height: 100%;
-    overflow: auto;
-    background-color: rgba(0, 0, 0, 0.85);
-    font-size: 0.9em;
-    font-family: Capriola, sans-serif;
-}
-
-.modal-search
-{
-    display: none;
-    position: fixed;
-    z-index: 1;
-    left: 0;
-    top: 0;
-    width: 100%;
-    height: 100%;
-    overflow: auto;
-    background-color: rgba(0, 0, 0, 0.85);
-    font-size: 0.9em;
-    font-family: Capriola, sans-serif;
-}
-
-.confirmModal
-{
-    border-style: solid;
-    border-width: 5px;
-    border-color: #F29921;
-    border-radius: 10px;
-    background: #F6F6F6;
-    background-repeat: no-repeat;
-    background-position: center;
-    background-size: 100% 100%;
-
-    min-width: 250px;
-    min-height: 160px;
-    max-width: 250px;
-    max-height: 160px;
-    margin: 20% auto;
-
-    animation: modalOpenClose 3s;
-    text-align: center;
-    color: black;
-}
 
 .modal-content
 {
@@ -445,6 +475,62 @@ footer
     animation-duration: 0.8s;
 }
 
+/* Modals for confirmation message */
+
+.modal-add
+{
+    display: none;
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0, 0, 0, 0.65);
+    font-size: 0.9em;
+    font-family: Capriola, sans-serif;
+    animation: backgroundFade 3s;
+}
+
+/* .modal-search
+{
+    display: none;
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0, 0, 0, 0.65);
+    font-size: 0.9em;
+    font-family: Capriola, sans-serif;
+    animation: backgroundFade 3s;
+} */
+
+.confirmModal
+{
+    border-style: solid;
+    border-width: 5px;
+    border-color: #F29921;
+    border-radius: 10px;
+    background: #F6F6F6;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 100% 100%;
+
+    min-width: 250px;
+    min-height: 160px;
+    max-width: 250px;
+    max-height: 160px;
+    margin: 20% auto;
+
+    animation: modalOpenClose 3s;
+    text-align: center;
+    color: black;
+}
+
 .roshi-img
 {
     max-width: 35%;
@@ -457,6 +543,9 @@ footer
     opacity: 0.8;
 }
 
+/* Animations
+-----------------*/
+
 @keyframes modalOpen
 {
     from {opacity: 0}
@@ -466,6 +555,14 @@ footer
 @keyframes modalOpenClose
 {
     0% {opacity: 0}
+    50% {opacity: 1}
+    80% {opacity: 0}
+    100% {opacity: 0}
+}
+
+@keyframes backgroundFade
+{
+    0% {opacity: 1}
     50% {opacity: 1}
     80% {opacity: 0}
     100% {opacity: 0}

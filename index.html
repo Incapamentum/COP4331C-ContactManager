@@ -5,7 +5,7 @@
 	<title>Team Six Star</title>
     <link href="https://fonts.googleapis.com/css?family=Caveat|Open+Sans:400,400i,700" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Capriola&display=swap" rel="stylesheet">
-	<script type"text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/3.1.2/rollups/aes.js"></script>
+	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/3.1.2/rollups/aes.js"></script>
 	<script type="text/javascript" src="js/code.js"></script>
 	<link rel="stylesheet" href="css/styles.css">
 </head>
@@ -13,21 +13,30 @@
 <body>
 	<!-- Header -->
     <header>
-        <div class="headBanner">
-            <img class="banner-img" src="images/sixstar.png" alt="Team Six Star">
-            <h1>Team Six Star Management</h1>
-        </div>
+        <!-- <img class="banner-img" src="images/sixstar.png" alt="Team Six Star"> -->
     </header>
 
     <!-- Main body -->
     <main>
-
+  
+    <div class="front-page">
         <!--Company Info-->
-        <!-- <div class="teamInfo">
+        <div id="teamInfo">
             <h3>Contact Manager</h3>
             <hr>
             <h4>Team Six Star</h4>
-        </div> -->
+            <hr>
+            <ul>
+                <li>Database Control</li>
+                <li>Contact Organization</li>
+                <li>Quality Service</li>
+                <li>Dedicated Team</li>
+            </ul>
+            <hr><br>
+            <q>Me personally, I like to work and train.</q><p>- Son Goku</p>
+        </div>
+
+        <!-- <img id="sonGoku" src="images/goku.png" alt="Team Six Star"> -->
 
         <!--Login-->
         <div id="loginDiv">
@@ -43,7 +52,7 @@
             </div>
         </div>
 
-		<!--Register new user-->
+        <!--Register new user-->
         <div id="registerDiv" style="display:none; visibility:hidden;">
             <h2 id="title">Register As New Scout</h2>
             <label for="registerUsername">New Username</label>
@@ -62,18 +71,20 @@
                 <button type="button" id="cancelRegisterButton" class="buttons" onclick="hideRegister();">Cancel</button>
             </div>
         </div>
+        
+    </div>
 
 		<!--Logged in control panel (includes search, add, logout buttons)-->
-		<div id="contactControlDiv" style="display:none; visibility:hidden;">
-        <!-- <div id="contactControlDiv"> -->
+        <div id="contactControlDiv" style="display:none; visibility:hidden;">
+
+        <!--Tester Div-->
+            <!-- <div id="contactControlDiv"> -->
+
             <h2 id="title">Scouter Database</h2>
             <input type="text" id="contactSearch" placeholder="Search your contacts">
             <button type="button" id="contactSearchButton" class="buttons" onclick="searchContact();">Search</button>
             <button type="button" id="showAddNewContactButton" class="buttons" onclick="displayAddContact();">Add Contact</button>
             <button type="button" id="logoutButton" class="buttons" onclick="doLogout();">Logout</button><br>
-
-            <!-- <span id="contactSearchResult"></span>
-            <span id="contactAddResult"></span> -->
 
             <!--Table containing matches to user search; first, last name and phone visible, contactID invisible-->
             <table id="searchResultTable">
@@ -84,39 +95,15 @@
             <div class="confirmModal">
                 <img class="roshi-img" src="images/roshi-peace.png" alt="Master Roshi">
                 <span id="contactAddResult"></span>
-                <!-- <span>Contact deleted successfully</span> -->
             </div>
         </div>
 
-        <div id="searchRes" class="modal-search">
+        <!-- <div id="searchRes" class="modal-search">
             <div class="confirmModal">
                 <img class="roshi-img" src="images/roshi-peace.png" alt="Master Roshi">
                 <span id="contactSearchResult"></span>
-                <!-- <span>Contact(s) has been retrieved</span> -->
             </div>
-        </div>
-
-		<!--Selected contact information (includes buttons for edit and delete)-->
-		<!-- <div id="contactInfoDiv" style="display:none; visibility:hidden;"> -->
-       <!-- <div id="contactInfoDiv">
-            <h2 id="title">Scouter Stats</h2>
-			<label for="selectedFirstName">First Name</label>
-			<span id="selectedFirstName"></span><br>
-			<label for="selectedLastName">Last Name</label>
-			<span id="selectedLastName"></span><br>
-			<label for="selectedEmail">Email</label>
-			<span id="selectedEmail"></span><br>
-			<label for="selectedAddress">Address </label>
-			<input type="text" id="selectedAddress"><br>
-			<label for="selectedPhoneNumber">Phone Number</label>
-			<span id="selectedPhoneNumber"></span><br>
-			<label for="selectedPowerLevel">Power Level</label>
-			<span id="selectedPowerLevel"></span><br>
-            <div class="buttonLayout">
-                <button type="button" id="deleteContactButton" class="buttons" onclick="deleteContact();">Delete</button>
-                <button type="button" id="editContactButton" class="buttons" onclick="showEditContact();">Edit</button>
-            </div>
-		</div> -->
+        </div> -->
 
 	    <!--Add contact (includes buttons for adding and cancelling new contact)-->
         <div id="addContactDiv" class="modal">
@@ -173,9 +160,7 @@
 
 	<!-- Footer -->
 	<footer>
-		<div class="footBanner">
-			<p> Copy Right &copy; 2019 TeamSixStar</p>
-		</div>
+        <p> Copy Right &copy; 2019 TeamSixStar</p>
     </footer>
 </body>
 </html>
