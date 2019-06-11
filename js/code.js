@@ -287,18 +287,9 @@ function hideRegister()
 	document.getElementById("registerPassword").value = "";
 	document.getElementById("registerEmail").value = "";
 	document.getElementById("registerPhoneNumber").value = "";
-	// hideOrShow("sonGoku", false);
 	hideOrShow("registerDiv", false);
 	hideOrShow("loginDiv", true);
-	// setTimeout(delayShowLoginGoku, 0001);
-	// setTimeout(delayShowLoginGoku, 0001);
 }
-
-// function delayShowLoginGoku()
-// {
-// 	hideOrShow("loginDiv", true);
-// 	hideOrShow("sonGoku", true);
-// }
 
 function addContact()
 {
