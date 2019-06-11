@@ -92,7 +92,7 @@ body
     font-size: 70%;
     font-family: Capriola, sans-serif;
     border-radius: 3px;
-    margin: 2px 2px;
+    margin: 1% 1.25%;
 }
 
 .button:hover
@@ -295,18 +295,6 @@ hr
     animation: contactOpen 1.5s;
 }
 
-/* #sonGoku
-{
-    max-height: 150px;
-    max-width: 150x;
-    opacity: 0.6;
-    margin-top: 30px;
-    margin-left: 375px;
-    margin-bottom: -2px;
-    animation: sonGokuOpen 3s;
-    float: left;
-} */
-
 /* Login Page */
 
 #loginDiv
@@ -389,19 +377,12 @@ hr
     min-width: 100px;
     min-height: 285px;
     max-width: 550px;
-    max-height: 950px; 
+    max-height: 500px; 
     margin: 5% auto;
     padding: 0 0 5px 20px;
     
     box-shadow: 10px 10px 10px grey; 
     animation: contactOpen 4.5s;
-}
-
-#searchResultTable
-{
-    font-family: Capriola, sans-serif;
-    font-size: 14px;
-    letter-spacing: 1px;
 }
 
 #contactSearch
@@ -421,13 +402,6 @@ hr
     0% {opacity: 0}
     20% {opacity: 0}
     100% {opacity: 1}
-}
-
-@keyframes sonGokuOpen
-{
-    0% {opacity: 0}
-    20% {opacity: 0}
-    100% {opacity: 0.6}
 }
 
 /* Modal Implementation 6/8 - Kenny
@@ -507,7 +481,7 @@ hr
     font-size: 0.9em;
     font-family: Capriola, sans-serif;
     animation: backgroundFade 3s;
-} */
+}
 
 .confirmModal
 {
