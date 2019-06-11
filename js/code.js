@@ -198,9 +198,9 @@ function searchContact()
 		{
 			if (this.readyState == 4 && this.status == 200)
 			{
-				// document.getElementById("searchRes").style.display = 'block';
-				// document.getElementById("contactSearchResult").innerHTML = "Contact(s) has been retrieved";
-				// setTimeout(delaySearchRes, 2500);
+				document.getElementById("searchRes").style.display = 'block';
+				document.getElementById("contactSearchResult").innerHTML = "Contact(s) has been retrieved";
+				setTimeout(delaySearchRes, 2500);
 				var jsonObject = JSON.parse( xhr.responseText );
 				var i;
 
@@ -267,11 +267,11 @@ function searchContact()
 }
 
 // To hide confirmation Modal
-// function delaySearchRes()
-// {
-// 	document.getElementById("searchRes").style.display = 'none';
-// 	document.getElementById("contactAddResult").innerHTML = "";
-// }
+function delaySearchRes()
+{
+	document.getElementById("searchRes").style.display = 'none';
+	document.getElementById("contactAddResult").innerHTML = "";
+}
 
 // The following function displays the register div
 function displayRegister()
@@ -287,18 +287,9 @@ function hideRegister()
 	document.getElementById("registerPassword").value = "";
 	document.getElementById("registerEmail").value = "";
 	document.getElementById("registerPhoneNumber").value = "";
-	// hideOrShow("sonGoku", false);
 	hideOrShow("registerDiv", false);
 	hideOrShow("loginDiv", true);
-	// setTimeout(delayShowLoginGoku, 0001);
-	// setTimeout(delayShowLoginGoku, 0001);
 }
-
-// function delayShowLoginGoku()
-// {
-// 	hideOrShow("loginDiv", true);
-// 	hideOrShow("sonGoku", true);
-// }
 
 function addContact()
 {
