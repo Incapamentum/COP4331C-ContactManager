@@ -71,7 +71,7 @@ function doLogout()
 		searchResultTable.removeChild(searchResultTable.firstChild);
 	}
 	// Clearing message to user field
-	document.getElementById("contactSearchResult").innerHTML = "";
+	// document.getElementById("contactSearchResult").innerHTML = "";
 }
 
 // Function to hide or show divs
@@ -177,7 +177,7 @@ function doRegister()
 function searchContact()
 {
 	var srch = document.getElementById("contactSearch").value;
-	document.getElementById("contactSearchResult").innerHTML = "";
+	// document.getElementById("contactSearchResult").innerHTML = "";
 
 	// Clear existing search result table
 	var searchResultTable = document.getElementById("searchResultTable");
@@ -198,9 +198,9 @@ function searchContact()
 		{
 			if (this.readyState == 4 && this.status == 200)
 			{
-				document.getElementById("searchRes").style.display = 'block';
-				document.getElementById("contactSearchResult").innerHTML = "Contact(s) has been retrieved";
-				setTimeout(delaySearchRes, 2500);
+				// document.getElementById("searchRes").style.display = 'block';
+				// document.getElementById("contactSearchResult").innerHTML = "Contact(s) has been retrieved";
+				// setTimeout(delaySearchRes, 2500);
 				var jsonObject = JSON.parse( xhr.responseText );
 				var i;
 
@@ -261,16 +261,9 @@ function searchContact()
 	}
 	catch(err)
 	{
-		document.getElementById("contactSearchResult").innerHTML = err.message;
+		// document.getElementById("contactSearchResult").innerHTML = err.message;
 	}
 
-}
-
-// To hide confirmation Modal
-function delaySearchRes()
-{
-	document.getElementById("searchRes").style.display = 'none';
-	document.getElementById("contactAddResult").innerHTML = "";
 }
 
 // The following function displays the register div
@@ -290,6 +283,7 @@ function hideRegister()
 	hideOrShow("registerDiv", false);
 	hideOrShow("loginDiv", true);
 }
+
 
 function addContact()
 {
